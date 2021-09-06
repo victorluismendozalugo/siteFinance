@@ -102,8 +102,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
                  <div class="card-body">
+                      <div class="form-group">
+                    <label>¿Que desea hacer?</label>
+                        <b-form-select class="form-control" v-model="registro.rolID" :options="optiosRolUsuario">
+                        </b-form-select>
+                  </div>
                   <div class="form-group">
                     <label for="inputName">Nombre(s)</label>
                    <b-form-input type="text" class="form-control" v-model="registro.nombre" placeholder="Ingrese su(s) nombre(s)" @input="v => { registro.nombre = v.toUpperCase()}"></b-form-input>

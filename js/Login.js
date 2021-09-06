@@ -21,8 +21,12 @@
             correo: '',
             sucursalID: 1,
             requiereToken: 1,
-            rolID: 2
-        }
+            rolID: 0
+        },
+        optiosRolUsuario: [
+            { value: 2, text: 'Invertir' },
+            { value: 3, text: 'Solicitar un préstamo' }
+        ],
     },
     mounted() {
         localStorage.clear()
@@ -125,7 +129,7 @@
             this.registro.correo = ''
             this.registro.sucursalID = 1
             this.registro.requiereToken = 1
-            this.registro.rolID = 2
+            this.registro.rolID = 0
 
         },
     }
