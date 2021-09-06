@@ -1,0 +1,31 @@
+﻿.typeahead-clean {
+    cursor: pointer;
+    background: transparent;
+    /*border-left: none !important;*/
+    border: 1px solid #ced4da;
+    align-items: center;
+    background-color: #e9ecef;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+}
+
+.typeahead-input {
+    /*border-right: none !important;*/
+}
+
+.typeaheadselected {
+    border-left: 3px solid #398439 !important;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #337ab7;
+    outline: 0;
+    height: initial;
+}
+
+ul.typeahead.dropdown-menu {
+    max-height: 400px;
+    overflow: auto;
+}
