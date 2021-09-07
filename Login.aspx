@@ -149,9 +149,14 @@
                       </div>
                     </div>
                   </div>
+
                 </div>
 
-
+   <p class="mb-0">
+                     <a class="nav-link text-center" data-toggle="modal" data-target="#solicitudCorreoModal" href="#" role="button">
+                       No he recibido el correo
+                    </a>
+                </p>
                 </div>
                 <div class="modal-footer">
                      <b-button type="button" variant="secondary" data-dismiss="modal">Cancelar</b-button>
@@ -162,6 +167,36 @@
         </div>
     </div>
  <!-- Modal Registration -->
+
+            <%--Modal solicitud correo--%>
+
+             <div class="modal fade" id="solicitudCorreoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="">Solicitud de correo para activación de cuenta</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-body">
+                            <div class="form-group">
+                            <label>Ingrese su correo electrónico</label>
+                                <b-form-input type="text" class="form-control" v-model="solicitud.usuario" placeholder="Ingrese su correo electrónico" @input="v => { solicitud.usuario = v.toUpperCase()}"></b-form-input>
+                            </div>
+                            </div>
+                        </div>
+                         <div class="modal-footer">
+                     <b-button type="button" variant="secondary" data-dismiss="modal">Cancelar</b-button>
+                     <b-button type="button" variant="primary" @click="ValidaDatosSolicitudCorreo">Solicitar
+                    </b-button>
+                </div>
+                    </div>
+                </div>
+             </div>
+
+            <%--Modal solicitud correo--%>
 
             </template>
 

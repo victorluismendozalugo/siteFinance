@@ -27,6 +27,10 @@
             { value: 2, text: 'Invertir' },
             { value: 3, text: 'Solicitar un préstamo' }
         ],
+        solicitud: {
+            usuario: '',
+            sucursalID: 1
+        }
     },
     mounted() {
         localStorage.clear()
@@ -132,5 +136,26 @@
             this.registro.rolID = 0
 
         },
+        ValidaDatosSolicitudCorreo() {
+
+            if (this.solicitud.usuario == '') {
+                $.noticeAlert("Favor de ingresar un correo")
+            } else {
+                http.postLoader('usuarios/email', this.solicitud).then(response => {
+
+                    if (response.data.data.codigoError == 0) {
+                        $.noticeSuccess("Favor de verificar su correo electrónico para activar su cuenta")
+                        $('#solicitudCorreoModal').modal('hide')
+
+                    } else {
+                        $.noticeError("ERROR " + response.data.message)
+                    }
+                })
+                    .catch(e => {
+                        this.limpiarCampos()
+                        $.noticeError("ERROR DE RED, COMPRUEBE SU CONEXION A INTERNET")
+                    })
+            }
+        }
     }
 });
