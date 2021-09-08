@@ -75,17 +75,17 @@ var app = new Vue({
             }
         },
         validaPermisosUsuario(menu) {
-            if (g_config.page.currentPage.replace('/', '') != 'Default') {
-                var count = 0;
-                for (var i = 0; i < menu.length; i++) {
-                    if (menu[i].menu == g_config.page.currentPage.replace('/', '')) {
-                        count++;
-                    }
-                }
-                if (count == 0) {
-                    $(location).attr('href', 'Login.aspx');
-                }
-            }
+            //if (g_config.page.currentPage.replace('/', '') != 'Default') {
+            //    var count = 0;
+            //    for (var i = 0; i < menu.length; i++) {
+            //        if (menu[i].menu == g_config.page.currentPage.replace('/', '')) {
+            //            count++;
+            //        }
+            //    }
+            //    if (count == 0) {
+            //        $(location).attr('href', 'Login.aspx');
+            //    }
+            //}
         }
     }
 })

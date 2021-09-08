@@ -2,7 +2,7 @@
     el: '#vuePage',
     data: {
         usuarios: {
-            Usuario: 'vi@finance',
+            Usuario: 'victormendoza.ssa@gmail.com',
             Password: 123,
         },
         sucursalID: 0,
@@ -54,7 +54,7 @@
             http.postLoader('seguridad/login', datos).then(response => {
 
                 if (response.data.data.codigoError == 0) {
-
+                    console.log(response.data.data)
                     localStorage.setItem('accessToken', response.data.data.data.accessToken)
                     localStorage.setItem('refreshToken', response.data.data.data.refreshToken)
                     localStorage.setItem('Usuario', this.usuarios.Usuario)

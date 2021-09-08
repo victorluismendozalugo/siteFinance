@@ -11,7 +11,7 @@ namespace WebSystems2021
 {
 
 
-    public partial class ConceptosCobro
+    public partial class Documentacion
     {
     }
 }

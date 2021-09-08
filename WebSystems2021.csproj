@@ -87,21 +87,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Clientes.aspx" />
-    <Content Include="Colores.aspx" />
-    <Content Include="ConceptosCobro.aspx" />
     <Content Include="css\imagen.css" />
-    <Content Include="Descuentos.aspx" />
-    <Content Include="Estilos.aspx" />
+    <Content Include="Documentacion.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="Generos.aspx" />
     <Content Include="images\finanzas.png" />
     <Content Include="js\Clientes.js" />
-    <Content Include="js\Colores.js" />
-    <Content Include="js\ConceptosCobro.js" />
     <Content Include="js\Default.js" />
-    <Content Include="js\Descuentos.js" />
-    <Content Include="js\Estilos.js" />
-    <Content Include="js\Generos.js" />
+    <Content Include="js\Documentacion.js" />
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.css" />
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.min.css" />
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.standalone.css" />
@@ -197,15 +189,8 @@
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="js\libs\FuncionesGenericas.js" />
     <Content Include="js\libs\moment.min.js" />
-    <Content Include="js\Marcas.js" />
     <Content Include="js\Notas.js" />
     <Content Include="js\Productos.js" />
-    <Content Include="js\Tallas.js" />
-    <Content Include="js\Temporalidades.js" />
-    <Content Include="js\Terminados.js" />
-    <Content Include="js\TiposPago.js" />
-    <Content Include="Marcas.aspx" />
-    <Content Include="Nota.aspx" />
     <Content Include="js\libs\jquery.blockUI.js" />
     <Content Include="js\libs\jquery.blockUI.messages.js" />
     <Content Include="js\libs\toastr.min.js" />
@@ -233,9 +218,6 @@
     <Content Include="Scripts\axios.min.js" />
     <Content Include="Sesion.aspx" />
     <Content Include="Site.Master" />
-    <Content Include="Tallas.aspx" />
-    <Content Include="Temporalidades.aspx" />
-    <Content Include="Terminados.aspx" />
     <Content Include="Theme\dist\css\adminlte.css" />
     <Content Include="Theme\dist\css\adminlte.min.css" />
     <Content Include="Theme\dist\css\alt\adminlte.components.css" />
@@ -2119,7 +2101,6 @@
     <Content Include="Theme\plugins\uplot\uPlot.iife.js" />
     <Content Include="Theme\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Theme\plugins\uplot\uPlot.min.css" />
-    <Content Include="TiposPago.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Vue\bootstrap-vue\2.12.0\bootstrap-vue-icons.min.js" />
     <Content Include="Vue\bootstrap-vue\2.12.0\bootstrap-vue.css" />
@@ -2138,20 +2119,6 @@
     <Compile Include="Clientes.aspx.designer.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Colores.aspx.cs">
-      <DependentUpon>Colores.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Colores.aspx.designer.cs">
-      <DependentUpon>Colores.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ConceptosCobro.aspx.cs">
-      <DependentUpon>ConceptosCobro.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ConceptosCobro.aspx.designer.cs">
-      <DependentUpon>ConceptosCobro.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2159,26 +2126,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Descuentos.aspx.cs">
-      <DependentUpon>Descuentos.aspx</DependentUpon>
+    <Compile Include="Documentacion.aspx.cs">
+      <DependentUpon>Documentacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Descuentos.aspx.designer.cs">
-      <DependentUpon>Descuentos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Estilos.aspx.cs">
-      <DependentUpon>Estilos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Estilos.aspx.designer.cs">
-      <DependentUpon>Estilos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Generos.aspx.cs">
-      <DependentUpon>Generos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Generos.aspx.designer.cs">
-      <DependentUpon>Generos.aspx</DependentUpon>
+    <Compile Include="Documentacion.aspx.designer.cs">
+      <DependentUpon>Documentacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2189,20 +2142,6 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Marcas.aspx.cs">
-      <DependentUpon>Marcas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Marcas.aspx.designer.cs">
-      <DependentUpon>Marcas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Nota.aspx.cs">
-      <DependentUpon>Nota.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Nota.aspx.designer.cs">
-      <DependentUpon>Nota.aspx</DependentUpon>
     </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>
@@ -2225,34 +2164,6 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Tallas.aspx.cs">
-      <DependentUpon>Tallas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Tallas.aspx.designer.cs">
-      <DependentUpon>Tallas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Temporalidades.aspx.cs">
-      <DependentUpon>Temporalidades.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Temporalidades.aspx.designer.cs">
-      <DependentUpon>Temporalidades.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Terminados.aspx.cs">
-      <DependentUpon>Terminados.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Terminados.aspx.designer.cs">
-      <DependentUpon>Terminados.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TiposPago.aspx.cs">
-      <DependentUpon>TiposPago.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TiposPago.aspx.designer.cs">
-      <DependentUpon>TiposPago.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
