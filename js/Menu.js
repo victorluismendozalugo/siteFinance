@@ -64,6 +64,9 @@ var app = new Vue({
 
             $('#sUsuario').text(localStorage.getItem('Usuario'))
             $('#UsuarioSistema').text(localStorage.getItem('Usuario'))
+            $('#PaginaActual').text(g_config.page.currentPage.replace('/', ' '))
+
+
 
         },
         validaSesion() {
