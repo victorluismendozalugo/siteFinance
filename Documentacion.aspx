@@ -72,7 +72,7 @@
                     </b-button>
                     </div>
               </div>
-                                    <pre>{{this.documentacion}}</pre>
+                                    <%--<pre>{{this.documentacion}}</pre>--%>
 
         </template>
         </div>

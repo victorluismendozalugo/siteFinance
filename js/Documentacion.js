@@ -23,10 +23,12 @@
     methods: {
         ObtieneDocumentacion() {
             http.postLoader('doc/consulta', this.documentacion).then(response => {
-                this.documentacion = response.data.data.data[0];
-                this.identificacion = this.documentacion.identificacion
-                this.compDomicilio = this.documentacion.compDomicilio
-                this.compIngresos = this.documentacion.compIngresos
+                if (response.data.data.data.length != 0) {
+                    this.documentacion = response.data.data.data[0];
+                    this.identificacion = this.documentacion.identificacion
+                    this.compDomicilio = this.documentacion.compDomicilio
+                    this.compIngresos = this.documentacion.compIngresos
+                }
             })
                 .catch(e => {
                     console.log(e);
