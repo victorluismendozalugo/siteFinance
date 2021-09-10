@@ -62,7 +62,7 @@ var vue2 = new Vue({
         }
     },
     mounted() {
-        this.ObtieneClientes()
+        //this.ObtieneClientes()
     },
     methods: {
         ObtieneClientes() {
