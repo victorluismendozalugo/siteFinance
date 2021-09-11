@@ -2,8 +2,8 @@
     el: '#vuePage',
     data: {
         usuarios: {
-            Usuario: 'victormendoza.ssa@gmail.com',
-            Password: 123,
+            Usuario: '',
+            Password: ''
         },
         sucursalID: 0,
         registro: {
@@ -30,11 +30,17 @@
         solicitud: {
             usuario: '',
             sucursalID: 1
-        }
+        },
+        reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
     },
     mounted() {
         localStorage.clear()
         //this.limpiarCampos()
+    },
+    computed: {
+        //isEmailValid() {
+        //    return this.registro.usuario != this.registro.validaUsuario && this.registro.usuario != '' && this.registro.validaUsuario != '' ? false : true;
+        //},
     },
     methods: {
         ValidaCredenciales: function (e) {
@@ -97,10 +103,26 @@
             }
         },
         ValidaDatosRegistro() {
-            this.registroUsuario()
+            if (this.registro.validaUsuario != ''
+                && this.registro.usuario != ''
+                && this.registro.contrasena != ''
+                && this.registro.validaContrasena != ''
+                && this.registro.celular != ''
+                && this.registro.nombre != ''
+                && this.registro.primerApellido != ''
+                && this.registro.rolID != 0) {
+                if (document.getElementsByClassName('is-invalid').length == 0) {
+                    this.registroUsuario()
+                } else {
+                    $.noticeAlert("Favor de ingresar un correo electrónico válid0")
+                }
+
+            } else {
+                $.noticeAlert("Favor de completar todos los campos")
+            }
         },
         registroUsuario() {
-            http.postLoader('usuarios/guardar', this.registro).then(response => {
+            http.postLoader('activation/guardar', this.registro).then(response => {
 
                 if (response.data.data.codigoError == 0) {
 
@@ -141,7 +163,7 @@
             if (this.solicitud.usuario == '') {
                 $.noticeAlert("Favor de ingresar un correo")
             } else {
-                http.postLoader('usuarios/email', this.solicitud).then(response => {
+                http.postLoader('activation/email', this.solicitud).then(response => {
 
                     if (response.data.data.codigoError == 0) {
                         $.noticeSuccess("Favor de verificar su correo electrónico para activar su cuenta")
@@ -155,6 +177,32 @@
                         this.limpiarCampos()
                         $.noticeError("ERROR DE RED, COMPRUEBE SU CONEXION A INTERNET")
                     })
+            }
+        },
+        isEmailValidUser() {
+            return (this.registro.usuario == "") ? "" : (this.reg.test(this.registro.usuario)) ? 'is-valid' : 'is-invalid';
+        },
+        isEmailValidUser2() {
+            return (this.registro.validaUsuario == "") ? "" : (this.reg.test(this.registro.validaUsuario)) ? 'is-valid' : 'is-invalid';
+        },
+        validaEmails() {
+            if (this.registro.validaUsuario != this.registro.usuario) {
+                $.noticeAlert("Los correos electrónicos no coinciden, favor de verificarlos")
+                this.registro.validaUsuario = ''
+                this.registro.usuario = ''
+            }
+        },
+        validaContras() {
+            if (this.registro.contrasena != this.registro.validaContrasena) {
+                $.noticeAlert("Las contraseñas no coinciden, favor de verificarlas")
+                this.registro.contrasena = ''
+                this.registro.validaContrasena = ''
+            }
+        },
+        validaTelefono() {
+            if (this.registro.celular.length < 10) {
+                $.noticeAlert("Favor de verificar su teléfono de contacto")
+                this.registro.celular = ''
             }
         }
     }

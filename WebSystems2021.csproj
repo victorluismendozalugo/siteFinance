@@ -86,11 +86,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CargaInformacion.aspx" />
     <Content Include="Clientes.aspx" />
     <Content Include="css\imagen.css" />
     <Content Include="Documentacion.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="images\finanzas.png" />
+    <Content Include="images\Logo.jpeg" />
+    <Content Include="images\LogoLogin.jpg" />
+    <Content Include="js\CargaInformacion.js" />
     <Content Include="js\Clientes.js" />
     <Content Include="js\Default.js" />
     <Content Include="js\Documentacion.js" />
@@ -2112,6 +2116,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CargaInformacion.aspx.cs">
+      <DependentUpon>CargaInformacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CargaInformacion.aspx.designer.cs">
+      <DependentUpon>CargaInformacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Clientes.aspx.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

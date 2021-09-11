@@ -80,8 +80,8 @@
             options = this.headers
         }
 
-        //var ruta = "http://kssystems-001-site2.dtempurl.com/api/" + path;
-        var ruta = "http://localhost:49890/" + path;
+        var ruta = "http://kssystems-001-site8.dtempurl.com/api/" + path;
+        //var ruta = "http://localhost:49890/" + path;
 
         this.cn.con.rt = ruta.substring(0, 16)
 

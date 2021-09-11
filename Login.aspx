@@ -34,13 +34,14 @@
         <template>
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>Finance</b>APP</a>
+            <%--<a href="#"><b>Finance</b>APP</a>--%>
+
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Ingrese sus datos para iniciar sesión</p>
-
+            <%--    <p class="login-box-msg">Ingrese sus datos para iniciar sesión</p>--%>
+<img src="images/LogoLogin.jpg" />
                 <form>
                     <div class="input-group mb-3">
                          <input type="text" class="form-control" placeholder="Usuario" v-model="usuarios.Usuario"
@@ -79,7 +80,7 @@
 
 
                 <p class="mb-1">
-                    <a class="nav-link text-center" href="#">Olvidé mi usuario</a>
+                    <%--<a class="nav-link text-center" href="#">Olvidé mi usuario</a>--%>
                 </p>
                 <p class="mb-0">
                      <a class="nav-link text-center" data-toggle="modal" data-target="#registrationModal" href="#" role="button">
@@ -126,17 +127,15 @@
                   </div>
                   <div class="form-group">
                     <label>Celular</label>
-                     <input type="text" class="form-control"  v-model="registro.celular" placeholder="Ingrese su celular (10 digitos)" maxlength="10">
+                     <b-form-input type="text" class="form-control"  v-model="registro.celular" placeholder="Ingrese su celular (10 digitos)" maxlength="10" @blur="validaTelefono"></b-form-input
                   </div>
-                   <div class="form-group">
+                   <div class="form-group" >
                     <label>Correo</label>
-                      <b-form-input type="text" class="form-control" v-model="registro.usuario" placeholder="Ingrese su correo electrónico" @input="v => { registro.usuario = v.toUpperCase()}"></b-form-input>
-                  </div>
-                        <div class="form-group">
+                        <b-form-input type="email" class="form-control" placeholder="Ingrese su correo electrónico" v-model="registro.usuario" :class="[isEmailValidUser()]" required placeholder="Ingrese su correo electrónico" @input="v => { registro.usuario = v.toUpperCase()}"></b-form-input> 
+            
                     <label>Validación correo</label>
-                    <b-form-input type="text" class="form-control" v-model="registro.validaUsuario" placeholder="Ingrese nuevamente su correo electrónico" @input="v => { registro.validaUsuario = v.toUpperCase()}"></b-form-input>
-                  </div>
-
+                        <b-form-input type="email" class="form-control" placeholder="Ingrese nuevamente su correo electrónico" v-model="registro.validaUsuario" :class="[isEmailValidUser2()]" required placeholder="Ingrese su correo electrónico" @input="v => { registro.validaUsuario = v.toUpperCase()}" @blur="validaEmails"></b-form-input> 
+                       </div>
                   <div class="form-group">
                         <div class="row">
                           <div class="col-6">
@@ -145,7 +144,7 @@
                           </div>
                       <div class="col-6">
                         <label>Validación Contraseña</label>
-                        <input type="password" class="form-control"  v-model="registro.validaContrasena" placeholder="Ingrese nuevamente su contraseña">
+                        <input type="password" class="form-control"  v-model="registro.validaContrasena" placeholder="Ingrese nuevamente su contraseña"  @blur="validaContras">
                       </div>
                     </div>
                   </div>
@@ -213,6 +212,6 @@
     <script src="js/libs/jquery.blockUI.js?1.1.0"></script>
     <script src="js/libs/toastr.min.js?1.1.0"></script>
     <script src="js/libs/jquery.blockUI.messages.js?1.1.0"></script>
-    <script src="js/Login.js?1.1.0"></script>
+    <script src="js/Login.js?1.1.10"></script>
 </body>
 </html>

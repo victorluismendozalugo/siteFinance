@@ -44,7 +44,6 @@
                 } else {
                     $.noticeError("ERROR " + response.data.data.mensajeBitacora)
                 }
-
             })
                 .catch(e => {
                     console.log(e);
@@ -95,7 +94,6 @@
             }
         },
         uploadImage(obj) {
-
             if (obj == 1) {
                 const { image1 } = this.identificacion;
                 this.documentacion.identificacion = this.identificacion
