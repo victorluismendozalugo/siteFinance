@@ -4,12 +4,12 @@
 
     },
     computed: {
-      
+
     },
     mounted() {
-        
+
     },
     methods: {
-      
+
     }
 });

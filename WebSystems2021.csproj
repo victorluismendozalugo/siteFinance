@@ -94,10 +94,12 @@
     <Content Include="images\finanzas.png" />
     <Content Include="images\Logo.jpeg" />
     <Content Include="images\LogoLogin.jpg" />
+    <Content Include="Instrucciones.aspx" />
     <Content Include="js\CargaInformacion.js" />
     <Content Include="js\Clientes.js" />
     <Content Include="js\Default.js" />
     <Content Include="js\Documentacion.js" />
+    <Content Include="js\Instrucciones.js" />
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.css" />
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.min.css" />
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.standalone.css" />
@@ -210,14 +212,20 @@
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.standalone.css.map" />
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker3.css.map" />
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker3.standalone.css.map" />
-    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <Content Include="images\btnEliminar.png" />
     <Content Include="images\btnModificar.png" />
     <Content Include="js\Login.js" />
     <Content Include="js\Menu.js" />
+    <Content Include="js\Rendimiento.js" />
+    <Content Include="js\Reportes.js" />
+    <Content Include="js\Saldo.js" />
+    <Content Include="js\Usuarios.js" />
     <Content Include="js\util.js" />
     <Content Include="Login.aspx" />
     <Content Include="Productos.aspx" />
+    <Content Include="Rendimiento.aspx" />
+    <Content Include="Reportes.aspx" />
+    <Content Include="Saldo.aspx" />
     <Content Include="Scripts\axios.js" />
     <Content Include="Scripts\axios.min.js" />
     <Content Include="Sesion.aspx" />
@@ -2105,6 +2113,7 @@
     <Content Include="Theme\plugins\uplot\uPlot.iife.js" />
     <Content Include="Theme\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Theme\plugins\uplot\uPlot.min.css" />
+    <Content Include="Usuarios.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Vue\bootstrap-vue\2.12.0\bootstrap-vue-icons.min.js" />
     <Content Include="Vue\bootstrap-vue\2.12.0\bootstrap-vue.css" />
@@ -2147,6 +2156,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Instrucciones.aspx.cs">
+      <DependentUpon>Instrucciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instrucciones.aspx.designer.cs">
+      <DependentUpon>Instrucciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2162,6 +2178,27 @@
       <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendimiento.aspx.cs">
+      <DependentUpon>Rendimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rendimiento.aspx.designer.cs">
+      <DependentUpon>Rendimiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Saldo.aspx.cs">
+      <DependentUpon>Saldo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Saldo.aspx.designer.cs">
+      <DependentUpon>Saldo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sesion.aspx.cs">
       <DependentUpon>Sesion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2176,6 +2213,13 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2186,6 +2230,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

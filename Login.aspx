@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Login</title>
+    <title>FinanceApp v1.1.0 | Login</title>
     <link href="Vue/bootstrap-vue/2.12.0/bootstrap-vue.css?1.1.0" rel="stylesheet" />
 
     <script src="Vue/vue2.6.11.min/vue2.6.11.min.js?1.1.0"></script>
