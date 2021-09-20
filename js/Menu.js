@@ -1,9 +1,17 @@
 ﻿var opcionesMenu = "";
+var listNotificaciones = "";
 var app = new Vue({
     el: '#app',
     data: {
         show: false,
-        menus: []
+        menus: [],
+        notificaciones: [],
+        totalNotificaciones: 0,
+        notificacion: {
+            Sucursal: 1,
+            Receptor: localStorage.getItem('Usuario'),
+            Estatus: ''
+        }
     },
     mounted() {
         this.ObtieneMenu()
@@ -52,7 +60,7 @@ var app = new Vue({
 
                 });
                 $('#menu').html(opcionesMenu);
-
+                this.ObtieneNotificacionesUsuario()
 
 
             })
@@ -86,6 +94,18 @@ var app = new Vue({
             //        $(location).attr('href', 'Login.aspx');
             //    }
             //}
+        },
+        ObtieneNotificacionesUsuario() {
+            http.postLoader('notify/consultar', this.notificacion).then(response => {
+                this.notificaciones = response.data.data.data
+                this.totalNotificaciones = this.notificaciones.length
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
+        obtienedataNotificacion(item) {
+            console.log(item)
         }
     }
 })
