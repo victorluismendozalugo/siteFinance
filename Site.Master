@@ -85,7 +85,7 @@
                         <span class="dropdown-item dropdown-header">{{totalNotificaciones}} Notificación(es)</span>
                         <div class="dropdown-divider"></div>
 
-                        <a href="#" class="dropdown-item" v-for="item in notificaciones" data-toggle="modal" data-target="#modalLeerNotificacion"
+                        <a href="#" class="dropdown-item" v-for="item in notificaciones"
                             @click="obtienedataNotificacion(item)">
                             <i class="fas fa-envelope mr-2"></i> {{item.previa}}
                             <span class="float-right text-muted text-sm">{{item.fecha}}</span>
@@ -98,31 +98,19 @@
                 </li>
 
                             
-              <div class="modal fade" id="modalLeerNotificacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 1064;">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="">Solicitud de correo para activación de cuenta</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
+                 <b-modal id="modal-notificaciones" size="lg" title="Large Modal" hide-header="true" hide-footer="true">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="table-responsive">
+                
+                          </div>
                         </div>
-                        <div class="modal-body">
-                            <div class="card-body">
-                            <div class="form-group">
-                            <label>Ingrese su correo electrónico</label>
-                                <b-form-input type="text" class="form-control"  placeholder="Ingrese su correo electrónico"></b-form-input>
-                            </div>
-                            </div>
-                        </div>
-                         <div class="modal-footer">
-                     <b-button type="button" variant="secondary" data-dismiss="modal">Cancelar</b-button>
-                     <b-button type="button" variant="primary" @click="">Solicitar
-                    </b-button>
-                </div>
+                      </div>
                     </div>
-                </div>
-             </div>
+                  </div>
+                </b-modal>
 
             </template>
                     </div>
