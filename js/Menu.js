@@ -106,7 +106,6 @@ var app = new Vue({
         },
         obtienedataNotificacion(item) {
             this.$bvModal.show('modal-notificaciones');
-            console.log(item)
         }
     }
 })
