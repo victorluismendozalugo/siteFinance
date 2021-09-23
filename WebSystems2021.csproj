@@ -195,6 +195,7 @@
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="js\libs\FuncionesGenericas.js" />
     <Content Include="js\libs\moment.min.js" />
+    <Content Include="js\libs\xlsx.full.min.js" />
     <Content Include="js\Notas.js" />
     <Content Include="js\Productos.js" />
     <Content Include="js\libs\jquery.blockUI.js" />

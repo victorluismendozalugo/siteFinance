@@ -32,7 +32,6 @@
                                     <th style="width: 20%">% Documentación</th>
                                     <th style="width: 20%">Acciones</th>
                                 </tr>
-
                             </thead>
                             <tbody>
                                 <tr v-for="item in clientes">
@@ -61,7 +60,7 @@
                                             </i>
                                             Ver
                                         </a>
-                                        <a class="btn btn-info btn-sm" href="#" @click="ObtieneDatosCliente(item)">
+                                        <a class="btn btn-info btn-sm" href="#" @click="CargarInformacion(item)">
                                             <i class="fas fa-upload">
                                             </i>
                                             Cargar información
@@ -76,9 +75,20 @@
             <b-modal id="modal-informacion-usuario" title="Información del cliente" size="lg" ok-only>
                  <p>{{cliente}}</p>
             </b-modal>
+              <b-modal id="modal-cargar-informacion-usuario" title="Cargar información" size="lg" ok-only>
+                 <p>{{cliente.nombreCompleto}}</p>
+                     <div>  
+                  <b>Seleccione un archivo de excel para importar:</b>  
+                  <div>  
+                    <input type="file" class="fileSelect" @change="fileChange($event)"/>  
+                  </div>  
+                         <br />
+                  <b-table id="wrapper" class="table table-striped table-responsive" responsive="sm">
+                  </b-table>
+            </b-modal>
         </template>
         </div>
     </div>
-
+    <script src="js/libs/xlsx.full.min.js"></script>
     <script src="js/Clientes.js"></script>
 </asp:Content>
