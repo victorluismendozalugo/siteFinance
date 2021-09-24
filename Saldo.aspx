@@ -9,8 +9,12 @@
     <div id="vuePage">
         <div class="container">
             <template>
+                <p>Fecha de actualización: {{saldos.fechaRegistro}}</p>
+                   <b-table id="wrapper" class="table table-striped table-responsive" responsive="sm">
+                  </b-table>
             </template>
         </div>
     </div>
-    <script src="js/Reportes.js"></script>
+    <script src="js/libs/xlsx.full.min.js"></script>
+    <script src="js/Saldo.js"></script>
 </asp:Content>

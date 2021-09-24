@@ -73,9 +73,24 @@
                 </div>
             </section>
             <b-modal id="modal-informacion-usuario" title="Información del cliente" size="lg" ok-only>
-                 <p>{{cliente}}</p>
+                {{cliente}}
+                <br />
+                    <p>Cliente: {{cliente.nombreCompleto}}</p> 
+                     <p>Correo: {{cliente.usuario}}</p> 
+                     <p>Fecha Registro: {{cliente.fechaRegistro}}</p> 
+                  <div class="row">
+                        <div class="col-4">
+                     <img v-bind:src="cliente.identificacion" class="img-fluid img-thumbnail zoom" style="height: auto;"/>
+                            </div>
+                         <div class="col-4">
+                     <img v-bind:src="cliente.compDomicilio" class="img-fluid img-thumbnail zoom" style="height: auto;"/>
+                            </div>
+                         <div class="col-4">
+                     <img v-bind:src="cliente.compIngresos" class="img-fluid img-thumbnail zoom" style="height: auto;"/>
+                            </div>
+                      </div>
             </b-modal>
-              <b-modal id="modal-cargar-informacion-usuario" title="Cargar información" size="lg" ok-only>
+              <b-modal id="modal-cargar-informacion-usuario" title="Cargar información" size="lg" hide-footer>
                  <p>{{cliente.nombreCompleto}}</p>
                      <div>  
                   <b>Seleccione un archivo de excel para importar:</b>  
@@ -85,10 +100,25 @@
                          <br />
                   <b-table id="wrapper" class="table table-striped table-responsive" responsive="sm">
                   </b-table>
+ <div class="modal-footer">
+                     <b-button type="button" variant="primary" @click="GuardarSaldo">Guardar
+                    </b-button>
+                </div>
             </b-modal>
         </template>
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
     <script src="js/Clientes.js"></script>
+    <style>
+        .zoom {
+            transition: transform.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+            .zoom:hover {
+                transform: scale(2.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }
+    </style>
 </asp:Content>

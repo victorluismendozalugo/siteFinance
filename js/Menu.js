@@ -41,11 +41,6 @@ var app = new Vue({
                     opcionesMenu += "</a>"
                     opcionesMenu += "</li>"
 
-
-
-
-
-
                     //if (value["modulo"] == "Catalogo") {
 
 
