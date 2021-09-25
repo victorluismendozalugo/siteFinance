@@ -17,8 +17,8 @@
     },
     methods: {
         enviarNotificacion() {
-            this.notificacion.previa = 'Notif. Depósito'
-            this.notificacion.texto = "Notificación de depósito a cuenta de préstamo, cliente : " + localStorage.getItem('Usuario')
+            this.notificacion.previa = 'Notif. Retiro'
+            this.notificacion.texto = "Notificación de retiro de cuenta de inversión, cliente : " + localStorage.getItem('Usuario')
 
             http.postLoader('notify/enviar', this.notificacion).then(response => {
 

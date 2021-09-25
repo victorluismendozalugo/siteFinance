@@ -4,10 +4,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <div id="vuePage">
-        <div class="container">
-            <template>
+    <div class="container">
+        <template>
             <section class="content">
                 <div class="card">
                     <div class="card-header">
@@ -73,52 +72,99 @@
                 </div>
             </section>
             <b-modal id="modal-informacion-usuario" title="Información del cliente" size="lg" ok-only>
-                {{cliente}}
-                <br />
-                    <p>Cliente: {{cliente.nombreCompleto}}</p> 
-                     <p>Correo: {{cliente.usuario}}</p> 
-                     <p>Fecha Registro: {{cliente.fechaRegistro}}</p> 
                   <div class="row">
-                        <div class="col-4">
-                     <img v-bind:src="cliente.identificacion" class="img-fluid img-thumbnail zoom" style="height: auto;"/>
-                            </div>
-                         <div class="col-4">
-                     <img v-bind:src="cliente.compDomicilio" class="img-fluid img-thumbnail zoom" style="height: auto;"/>
-                            </div>
-                         <div class="col-4">
-                     <img v-bind:src="cliente.compIngresos" class="img-fluid img-thumbnail zoom" style="height: auto;"/>
-                            </div>
-                      </div>
-            </b-modal>
-              <b-modal id="modal-cargar-informacion-usuario" title="Cargar información" size="lg" hide-footer>
-                 <p>{{cliente.nombreCompleto}}</p>
-                     <div>  
-                  <b>Seleccione un archivo de excel para importar:</b>  
-                  <div>  
-                    <input type="file" class="fileSelect" @change="fileChange($event)"/>  
-                  </div>  
-                         <br />
-                  <b-table id="wrapper" class="table table-striped table-responsive" responsive="sm">
-                  </b-table>
- <div class="modal-footer">
-                     <b-button type="button" variant="primary" @click="GuardarSaldo">Guardar
-                    </b-button>
+                    <div class="col-6">
+                        <label>Cliente</label>
+                        <b-form-input type="text" class="form-control" v-model=cliente.nombreCompleto disabled>
+                        </b-form-input>
+                    </div>
+                  </div>
+                   <div class="row">
+                    <div class="col-6">
+                        <label>Correo</label>
+                        <b-form-input type="text" class="form-control" v-model=cliente.usuario disabled>
+                        </b-form-input>
+                    </div>
+                     <div class="col-6">
+                        <label>Fecha Registro</label>
+                        <b-form-input type="text" class="form-control" v-model=cliente.fechaRegistro disabled>
+                        </b-form-input>
+                    </div>
+                </div>
+                <br />
+                 <h4><b>Documentación cargada</b></h4>
+                <div class="row">
+                    <div class="col-4">
+                        <img v-bind:src="cliente.identificacion" class="img-fluid img-thumbnail zoom"
+                            style="height: auto;" />
+                    </div>
+                    <div class="col-4">
+                        <img v-bind:src="cliente.compDomicilio" class="img-fluid img-thumbnail zoom"
+                            style="height: auto;" />
+                    </div>
+                    <div class="col-4">
+                        <img v-bind:src="cliente.compIngresos" class="img-fluid img-thumbnail zoom"
+                            style="height: auto;" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+
+                    <div class="col-6">
+                        <label>Referencia 1</label>
+                        <b-form-input type="text" class="form-control" v-model=cliente.referenciaNombre1 disabled>
+                        </b-form-input>
+                    </div>
+                    <div class="col-6">
+                        <label>Teléfono</label>
+                        <b-form-input type="text" class="form-control" v-model=cliente.referenciaTelefono1 disabled>
+                        </b-form-input>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-6">
+                        <label>Referencia 2</label>
+                        <b-form-input type="text" class="form-control" v-model=cliente.referenciaNombre2 disabled>
+                        </b-form-input>
+                    </div>
+                    <div class="col-6">
+                        <label>Teléfono</label>
+                        <b-form-input type="text" class="form-control" v-model=cliente.referenciaTelefono2 disabled>
+                        </b-form-input>
+                    </div>
                 </div>
             </b-modal>
+            <b-modal id="modal-cargar-informacion-usuario" title="Cargar información" size="lg" hide-footer>
+                <p>{{cliente.nombreCompleto}}</p>
+                <div>
+                    <b>Seleccione un archivo de excel para importar:</b>
+                    <div>
+                        <input type="file" class="fileSelect" @change="fileChange($event)" />
+                    </div>
+                    <br />
+                    <b-table id="wrapper" class="table table-striped table-responsive" responsive="sm">
+                    </b-table>
+                    <div class="modal-footer">
+                        <b-button type="button" variant="primary" @click="GuardarSaldo">Guardar
+                        </b-button>
+                    </div>
+            </b-modal>
         </template>
-        </div>
     </div>
-    <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Clientes.js"></script>
-    <style>
-        .zoom {
-            transition: transform.3s;
-            position: relative;
-            z-index: 2;
-        }
+</div>
+<script src="js/libs/xlsx.full.min.js"></script>
+<script src="js/Clientes.js"></script>
+<style>
+    .zoom {
+        transition: transform.3s;
+        position: relative;
+        z-index: 2;
+    }
 
-            .zoom:hover {
-                transform: scale(2.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-            }
-    </style>
+    .zoom:hover {
+        transform: scale(2.5);
+        /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+</style>
 </asp:Content>

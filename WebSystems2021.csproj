@@ -95,11 +95,13 @@
     <Content Include="images\Logo.jpeg" />
     <Content Include="images\LogoLogin.jpg" />
     <Content Include="Instrucciones.aspx" />
+    <Content Include="Instrucciones1.aspx" />
     <Content Include="js\CargaInformacion.js" />
     <Content Include="js\Clientes.js" />
     <Content Include="js\Default.js" />
     <Content Include="js\Documentacion.js" />
     <Content Include="js\Instrucciones.js" />
+    <Content Include="js\Instrucciones1.js" />
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.css" />
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.min.css" />
     <Content Include="js\libs\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.standalone.css" />
@@ -2163,6 +2165,13 @@
     </Compile>
     <Compile Include="Instrucciones.aspx.designer.cs">
       <DependentUpon>Instrucciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Instrucciones1.aspx.cs">
+      <DependentUpon>Instrucciones1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instrucciones1.aspx.designer.cs">
+      <DependentUpon>Instrucciones1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

@@ -6,12 +6,14 @@ var app = new Vue({
         show: false,
         menus: [],
         notificaciones: [],
+        todasnotificaciones: [],
         totalNotificaciones: 0,
         notificacion: {
             Sucursal: 1,
             Receptor: localStorage.getItem('Usuario'),
-            Estatus: ''
-        }
+            Estatus: 'E'
+        },
+        viewNotificacion: []
     },
     mounted() {
         this.ObtieneMenu()
@@ -91,6 +93,7 @@ var app = new Vue({
             //}
         },
         ObtieneNotificacionesUsuario() {
+            this.notificacion.estatus = 'E'
             http.postLoader('notify/consultar', this.notificacion).then(response => {
                 this.notificaciones = response.data.data.data
                 this.totalNotificaciones = this.notificaciones.length
@@ -100,7 +103,33 @@ var app = new Vue({
                 })
         },
         obtienedataNotificacion(item) {
+            this.viewNotificacion = item
             this.$bvModal.show('modal-notificaciones');
-        }
+        },
+        notificacionLeida() {
+            http.postLoader('notify/marcar', this.viewNotificacion).then(response => {
+                if (response.data.data.codigoError == 0) {
+                    $.noticeSuccess(response.data.data.mensajeBitacora)
+                    this.ObtieneNotificacionesUsuario()
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
+        ObtieneTodasNotificacionesUsuario() {
+            this.notificacion.estatus = 'L'
+            http.postLoader('notify/consultar', this.notificacion).then(response => {
+                if (response.data.data.codigoError == 0) {
+                    this.$bvModal.show('modal-todas-notificaciones');
+                    this.todasnotificaciones = response.data.data.data
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
     }
 })

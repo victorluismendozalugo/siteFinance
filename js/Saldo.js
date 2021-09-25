@@ -25,7 +25,7 @@
                     var data = Uint8Array.from(atob(doc), c => c.charCodeAt(0))
 
                     var wb = XLSX.read(data, { type: 'array' });
-                    var htmlstr = XLSX.write(wb, { sheet: "Hoja1", type: 'binary', bookType: 'html' });
+                    var htmlstr = XLSX.write(wb, { sheet: "INFORMACION", type: 'binary', bookType: 'html' });
                     $('#wrapper')[0].innerHTML += htmlstr;
 
 

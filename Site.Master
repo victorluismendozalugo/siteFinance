@@ -93,24 +93,68 @@
                         <div class="dropdown-divider"></div>
 
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">Ver todas mis notificaciones</a>
+                        <a href="#" class="dropdown-item dropdown-footer"  @click="ObtieneTodasNotificacionesUsuario()">Ver todas mis notificaciones</a>
                     </div>
                 </li>
 
-                            
-                 <b-modal id="modal-notificaciones" size="lg" title="Large Modal" hide-header="true" hide-footer="true">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="table-responsive">
-                
-                          </div>
+
+            <b-modal id="modal-todas-notificaciones" size="lg" title="Large Modal" hide-header="true" hide-footer="true">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-bullhorn"></i>
+                                Notificaciones
+                            </h3>
                         </div>
-                      </div>
+                        <div class="card-body">
+                            <div class="callout callout-info" v-for="item in todasnotificaciones">
+                                <h5>{{item.previa}}</h5>
+
+                                <p>{{item.texto}}</p>
+                                <p>Fecha movimiento: {{item.fecha}}</p>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
-                  </div>
-                </b-modal>
+                </div>
+            </div>
+        </b-modal>
+
+            <b-modal id="modal-notificaciones" size="lg" title="Large Modal" hide-header="true" hide-footer="true">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-bullhorn"></i>
+                                Notificaciones
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="callout callout-info">
+                                <h5>{{viewNotificacion.previa}}</h5>
+
+                                <p>{{viewNotificacion.texto}}</p>
+                                <p>Fecha movimiento: {{viewNotificacion.fecha}}</p>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary btn-sm" href="#" @click="notificacionLeida()">
+                                            <i class="fas fa-check-double">
+                                            </i>
+                                            Marcar como leída
+                                        </a>
+            </div>
+        </b-modal>
+
+                            
+ 
 
             </template>
                     </div>

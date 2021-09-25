@@ -69,7 +69,7 @@ var vue2 = new Vue({
                 var data = new Uint8Array(reader2.result);
                 console.log(reader2.result)
                 var wb = XLSX.read(data, { type: 'array' });
-                var htmlstr = XLSX.write(wb, { sheet: "Hoja1", type: 'binary', bookType: 'html' });
+                var htmlstr = XLSX.write(wb, { sheet: "INFORMACION", type: 'binary', bookType: 'html' });
                 $('#wrapper')[0].innerHTML += htmlstr;
             }
 
