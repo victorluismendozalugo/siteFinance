@@ -9,6 +9,7 @@
     <div id="vuePage">
         <div class="container">
             <template>
+                <h5>En construcción...</h5>
             </template>
         </div>
     </div>

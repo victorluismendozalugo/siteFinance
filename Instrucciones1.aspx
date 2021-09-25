@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Instrucciones1.aspx.cs" Inherits="WebSystems2021.Instrucciones1" %>
+﻿<%--<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Instrucciones1.aspx.cs" Inherits="WebSystems2021.Instrucciones1" %>--%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
