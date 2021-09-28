@@ -94,16 +94,16 @@
                 <br />
                  <h4><b>Documentación cargada</b></h4>
                 <div class="row">
-                    <div class="col-4">
-                        <img v-bind:src="cliente.identificacion" class="img-fluid img-thumbnail zoom"
+                    <div class="col-4" id="identificacion">
+                        <embed v-bind:src="cliente.identificacion" class="img-fluid img-thumbnail zoom"
                             style="height: auto;" />
                     </div>
-                    <div class="col-4">
-                        <img v-bind:src="cliente.compDomicilio" class="img-fluid img-thumbnail zoom"
+                    <div class="col-4" id="domicilio">
+                        <embed v-bind:src="cliente.compDomicilio" class="img-fluid img-thumbnail zoom"
                             style="height: auto;" />
                     </div>
-                    <div class="col-4">
-                        <img v-bind:src="cliente.compIngresos" class="img-fluid img-thumbnail zoom"
+                    <div class="col-4" id="ingresos">
+                        <embed v-bind:src="cliente.compIngresos" class="img-fluid img-thumbnail zoom"
                             style="height: auto;" />
                     </div>
                 </div>

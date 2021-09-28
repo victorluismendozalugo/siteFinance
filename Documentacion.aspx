@@ -41,8 +41,11 @@
                             class="fas fa-upload"></i>&nbsp; Cargar
                         identificación</label>
                     <input @change="handleImage1" class="custom-input btn btn-success col fileinput-button" type="file"
-                        accept="image/*" style="visibility:hidden;" id="files1">
+                        accept="image/*,application/pdf" style="visibility:hidden;" id="files1">
                      <img class="imgCargas" :src="identificacion" alt="" style="width:100%; max-width:150px;">
+                    <div class="container" id="ident">
+                    <iframe :src="PDFidentificacion" tyle="width:100%; max-width:150px;" frameborder="0"></iframe>
+                    </div>
                 </div>
 
                 <div class="col-4">
@@ -50,8 +53,11 @@
                             class="fas fa-upload"></i>&nbsp; Cargar
                         comprobante de domicilio</label>
                     <input @change="handleImage2" class="custom-input btn btn-success col fileinput-button" type="file"
-                        accept="image/*" style="visibility:hidden;" id="files2">
+                        accept="image/*,application/pdf" style="visibility:hidden;" id="files2">
                       <img class="imgCargas" :src="compDomicilio" alt="" style="width:100%; max-width:150px;">
+                    <div class="container">
+                     <iframe :src="PDFcompDomicilio" style="width:100%; max-width:150px;" frameborder="0"></iframe>
+                    </div>
                 </div>
 
                 <div class="col-4">
@@ -59,8 +65,11 @@
                             class="fas fa-upload"></i>&nbsp; Cargar
                         comprobante de ingresos</label>
                     <input @change="handleImage3" class="custom-input btn btn-success col fileinput-button" type="file"
-                        accept="image/*" style="visibility:hidden;" id="files3">
+                        accept="image/*,application/pdf" style="visibility:hidden;" id="files3">
                     <img class="imgCargas" :src="compIngresos" alt="" style="width:100%; max-width:150px;">
+                    <div class="container">
+                     <iframe :src="PDFcompIngresos" style="width:100%; max-width:150px;" frameborder="0"></iframe>
+                    </div>
                 </div>
 
             </div>
@@ -72,7 +81,7 @@
                     </b-button>
                     </div>
               </div>
-                                    <%--<pre>{{this.documentacion}}</pre>--%>
+                                    <pre>{{this.documentacion}}</pre>
 
         </template>
         </div>

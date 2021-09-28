@@ -39,6 +39,9 @@ var vue2 = new Vue({
         ObtieneDatosCliente(item) {
             this.$bvModal.show('modal-informacion-usuario');
             this.cliente = item
+
+            console.log(item)
+
             this.saldo.usuario = this.cliente.usuario
         },
         CargarInformacion(item) {
