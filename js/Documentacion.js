@@ -10,8 +10,56 @@
             referenciaNombre1: '',
             referenciaTelefono1: '',
             referenciaNombre2: '',
-            referenciaTelefono2: ''
+            referenciaTelefono2: '',
+            correo: '',
+            nombre: '',
+            apaterno: '',
+            amaterno: '',
+            dondeSeEntero: '',
+            genero: '',
+            fechaNacimiento: '',
+            edad: 0,
+            paisNacimiento: '',
+            nacionalidad: '',
+            curp: '',
+            rfc: '',
+            nivelEstudios: '',
+            edoCivil: '',
+            ocupacion: '',
+            calleNumero: '',
+            colonia: '',
+            codigoPostal: '',
+            municipio: '',
+            estado: '',
+            pais: '',
+            tiempoVivir: 0,
+            telefonoCasa: '',
+            celular: '',
+            entidadFederativa: '',
+            nombreEmpresa: '',
+            calleNumeroEmpresa: '',
+            coloniaEmpresa: '',
+            codigoPostalEmpresa: '',
+            municipioEmpresa: '',
+            estadoEmpresa: '',
+            telefonoEmpresa: '',
+            antiguedad: 0,
+            ingresoMensual: '',
+            frecuenciaPago: '',
+            nombreConyugue: '',
+            apellidoPConyugue: '',
+            apellidoMConyugue: '',
+            telefonoConyugue: '',
+            celularConyugue: '',
+            ocupacionConyugue: '',
+            ingresoMensualConyugue: '',
+            bancoCredito: '',
+            ctaClabeTarjeta: ''
         },
+        optionsGenero: [
+            { value: 'H', text: 'Hombre' },
+            { value: 'M', text: 'Mujer' }
+        ],
         identificacion: '',
         compDomicilio: '',
         compIngresos: '',
@@ -26,6 +74,7 @@
     methods: {
         ObtieneDocumentacion() {
             http.postLoader('doc/consulta', this.documentacion).then(response => {
+                console.log(response)
                 if (response.data.data.data.length != 0) {
                     this.documentacion = response.data.data.data[0];
 
@@ -47,8 +96,8 @@
                         this.compIngresos = this.documentacion.compIngresos
                     }
 
-                    //this.compDomicilio = this.documentacion.compDomicilio
-                    //this.compIngresos = this.documentacion.compIngresos
+                    console.log(this.documentacion)
+
                 }
             })
                 .catch(e => {
@@ -163,5 +212,8 @@
                 this.documentacion.compIngresos = this.PDFcompIngresos
             }
         },
+        Imprimir() {
+
+        }
     }
 });

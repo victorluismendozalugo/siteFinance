@@ -44,6 +44,8 @@
 
     <link href="css/blockUI.css" rel="stylesheet" />
     <link href="css/toastr.min.css" rel="stylesheet" />
+    <script src="js/libs/PDF/jspdf.min.js"></script>
+    <script src="js/libs/PDF/jspdf.plugin.autotable.min.js"></script>
     <script src="Scripts/axios.min.js"></script>
     <script src="js/util.js?1.0.0"></script>
 </head>
