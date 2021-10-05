@@ -341,10 +341,651 @@
                     </div>
                 
               </div>
-                                 <%--   <pre>{{this.documentacion}}</pre>--%>
+           
+                <%--modal reporte--%>
+                   <b-modal id="modal-reporte" size="lg" hide-footer style="width:100%;" onload="this.height=$(window).height()-200;">
+                       <div id="tablaReporte">
+                             <table style="border-collapse:collapse;margin-left:5.834pt" cellspacing="0">
+                <tr style="height:19pt">
+                    <td style="width:395pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="6" rowspan="2">
+                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                        <p style="padding-left: 94pt;text-indent: 0pt;text-align: left;"><span><img width="244" height="39"
+                                    alt="image" src="images/Logo.jpeg" /></span></p>
+                    </td>
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Fecha</p>
+                    </td>
+                </tr>
+                <tr style="height:19pt">
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="llenarTabla">{{documentacion.fechaRegistro}}</p>
+                    </td>
+                </tr>
+                <tr style="height:19pt">
+                    <td style="width:395pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="6" rowspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">¿porque
+                            medio se entero?</p>
+                    </td>
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Numero de
+                            solicitud</p>     
+                    </td>
+                </tr>
+                <tr style="height:19pt">
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                               <p class="llenarTabla">{{documentacion.iDSolicitud}}</p>
+                    </td>
+                </tr>
+                <tr style="height:19pt">
+                    <td style="width:276pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="4">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nombre del
+                            Verificador:</p>
+                    </td>
+                    <td style="width:277pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ciudad y
+                            Estado:</p>
+                    </td>
+                </tr>
+                <tr style="height:10pt">
+                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="7" bgcolor="#2F5395">
+                        <p class="s3"
+                            style="padding-left: 122pt;padding-right: 122pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
+                            DATOS DEL ACREDITADO</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nombre(s)</p>
+                        <p class="llenarTabla">{{documentacion.nombre}}</p>
+                    </td>
+                    <td
+                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">A. Paterno</p>
+                        <p class="llenarTabla">{{documentacion.apaterno}}</p>
+                    </td>
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">A. Materno</p>
+                             <p class="llenarTabla">{{documentacion.amaterno}}</p>
+                        </td>
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Genero</p>
+                   <p class="llenarTabla">{{documentacion.genero}}</p>
+                        </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Fecha de
+                            nacimiento</p>
+                         <p class="llenarTabla">{{documentacion.fechaNacimiento}}</p>
+                    </td>
+                    <td
+                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Edad</p>
+                    </td>
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Pais de
+                            Nacimiento</p>
+                           <p class="llenarTabla">{{documentacion.paisNacimiento}}</p>
+                    </td>
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
+                            Nacionalidad</p>
+                           <p class="llenarTabla">{{documentacion.nacionalidad}}</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:197pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Curp</p>
+                         <p class="llenarTabla">{{documentacion.curp}}</p>
+                    </td>
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">RFC</p>
+                         <p class="llenarTabla">{{documentacion.rfc}}</p>
+                    </td>
+                    <td
+                        style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nivel de
+                            Estudios</p>
+                         <p class="llenarTabla">{{documentacion.nivelEstudios}}</p>  
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Estado
+                            Civil</p>
+                            <p class="llenarTabla">{{documentacion.edoCivil}}</p>  
+                    </td>
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ocupacion
+                        </p>
+                          <p class="llenarTabla">{{documentacion.ocupacion}}</p>  
+                    </td>
+                    <td style="width:237pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Correo
+                            Electronico</p>
+                        <p class="llenarTabla">{{documentacion.correo}}</p>  
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:276pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="4">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
+                            Domicilio(Calle, Numero exterior e interior)</p>
+                    </td>
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Colonia</p>
+                    </td>
+                    <td
+                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Codigo
+                            Postal</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Municipio
+                        </p>
+                    </td>
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Estado</p>
+                    </td>
+                    <td
+                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Pais</p>
+                    </td>
+                    <td
+                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Tiempo de
+                            vivir ahí</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Tipo de
+                            vivienda</p>
+                    </td>
+                    <td
+                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono de
+                            Casa</p>
+                    </td>
+                    <td style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono
+                            Celular</p>
+                    </td>
+                    <td
+                        style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Entidad
+                            Federativa de Nacimiento</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:237pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nombre de
+                            la Empresa ala que trabaja</p>
+                    </td>
+                    <td style="width:316pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="4">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
+                            Domicilio(Calle, Numero exterior e interior)</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Colonia</p>
+                    </td>
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Municipio
+                        </p>
+                    </td>
+                    <td
+                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Estado</p>
+                    </td>
+                    <td
+                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Codigo
+                            Postal</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono y
+                            Extension</p>
+                    </td>
+                    <td style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Antigüedad
+                        </p>
+                    </td>
+                    <td style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ingreso
+                            Mensual</p>
+                    </td>
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Frecuencia
+                            de Pago</p>
+                    </td>
+                </tr>
+                <tr style="height:10pt">
+                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="7" bgcolor="#2F5395">
+                        <p class="s3"
+                            style="padding-left: 122pt;padding-right: 122pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
+                            DATOS DEL CONYUGUE</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:237pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nombre(s)
+                        </p>
+                    </td>
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Apellido
+                            Paterno</p>
+                    </td>
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Apellido
+                            Materno</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="2">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono de
+                            Casa</p>
+                    </td>
+                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono
+                            Celular</p>
+                    </td>
+                    <td
+                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ocupacion
+                        </p>
+                    </td>
+                    <td
+                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ingreso
+                            Mensual</p>
+                    </td>
+                </tr>
+                <tr style="height:10pt">
+                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="7" bgcolor="#2F5395">
+                        <p class="s3"
+                            style="padding-left: 122pt;padding-right: 122pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
+                            PORFAVOR PROPORCIONE DOS REFERENCIAS QUE NO VIVAN CON USTED</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td
+                        style="width:64pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Nombre(s)
+                        </p>
+                    </td>
+                    <td
+                        style="width:94pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 23pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
+                            Paterno</p>
+                    </td>
+                    <td
+                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 6pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
+                            Materno</p>
+                    </td>
+                    <td
+                        style="width:39pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    </td>
+                    <td
+                        style="width:40pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    </td>
+                    <td
+                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Parentesco
+                        </p>
+                    </td>
+                    <td
+                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Telefono
+                            Cel o Local</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td
+                        style="width:64pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Nombre(s)
+                        </p>
+                    </td>
+                    <td
+                        style="width:94pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 23pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
+                            Paterno</p>
+                    </td>
+                    <td
+                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 6pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
+                            Materno</p>
+                    </td>
+                    <td
+                        style="width:39pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    </td>
+                    <td
+                        style="width:40pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    </td>
+                    <td
+                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Parentesco
+                        </p>
+                    </td>
+                    <td
+                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Telefono
+                            Cel o Local</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td
+                        style="width:64pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Nombre(s)
+                        </p>
+                    </td>
+                    <td
+                        style="width:94pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 23pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
+                            Paterno</p>
+                    </td>
+                    <td
+                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 6pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
+                            Materno</p>
+                    </td>
+                    <td
+                        style="width:39pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    </td>
+                    <td
+                        style="width:40pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    </td>
+                    <td
+                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Parentesco
+                        </p>
+                    </td>
+                    <td
+                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Telefono
+                            Cel o Local</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td
+                        style="width:64pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Nombre(s)
+                        </p>
+                    </td>
+                    <td
+                        style="width:94pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 23pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
+                            Paterno</p>
+                    </td>
+                    <td
+                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p class="s1" style="padding-left: 6pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
+                            Materno</p>
+                    </td>
+                    <td
+                        style="width:39pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    </td>
+                    <td
+                        style="width:40pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    </td>
+                    <td
+                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Parentesco
+                        </p>
+                    </td>
+                    <td
+                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Telefono
+                            Cel o Local</p>
+                    </td>
+                </tr>
+                <tr style="height:10pt">
+                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="7" bgcolor="#2F5395">
+                        <p class="s4"
+                            style="padding-left: 122pt;padding-right: 122pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
+                            DATOS DE LA CUENTA DEL DEUDOR PARA TRANSFERENCIA ELECTRONICA</p>
+                    </td>
+                </tr>
+                <tr style="height:20pt">
+                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="7">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Institucion
+                            de Credito:</p>
+                    </td>
+                </tr>
+                <tr style="height:20pt">
+                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="7">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Numero de
+                            Cuenta CLABE o Tarjeta Bancaria:</p>
+                    </td>
+                </tr>
+                <tr style="height:10pt">
+                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="7" bgcolor="#2F5395">
+                        <p class="s3"
+                            style="padding-left: 122pt;padding-right: 122pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
+                            DESCRIPCION DEL CREDITO SOLICITADO</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:197pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Monto del
+                            Credito</p>
+                    </td>
+                    <td style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Intereses
+                            Ordinario</p>
+                    </td>
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Total a
+                            Pagar</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:197pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Numero de
+                            Pagos</p>
+                    </td>
+                    <td style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Frecuencia
+                            de Pago</p>
+                    </td>
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Valor de
+                            cada Pago</p>
+                    </td>
+                </tr>
+                <tr style="height:10pt">
+                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="7" bgcolor="#2F5395">
+                        <p class="s3"
+                            style="padding-left: 122pt;padding-right: 120pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
+                            DESCRIPCION DEL CREDITO AUTORIZADO</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:197pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Monto del
+                            Credito</p>
+                    </td>
+                    <td style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Intereses
+                            Ordinario</p>
+                    </td>
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Total a
+                            Pagar</p>
+                    </td>
+                </tr>
+                <tr style="height:21pt">
+                    <td style="width:197pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Numero de
+                            Pagos</p>
+                    </td>
+                    <td style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
+                        colspan="3">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Frecuencia
+                            de Pago</p>
+                    </td>
+                    <td
+                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Valor de
+                            cada Pago</p>
+                    </td>
+                </tr>
+            </table>
+                           <br />
+                           <br />
+                           <br />
+                           <div class="row">
+                                <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                            <p style="padding-left: 126pt;text-indent: 0pt;line-height: 1pt;text-align: left;"><span><img width="408" height="2"
+                                        alt="image" src="images/firma.png" /></span></p>
+                             <p style="padding-left: 17rem; text-indent: 0pt; line-height: 1pt; text-align: center;"><span>NOMBRE Y FIRMA DEL SOLICITANTE</span></p>
+                        </div>
+                        </div>
+                    </b-modal>
 
         </template>
         </div>
     </div>
     <script src="js/Documentacion.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            text-indent: 0;
+        }
+
+        .s1 {
+            color: black;
+            font-family: Calibri, sans-serif;
+            font-style: italic;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 9pt;
+            margin: 0pt;
+        }
+
+        .s2 {
+            color: black;
+            font-family: Calibri, sans-serif;
+            font-style: italic;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 8pt;
+            margin: 0pt;
+        }
+
+        .s3 {
+            color: black;
+            font-family: Calibri, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 10pt;
+            margin: 0pt;
+        }
+
+        .s4 {
+            color: black;
+            font-family: Calibri, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 9pt;
+            margin: 0pt;
+        }
+
+        /*        p {
+            color: black;
+            font-family: Calibri, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 11pt;
+            margin: 0pt;
+        }*/
+        .llenarTabla {
+            color: black;
+            font-family: Calibri, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 11pt;
+            margin: 0pt;
+        }
+
+        table,
+        tbody {
+            vertical-align: top;
+            overflow: visible;
+        }
+    </style>
 </asp:Content>

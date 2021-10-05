@@ -92,6 +92,7 @@
     <Content Include="Documentacion.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="images\finanzas.png" />
+    <Content Include="images\firma.png" />
     <Content Include="images\Logo.jpeg" />
     <Content Include="images\LogoLogin.jpg" />
     <Content Include="Instrucciones.aspx" />

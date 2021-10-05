@@ -4,6 +4,7 @@
         documentacion: {
             usuario: localStorage.getItem('Usuario'),
             sucursalID: 1,
+            iDSolicitud: 0,
             identificacion: '',
             compDomicilio: '',
             compIngresos: '',
@@ -18,6 +19,7 @@
             dondeSeEntero: '',
             genero: '',
             fechaNacimiento: '',
+            fechaRegistro: '',
             edad: 0,
             paisNacimiento: '',
             nacionalidad: '',
@@ -213,7 +215,7 @@
             }
         },
         Imprimir() {
-
+            this.$bvModal.show('modal-reporte');
         }
     }
 });
