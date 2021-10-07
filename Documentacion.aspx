@@ -336,15 +336,16 @@
                         <i class="fas fa-save"></i> Guardar
                     </b-button>
                         <b-button variant="info" class="float-right" @click="Imprimir()">
-                        <i class="fas fa-print"></i> Imprimir
+                        <i class="fas fa-print"></i> Vista previa
                     </b-button>
                     </div>
                 
               </div>
            
                 <%--modal reporte--%>
-                   <b-modal id="modal-reporte" size="lg" hide-footer style="width:100%;" onload="this.height=$(window).height()-200;">
-                       <div id="tablaReporte">
+                   <b-modal id="modal-reporte" size="lg" hide-footer>
+
+                   <div id="tablaReporte" class="demo">
                              <table style="border-collapse:collapse;margin-left:5.834pt" cellspacing="0">
                 <tr style="height:19pt">
                     <td style="width:395pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
@@ -434,6 +435,7 @@
                     <td
                         style="width:79pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Edad</p>
+                         <p class="llenarTabla">{{documentacion.edad}}</p>  
                     </td>
                     <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
                         colspan="3">
@@ -491,15 +493,18 @@
                         colspan="4">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
                             Domicilio(Calle, Numero exterior e interior)</p>
+                             <p class="llenarTabla">{{documentacion.calleNumero}}</p>  
                     </td>
                     <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
                         colspan="2">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Colonia</p>
+                         <p class="llenarTabla">{{documentacion.colonia}}</p>  
                     </td>
                     <td
                         style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Codigo
                             Postal</p>
+                         <p class="llenarTabla">{{documentacion.codigoPostal}}</p>  
                     </td>
                 </tr>
                 <tr style="height:21pt">
@@ -507,19 +512,23 @@
                         colspan="2">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Municipio
                         </p>
+                          <p class="llenarTabla">{{documentacion.municipio}}</p>  
                     </td>
                     <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
                         colspan="3">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Estado</p>
+                          <p class="llenarTabla">{{documentacion.estado}}</p>  
                     </td>
                     <td
                         style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Pais</p>
+                          <p class="llenarTabla">{{documentacion.pais}}</p>  
                     </td>
                     <td
                         style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Tiempo de
                             vivir ahí</p>
+                          <p class="llenarTabla">{{documentacion.tiempoVivir}}</p>  
                     </td>
                 </tr>
                 <tr style="height:21pt">
@@ -527,21 +536,25 @@
                         colspan="2">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Tipo de
                             vivienda</p>
+                         <p class="llenarTabla">{{documentacion.tipoVivienda}}</p>  
                     </td>
                     <td
                         style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono de
                             Casa</p>
+                         <p class="llenarTabla">{{documentacion.telefonoCasa}}</p>  
                     </td>
                     <td style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
                         colspan="3">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono
                             Celular</p>
+                         <p class="llenarTabla">{{documentacion.celular}}</p>  
                     </td>
                     <td
                         style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Entidad
                             Federativa de Nacimiento</p>
+                          <p class="llenarTabla">{{documentacion.entidadFederativa}}</p>  
                     </td>
                 </tr>
                 <tr style="height:21pt">
@@ -549,31 +562,37 @@
                         colspan="3">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nombre de
                             la Empresa ala que trabaja</p>
+                         <p class="llenarTabla">{{documentacion.nombreEmpresa}}</p>  
                     </td>
                     <td style="width:316pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
                         colspan="4">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
                             Domicilio(Calle, Numero exterior e interior)</p>
+                         <p class="llenarTabla">{{documentacion.calleNumeroEmpresa}}</p>  
                     </td>
                 </tr>
                 <tr style="height:21pt">
                     <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
                         colspan="2">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Colonia</p>
+                         <p class="llenarTabla">{{documentacion.coloniaEmpresa}}</p>  
                     </td>
                     <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
                         colspan="3">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Municipio
                         </p>
+                         <p class="llenarTabla">{{documentacion.municipioEmpresa}}</p>  
                     </td>
                     <td
                         style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Estado</p>
+                           <p class="llenarTabla">{{documentacion.estadoEmpresa}}</p>  
                     </td>
                     <td
                         style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Codigo
                             Postal</p>
+                            <p class="llenarTabla">{{documentacion.codigoPostalEmpresa}}</p>  
                     </td>
                 </tr>
                 <tr style="height:21pt">
@@ -581,21 +600,25 @@
                         colspan="2">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono y
                             Extension</p>
+                         <p class="llenarTabla">{{documentacion.telefonoEmpresa}}</p>  
                     </td>
                     <td style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
                         colspan="2">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Antigüedad
                         </p>
+                         <p class="llenarTabla">{{documentacion.antiguedad}}</p>  
                     </td>
                     <td style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
                         colspan="2">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ingreso
                             Mensual</p>
+                         <p class="llenarTabla">{{documentacion.ingresoMensual}}</p>  
                     </td>
                     <td
                         style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Frecuencia
                             de Pago</p>
+                         <p class="llenarTabla">{{documentacion.frecuenciaPago}}</p>  
                     </td>
                 </tr>
                 <tr style="height:10pt">
@@ -611,16 +634,19 @@
                         colspan="3">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nombre(s)
                         </p>
+                           <p class="llenarTabla">{{documentacion.nombreConyugue}}</p> 
                     </td>
                     <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
                         colspan="3">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Apellido
                             Paterno</p>
+                           <p class="llenarTabla">{{documentacion.apellidoPConyugue}}</p> 
                     </td>
                     <td
                         style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Apellido
                             Materno</p>
+                        <p class="llenarTabla">{{documentacion.apellidoMConyugue}}</p> 
                     </td>
                 </tr>
                 <tr style="height:21pt">
@@ -628,21 +654,25 @@
                         colspan="2">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono de
                             Casa</p>
+                          <p class="llenarTabla">{{documentacion.telefonoConyugue}}</p> 
                     </td>
                     <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
                         colspan="3">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono
                             Celular</p>
+                          <p class="llenarTabla">{{documentacion.celularConyugue}}</p> 
                     </td>
                     <td
                         style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ocupacion
                         </p>
+                        <p class="llenarTabla">{{documentacion.ocupacionConyugue}}</p> 
                     </td>
                     <td
                         style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ingreso
                             Mensual</p>
+                        <p class="llenarTabla">{{documentacion.ingresoMensualConyugue}}</p> 
                     </td>
                 </tr>
                 <tr style="height:10pt">
@@ -658,6 +688,8 @@
                         style="width:64pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
                         <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Nombre(s)
                         </p>
+                         <p class="llenarTabla">{{documentacion.referenciaNombre1}}</p> 
+                        
                     </td>
                     <td
                         style="width:94pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
@@ -686,6 +718,7 @@
                         style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Telefono
                             Cel o Local</p>
+                           <p class="llenarTabla">{{documentacion.referenciaTelefono1}}</p> 
                     </td>
                 </tr>
                 <tr style="height:21pt">
@@ -693,6 +726,7 @@
                         style="width:64pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
                         <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Nombre(s)
                         </p>
+                          <p class="llenarTabla">{{documentacion.referenciaNombre2}}</p> 
                     </td>
                     <td
                         style="width:94pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
@@ -721,6 +755,7 @@
                         style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Telefono
                             Cel o Local</p>
+                          <p class="llenarTabla">{{documentacion.referenciaTelefono2}}</p> 
                     </td>
                 </tr>
                 <tr style="height:21pt">
@@ -806,6 +841,7 @@
                         colspan="7">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Institucion
                             de Credito:</p>
+                       <p class="llenarTabla">{{documentacion.bancoCredito}}</p> 
                     </td>
                 </tr>
                 <tr style="height:20pt">
@@ -813,6 +849,7 @@
                         colspan="7">
                         <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Numero de
                             Cuenta CLABE o Tarjeta Bancaria:</p>
+                           <p class="llenarTabla">{{documentacion.ctaClabeTarjeta}}</p> 
                     </td>
                 </tr>
                 <tr style="height:10pt">
@@ -910,7 +947,11 @@
                              <p style="padding-left: 17rem; text-indent: 0pt; line-height: 1pt; text-align: center;"><span>NOMBRE Y FIRMA DEL SOLICITANTE</span></p>
                         </div>
                         </div>
-                    </b-modal>
+
+                   <div class="modal-footer">
+                </div>
+
+                   </b-modal>
 
         </template>
         </div>

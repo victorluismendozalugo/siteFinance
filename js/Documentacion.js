@@ -1,4 +1,7 @@
-﻿var vue2 = new Vue({
+﻿
+
+
+var vue2 = new Vue({
     el: '#vuePage',
     data: {
         documentacion: {
@@ -34,6 +37,7 @@
             municipio: '',
             estado: '',
             pais: '',
+            tipoVivienda: '',
             tiempoVivir: 0,
             telefonoCasa: '',
             celular: '',
@@ -216,6 +220,6 @@
         },
         Imprimir() {
             this.$bvModal.show('modal-reporte');
-        }
+        },
     }
 });
