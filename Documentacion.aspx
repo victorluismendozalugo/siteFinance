@@ -335,15 +335,15 @@
                      <b-button variant="primary" class="float-right" @click="GuardarDocumentacion()">
                         <i class="fas fa-save"></i> Guardar
                     </b-button>
-                        <b-button variant="info" class="float-right" @click="Imprimir()">
-                        <i class="fas fa-print"></i> Vista previa
+                       <b-button variant="info" class="float-right" @click="GeneraSolicitud()">
+                        <i class="fas fa-download"></i> Descargar solicitud
                     </b-button>
                     </div>
                 
               </div>
            
                 <%--modal reporte--%>
-                   <b-modal id="modal-reporte" size="lg" hide-footer>
+<%--                   <b-modal id="modal-reporte" size="lg" hide-footer>
 
                    <div id="tablaReporte" class="demo">
                              <table style="border-collapse:collapse;margin-left:5.834pt" cellspacing="0">
@@ -937,7 +937,7 @@
                     </td>
                 </tr>
             </table>
-                           <br />
+<%--                           <br />
                            <br />
                            <br />
                            <div class="row">
@@ -949,9 +949,12 @@
                         </div>
 
                    <div class="modal-footer">
+                           <b-button variant="info" class="float-right" @click="GeneraSolicitud()">
+                        <i class="fas fa-download"></i> Descargar solicitud
+                    </b-button>
                 </div>
 
-                   </b-modal>
+                   </b-modal>--%>
 
         </template>
         </div>

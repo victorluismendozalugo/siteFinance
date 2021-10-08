@@ -1,4 +1,19 @@
-﻿var vue2 = new Vue({
+﻿
+var table3 = $('#wrapper').DataTable({
+    "paging": true,
+    "columnDefs": [
+        { "visible": false, "targets": [3] },
+        { "visible": false, "targets": [5] },
+    ],
+    select: true
+});
+
+$(document).ready(function () {
+
+
+});
+
+var vue2 = new Vue({
     el: '#vuePage',
     data: {
         saldo: {
@@ -28,6 +43,14 @@
                     var htmlstr = XLSX.write(wb, { sheet: "INFORMACION", type: 'binary', bookType: 'html' });
                     $('#wrapper')[0].innerHTML += htmlstr;
 
+                    var r = $('#wrapper tr td')
+                    for (var i = 0; i < r.length; i++) {
+                        if (r[i].innerHTML == '') {
+                            r[i].remove()
+                        }
+                    }
+
+                    console.log($('#wrapper')[0].innerHTML)
 
                 } else {
                     $.noticeError("ERROR " + response.data.data.mensajeBitacora);
