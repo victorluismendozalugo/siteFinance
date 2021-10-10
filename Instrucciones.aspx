@@ -15,7 +15,7 @@
             <div class="card">
               <div class="card-header d-flex p-0">
                 <h3 class="card-title p-3">Al momento de realizar un retiro/deposito a su cuenta favor de reportarlo a su ejecutivo</h3>
-                <ul class="nav nav-pills ml-auto p-2">
+                <ul class="nav ml-auto p-2">
                   <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Depósito</a></li>
                   <%--<li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Movimientos</a></li>--%>
                 </ul>

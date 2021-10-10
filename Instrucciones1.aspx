@@ -15,7 +15,7 @@
             <div class="card">
               <div class="card-header d-flex p-0">
                 <h3 class="card-title p-3">Si desea realizar un retiro o invertir nuevamente en su cuenta favor de notificarlo mediante el botón Enviar notificación situado en la parte de abajo de esta pantalla</h3>
-                <ul class="nav nav-pills ml-auto p-2">
+                <ul class="nav ml-auto p-2">
                   <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Retiro</a></li>
                   <%--<li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Movimientos</a></li>--%>
                 </ul>
