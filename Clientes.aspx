@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </section>
-            <b-modal id="modal-informacion-usuario" title="Información del cliente" size="lg" ok-only>
+            <b-modal id="modal-informacion-usuario" title="Información del cliente" size="lg" hide-footer>
                   <div class="row">
                     <div class="col-6">
                         <label>Cliente</label>
@@ -134,6 +134,11 @@
                         </b-form-input>
                     </div>
                 </div>
+                     <div class="modal-footer">
+                   <b-button variant="info" class="float-right" @click="GeneraSolicitud()">
+                        <i class="fas fa-download"></i> Descargar solicitud
+                    </b-button>
+                    </div>
             </b-modal>
             <b-modal id="modal-cargar-informacion-usuario" title="Cargar información" size="lg" hide-footer>
                 <p>{{cliente.nombreCompleto}}</p>

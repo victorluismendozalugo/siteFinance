@@ -60,7 +60,12 @@ var vue2 = new Vue({
             ocupacionConyugue: '',
             ingresoMensualConyugue: '',
             bancoCredito: '',
-            ctaClabeTarjeta: ''
+            ctaClabeTarjeta: '',
+            referenciaNombre3: '',
+            referenciaTelefono3: '',
+            referenciaNombre4: '',
+            referenciaTelefono4: '',
+            tipoVivienda: ''
         },
         optionsGenero: [
             { value: 'H', text: 'Hombre' },
@@ -75,6 +80,7 @@ var vue2 = new Vue({
 
     },
     mounted() {
+        this.sucursalusuario()
         this.ObtieneDocumentacion()
     },
     methods: {
@@ -473,8 +479,6 @@ var vue2 = new Vue({
             doc.rect(10, 147, 190, 6)
             doc.rect(10, 153, 190, 6)
 
-
-
             //cuarto rectangulo azul
             doc.setFillColor(0, 0, 255)
             doc.rect(10, 159, 190, 6, 'B')
@@ -483,9 +487,9 @@ var vue2 = new Vue({
             doc.rect(10, 165, 190, 6)
             doc.setFontSize(8)
             doc.text(10, 167, 'Institucion de Credito: ')
-            doc.text(20, 170, this.documentacion.bancoCredito)
+            doc.text(20, 170, 'td.bancoCredito~')
             doc.text(10, 173, 'Numero de Cuenta CLABE o Tarjeta Bancaria:')
-            doc.text(20, 176, this.documentacion.ctaClabeTarjeta)
+            doc.text(20, 176, 'td.ctaClabeTarjeta~')
             doc.setFontSize(13)
             doc.rect(10, 171, 190, 6)
 
@@ -495,7 +499,17 @@ var vue2 = new Vue({
             doc.setFontSize(13)
             doc.text(60, 182, 'DESCRIPCION DEL CREDITO SOLICITADO')
             doc.rect(10, 183, 190, 6)
+            doc.setFontSize(8)
+            doc.text(10, 185, 'Monto del crédito')
+            doc.text(75, 185, 'Interés ordinario')
+            doc.text(140, 185, 'Total a pagar')
+            doc.setFontSize(13)
             doc.rect(10, 189, 190, 6)
+            doc.setFontSize(8)
+            doc.text(10, 191, 'Número de pagos')
+            doc.text(75, 191, 'Frecuencia de pago')
+            doc.text(140, 191, 'Valor de cada pago')
+            doc.setFontSize(13)
             //lineas
             doc.line(75, 183, 75, 195)
             doc.line(140, 183, 140, 195)
@@ -508,7 +522,17 @@ var vue2 = new Vue({
             doc.setFontSize(13)
             doc.text(60, 200, 'DESCRIPCION DEL CREDITO AUTORIZADO')
             doc.rect(10, 201, 190, 6)
+            doc.setFontSize(8)
+            doc.text(10, 203, 'Monto del crédito')
+            doc.text(75, 203, 'Interés ordinario')
+            doc.text(140, 203, 'Total a pagar')
+            doc.setFontSize(13)
             doc.rect(10, 207, 190, 6)
+            doc.setFontSize(8)
+            doc.text(10, 209, 'Número de pagos')
+            doc.text(75, 209, 'Frecuencia de pago')
+            doc.text(140, 209, 'Valor de cada pago')
+            doc.setFontSize(13)
             //lineas
             doc.line(75, 201, 75, 213)
             doc.line(140, 201, 140, 213)
@@ -519,6 +543,24 @@ var vue2 = new Vue({
             doc.text(65, 270, 'NOMBRE Y FIRMA DEL SOLICITANTE')
             doc.save("Solicitud.pdf")
 
-        }
+        },
+        sucursalusuario() {
+            var datos = {
+                "Usuario": localStorage.getItem('Usuario')
+            }
+            http.postLoader('usuarios/sucursal', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+                    //console.log(response)
+                    localStorage.setItem('SucursalID', response.data.data.data[0].sucursalID)
+                    //$.noticeSuccess(response.data.data.data[0].sucursalID)
+                } else {
+                    console.log(response)
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
     }
 });

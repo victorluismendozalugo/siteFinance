@@ -80,7 +80,7 @@
             axios.get('Sesion.aspx?type=0&login=' + this.usuarios.Usuario + '', {
             }).then(response => {
                 if (response.data.msg == 'OK') {
-                    $(location).attr('href', 'Default.aspx');
+                    localStorage.getItem('Usuario').includes('@finance') ? $(location).attr('href', 'Default.aspx') : $(location).attr('href', 'Documentacion.aspx');
                 } else {
                     $(location).attr('href', 'Login.aspx');
                 }
@@ -204,6 +204,6 @@
                 $.noticeAlert("Favor de verificar su teléfono de contacto")
                 this.registro.celular = ''
             }
-        }
+        },
     }
 });

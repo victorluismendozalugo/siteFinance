@@ -11,7 +11,10 @@ namespace WebSystems2021
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if ((string)Session["login"] == "" || Session["login"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
     }
 }

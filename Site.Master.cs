@@ -20,7 +20,6 @@ namespace WebSystems2021
             {
                 Response.Redirect("Login.aspx");
             }
-
         }
     }
 }
