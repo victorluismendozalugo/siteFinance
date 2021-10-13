@@ -72,7 +72,11 @@ var vue2 = new Vue({
             referenciaTelefono3: '',
             referenciaNombre4: '',
             referenciaTelefono4: '',
-            tipoVivienda: ''
+            tipoVivienda: '',
+            parentesco1: '',
+            parentesco2: '',
+            parentesco3: '',
+            parentesco4: ''
         },
     },
     computed: {
@@ -396,7 +400,7 @@ var vue2 = new Vue({
                     doc.text(10, 137, 'Nombre')
                     doc.text(20, 140, this.documentacion.referenciaNombre1)
                     doc.text(100, 137, 'Parentesco:')
-                    doc.text(55, 140, '')
+                    doc.text(110, 140, this.documentacion.parentesco1)
                     doc.text(145, 137, 'Teléfono Cel o Local')
                     doc.text(148, 140, this.documentacion.referenciaTelefono1)
                     doc.setFontSize(13)
@@ -407,15 +411,30 @@ var vue2 = new Vue({
                     doc.rect(10, 141, 190, 6)
                     doc.setFontSize(8)
                     doc.text(10, 143, 'Nombre')
-                    doc.text(20, 146, this.documentacion.referenciaNombre1)
+                    doc.text(20, 146, this.documentacion.referenciaNombre2)
                     doc.text(100, 143, 'Parentesco:')
-                    doc.text(55, 146, '')
+                    doc.text(110, 146, this.documentacion.parentesco2)
                     doc.text(145, 143, 'Teléfono Cel o Local')
-                    doc.text(148, 146, this.documentacion.referenciaTelefono1)
+                    doc.text(148, 146, this.documentacion.referenciaTelefono2)
                     doc.setFontSize(13)
                     doc.rect(10, 147, 190, 6)
+                    doc.setFontSize(8)
+                    doc.text(10, 149, 'Nombre')
+                    doc.text(20, 152, this.documentacion.referenciaNombre3)
+                    doc.text(100, 149, 'Parentesco:')
+                    doc.text(110, 152, this.documentacion.parentesco3)
+                    doc.text(145, 149, 'Teléfono Cel o Local')
+                    doc.text(148, 152, this.documentacion.referenciaTelefono3)
+                    doc.setFontSize(13)
                     doc.rect(10, 153, 190, 6)
-
+                    doc.setFontSize(8)
+                    doc.text(10, 155, 'Nombre')
+                    doc.text(20, 158, this.documentacion.referenciaNombre4)
+                    doc.text(100, 155, 'Parentesco:')
+                    doc.text(110, 158, this.documentacion.parentesco4)
+                    doc.text(145, 155, 'Teléfono Cel o Local')
+                    doc.text(148, 158, this.documentacion.referenciaTelefono4)
+                    doc.setFontSize(13)
 
 
                     //cuarto rectangulo azul

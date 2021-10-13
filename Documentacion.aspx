@@ -257,52 +257,76 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-8 col-xs-12">
-                            <label>Referencia</label>
+                        <div class="col-sm-6 col-xs-12">
+                            <label>Referencia familiar</label>
                             <b-form-input type="text" class="form-control" v-model="documentacion.referenciaNombre1"
                                 name="Referencia" maxlength="100"
                                 @input="v => { documentacion.referenciaNombre1 = v.toUpperCase()}"></b-form-input>
                         </div>
-                        <div class="col-sm-4 col-xs-8">
+                         <div class="col-sm-3 col-xs-12">
+                            <label>Parentesco</label>
+                            <b-form-input type="text" class="form-control" v-model="documentacion.parentesco1"
+                                name="Referencia" maxlength="100"
+                                @input="v => { documentacion.parentesco1 = v.toUpperCase()}"></b-form-input>
+                        </div>
+                        <div class="col-sm-3 col-xs-8">
                             <label>Tel. referencia</label>
                             <input type="text" class="form-control" v-model="documentacion.referenciaTelefono1" name="Teléfono"
                                 maxlength="10" />
                         </div>
                     </div>
                     <div class="row">
-                         <div class="col-sm-8 col-xs-6">
-                            <label>Referencia</label>
+                         <div class="col-sm-6 col-xs-6">
+                            <label>Referencia familiar</label>
                             <b-form-input type="text" class="form-control" v-model="documentacion.referenciaNombre2"
                                 name="Referencia" maxlength="100"
                                 @input="v => { documentacion.referenciaNombre2 = v.toUpperCase()}"></b-form-input>
                         </div>
-                      <div class="col-sm-4 col-xs-8">
+                          <div class="col-sm-3 col-xs-12">
+                            <label>Parentesco</label>
+                            <b-form-input type="text" class="form-control" v-model="documentacion.parentesco2"
+                                name="Referencia" maxlength="100"
+                                @input="v => { documentacion.parentesco2 = v.toUpperCase()}"></b-form-input>
+                        </div>
+                      <div class="col-sm-3 col-xs-8">
                             <label>Tel. referencia</label>
                             <input type="text" class="form-control" v-model="documentacion.referenciaTelefono2" name="Teléfono"
                                 maxlength="10" />
                         </div>
                     </div>
                      <div class="row">
-                        <div class="col-sm-8 col-xs-12">
-                            <label>Referencia</label>
+                        <div class="col-sm-6 col-xs-12">
+                            <label>Referencia amistad</label>
                             <b-form-input type="text" class="form-control" v-model="documentacion.referenciaNombre3"
                                 name="Referencia" maxlength="100"
                                 @input="v => { documentacion.referenciaNombre3 = v.toUpperCase()}"></b-form-input>
                         </div>
-                     <div class="col-sm-4 col-xs-8">
+                           <div class="col-sm-3 col-xs-12">
+                            <label>Parentesco</label>
+                            <b-form-input type="text" class="form-control" v-model="documentacion.parentesco3"
+                                name="Referencia" maxlength="100"
+                                @input="v => { documentacion.parentesco3 = v.toUpperCase()}"></b-form-input>
+                        </div>
+                     <div class="col-sm-3 col-xs-8">
                             <label>Tel. referencia</label>
                             <input type="text" class="form-control" v-model="documentacion.referenciaTelefono3" name="Teléfono"
                                 maxlength="10" />
                         </div>
                     </div>
                      <div class="row">
-                     <div class="col-sm-8 col-xs-12">
-                            <label>Referencia</label>
+                     <div class="col-sm-6 col-xs-12">
+                            <label>Referencia amistad</label>
                             <b-form-input type="text" class="form-control" v-model="documentacion.referenciaNombre4"
                                 name="Referencia" maxlength="100"
                                 @input="v => { documentacion.referenciaNombre4 = v.toUpperCase()}"></b-form-input>
                         </div>
-                       <div class="col-sm-4 col-xs-8">
+                           <div class="col-sm-3 col-xs-12">
+                            <label>Parentesco</label>
+                            <b-form-input type="text" class="form-control" v-model="documentacion.parentesco4"
+                                name="Referencia" maxlength="100"
+                                @input="v => { documentacion.parentesco4 = v.toUpperCase()}"></b-form-input>
+                        </div>
+                       <div class="col-sm-3 col-xs-8">
                             <label>Tel. referencia</label>
                             <input type="text" class="form-control" v-model="documentacion.referenciaTelefono4" name="Teléfono"
                                 maxlength="10" />
@@ -989,7 +1013,7 @@
         </template>
         </div>
     </div>
-    <script src="js/Documentacion.js"></script>
+    <script src="js/Documentacion.js?2.0.0"></script>
     <style type="text/css">
         * {
             margin: 0;
