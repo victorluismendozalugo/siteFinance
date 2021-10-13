@@ -243,7 +243,7 @@ var vue2 = new Vue({
             doc.rect(150, 15, 50, 6)
             doc.setFontSize(8)
             doc.text(150, 18, 'Fecha')
-            doc.text(153, 25, this.documentacion.fechaRegistro)
+            doc.text(153, 25, String(this.documentacion.fechaRegistro))
             doc.rect(150, 21, 50, 6)
             doc.text(150, 30, 'Numero de solicitud')
             doc.text(153, 36, String(this.documentacion.iDSolicitud))

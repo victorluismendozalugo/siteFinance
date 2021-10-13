@@ -180,7 +180,7 @@ var vue2 = new Vue({
                     doc.rect(150, 15, 50, 6)
                     doc.setFontSize(8)
                     doc.text(150, 18, 'Fecha')
-                    doc.text(153, 25, this.documentacion.fechaRegistro)
+                    doc.text(153, 25, String(this.documentacion.fechaRegistro))
                     doc.rect(150, 21, 50, 6)
                     doc.text(150, 30, 'Numero de solicitud')
                     doc.text(153, 36, String(this.documentacion.iDSolicitud))
@@ -224,7 +224,7 @@ var vue2 = new Vue({
                     //texto
                     doc.setFontSize(8)
                     doc.text(10, 59, 'F. de nacimiento:')
-                    doc.text(25, 62, this.documentacion.fechaNacimiento)
+                    doc.text(25, 62, String(this.documentacion.fechaNacimiento))
                     doc.text(65, 59, 'Edad:')
                     doc.text(66, 62, String(this.documentacion.edad))
                     doc.text(84, 59, 'País nacimiento:')

@@ -389,9 +389,9 @@
                      <b-button variant="primary" class="float-right" @click="GuardarDocumentacion()">
                         <i class="fas fa-save"></i> Guardar
                     </b-button>
-                       <b-button variant="info" class="float-right" @click="GeneraSolicitud()">
+                    <%--   <b-button variant="info" class="float-right" @click="GeneraSolicitud()">
                         <i class="fas fa-download"></i> Descargar solicitud
-                    </b-button>
+                    </b-button>--%>
                     </div>
                 
               </div>
@@ -1013,7 +1013,7 @@
         </template>
         </div>
     </div>
-    <script src="js/Documentacion.js?2.0.0"></script>
+    <script src="js/Documentacion.js?2.0.1"></script>
     <style type="text/css">
         * {
             margin: 0;
