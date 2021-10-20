@@ -335,6 +335,58 @@
                 </div>
                 <!-- /.card-body -->
             </div>
+
+
+             <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Datos del préstamo</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                          <div class="col-sm-4 col-xs-8">
+                           <label>Monto solicitado</label>
+                          <b-form-select class="form-control" v-model="documentacion.montoSolicitado" :options="optionsMontoSolicitado" @change="calculaPagos">
+                        </b-form-select>
+                        </div>
+
+                         <div class="col-sm-4 col-xs-8">
+                           <label>Interés ordinario</label>
+                       <input type="number" class="form-control" v-model="documentacion.interesOrdinario" name="Interés ordinario"
+                              readonly />
+                        </div>
+
+                          <div class="col-sm-4 col-xs-8">
+                           <label>Total a pagar</label>
+                       <input type="number" class="form-control" v-model="documentacion.totalPagar" name="Total a pagar"
+                              readonly />
+                        </div>
+
+                    </div>
+                     <div class="row">
+                     
+                         <div class="col-sm-4 col-xs-8">
+                           <label>Número de pagos</label>
+                       <input type="number" class="form-control" v-model="numeroPagos" value="12"
+                              readonly />
+                        </div>
+
+                         <div class="col-sm-4 col-xs-8">
+                           <label>Frecuencia de pagos</label>
+                                <b-form-input type="text" class="form-control w-100" v-model="frecuenciaPagosCredito" disabled></b-form-input>
+                        </div>
+
+                          <div class="col-sm-4 col-xs-8">
+                           <label>Valor de cada pago</label>
+                       <input type="number" class="form-control" v-model="documentacion.valorXpago" name="Valor de cada pago"
+                              readonly />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+          
+
+
             <!-- /.card -->
             <div class="card card-info">
                 <div class="card-header">
@@ -381,9 +433,6 @@
                     </div>
                 </div>
             </div>
-          
-
-
               <div class="form-group row">
                     <div class="col">
                      <b-button variant="primary" class="float-right" @click="GuardarDocumentacion()">
@@ -393,627 +442,11 @@
                         <i class="fas fa-download"></i> Descargar solicitud
                     </b-button>--%>
                     </div>
-                
               </div>
-           
-                <%--modal reporte--%>
-<%--                   <b-modal id="modal-reporte" size="lg" hide-footer>
-
-                   <div id="tablaReporte" class="demo">
-                             <table style="border-collapse:collapse;margin-left:5.834pt" cellspacing="0">
-                <tr style="height:19pt">
-                    <td style="width:395pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="6" rowspan="2">
-                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                        <p style="padding-left: 94pt;text-indent: 0pt;text-align: left;"><span><img width="244" height="39"
-                                    alt="image" src="images/Logo.jpeg" /></span></p>
-                    </td>
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Fecha</p>
-                    </td>
-                </tr>
-                <tr style="height:19pt">
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="llenarTabla">{{documentacion.fechaRegistro}}</p>
-                    </td>
-                </tr>
-                <tr style="height:19pt">
-                    <td style="width:395pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="6" rowspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">¿porque
-                            medio se entero?</p>
-                    </td>
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Numero de
-                            solicitud</p>     
-                    </td>
-                </tr>
-                <tr style="height:19pt">
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                               <p class="llenarTabla">{{documentacion.iDSolicitud}}</p>
-                    </td>
-                </tr>
-                <tr style="height:19pt">
-                    <td style="width:276pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="4">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nombre del
-                            Verificador:</p>
-                    </td>
-                    <td style="width:277pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ciudad y
-                            Estado:</p>
-                    </td>
-                </tr>
-                <tr style="height:10pt">
-                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="7" bgcolor="#2F5395">
-                        <p class="s3"
-                            style="padding-left: 122pt;padding-right: 122pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
-                            DATOS DEL ACREDITADO</p>
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nombre(s)</p>
-                        <p class="llenarTabla">{{documentacion.nombre}}</p>
-                    </td>
-                    <td
-                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">A. Paterno</p>
-                        <p class="llenarTabla">{{documentacion.apaterno}}</p>
-                    </td>
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">A. Materno</p>
-                             <p class="llenarTabla">{{documentacion.amaterno}}</p>
-                        </td>
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Genero</p>
-                   <p class="llenarTabla">{{documentacion.genero}}</p>
-                        </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Fecha de
-                            nacimiento</p>
-                         <p class="llenarTabla">{{documentacion.fechaNacimiento}}</p>
-                    </td>
-                    <td
-                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Edad</p>
-                         <p class="llenarTabla">{{documentacion.edad}}</p>  
-                    </td>
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Pais de
-                            Nacimiento</p>
-                           <p class="llenarTabla">{{documentacion.paisNacimiento}}</p>
-                    </td>
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
-                            Nacionalidad</p>
-                           <p class="llenarTabla">{{documentacion.nacionalidad}}</p>
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:197pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Curp</p>
-                         <p class="llenarTabla">{{documentacion.curp}}</p>
-                    </td>
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">RFC</p>
-                         <p class="llenarTabla">{{documentacion.rfc}}</p>
-                    </td>
-                    <td
-                        style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nivel de
-                            Estudios</p>
-                         <p class="llenarTabla">{{documentacion.nivelEstudios}}</p>  
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Estado
-                            Civil</p>
-                            <p class="llenarTabla">{{documentacion.edoCivil}}</p>  
-                    </td>
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ocupacion
-                        </p>
-                          <p class="llenarTabla">{{documentacion.ocupacion}}</p>  
-                    </td>
-                    <td style="width:237pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Correo
-                            Electronico</p>
-                        <p class="llenarTabla">{{documentacion.correo}}</p>  
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:276pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="4">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
-                            Domicilio(Calle, Numero exterior e interior)</p>
-                             <p class="llenarTabla">{{documentacion.calleNumero}}</p>  
-                    </td>
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Colonia</p>
-                         <p class="llenarTabla">{{documentacion.colonia}}</p>  
-                    </td>
-                    <td
-                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Codigo
-                            Postal</p>
-                         <p class="llenarTabla">{{documentacion.codigoPostal}}</p>  
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Municipio
-                        </p>
-                          <p class="llenarTabla">{{documentacion.municipio}}</p>  
-                    </td>
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Estado</p>
-                          <p class="llenarTabla">{{documentacion.estado}}</p>  
-                    </td>
-                    <td
-                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Pais</p>
-                          <p class="llenarTabla">{{documentacion.pais}}</p>  
-                    </td>
-                    <td
-                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Tiempo de
-                            vivir ahí</p>
-                          <p class="llenarTabla">{{documentacion.tiempoVivir}}</p>  
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Tipo de
-                            vivienda</p>
-                         <p class="llenarTabla">{{documentacion.tipoVivienda}}</p>  
-                    </td>
-                    <td
-                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono de
-                            Casa</p>
-                         <p class="llenarTabla">{{documentacion.telefonoCasa}}</p>  
-                    </td>
-                    <td style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono
-                            Celular</p>
-                         <p class="llenarTabla">{{documentacion.celular}}</p>  
-                    </td>
-                    <td
-                        style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Entidad
-                            Federativa de Nacimiento</p>
-                          <p class="llenarTabla">{{documentacion.entidadFederativa}}</p>  
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:237pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nombre de
-                            la Empresa ala que trabaja</p>
-                         <p class="llenarTabla">{{documentacion.nombreEmpresa}}</p>  
-                    </td>
-                    <td style="width:316pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="4">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
-                            Domicilio(Calle, Numero exterior e interior)</p>
-                         <p class="llenarTabla">{{documentacion.calleNumeroEmpresa}}</p>  
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Colonia</p>
-                         <p class="llenarTabla">{{documentacion.coloniaEmpresa}}</p>  
-                    </td>
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Municipio
-                        </p>
-                         <p class="llenarTabla">{{documentacion.municipioEmpresa}}</p>  
-                    </td>
-                    <td
-                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Estado</p>
-                           <p class="llenarTabla">{{documentacion.estadoEmpresa}}</p>  
-                    </td>
-                    <td
-                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Codigo
-                            Postal</p>
-                            <p class="llenarTabla">{{documentacion.codigoPostalEmpresa}}</p>  
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono y
-                            Extension</p>
-                         <p class="llenarTabla">{{documentacion.telefonoEmpresa}}</p>  
-                    </td>
-                    <td style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Antigüedad
-                        </p>
-                         <p class="llenarTabla">{{documentacion.antiguedad}}</p>  
-                    </td>
-                    <td style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ingreso
-                            Mensual</p>
-                         <p class="llenarTabla">{{documentacion.ingresoMensual}}</p>  
-                    </td>
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Frecuencia
-                            de Pago</p>
-                         <p class="llenarTabla">{{documentacion.frecuenciaPago}}</p>  
-                    </td>
-                </tr>
-                <tr style="height:10pt">
-                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="7" bgcolor="#2F5395">
-                        <p class="s3"
-                            style="padding-left: 122pt;padding-right: 122pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
-                            DATOS DEL CONYUGUE</p>
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:237pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Nombre(s)
-                        </p>
-                           <p class="llenarTabla">{{documentacion.nombreConyugue}}</p> 
-                    </td>
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Apellido
-                            Paterno</p>
-                           <p class="llenarTabla">{{documentacion.apellidoPConyugue}}</p> 
-                    </td>
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Apellido
-                            Materno</p>
-                        <p class="llenarTabla">{{documentacion.apellidoMConyugue}}</p> 
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="2">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono de
-                            Casa</p>
-                          <p class="llenarTabla">{{documentacion.telefonoConyugue}}</p> 
-                    </td>
-                    <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Telefono
-                            Celular</p>
-                          <p class="llenarTabla">{{documentacion.celularConyugue}}</p> 
-                    </td>
-                    <td
-                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ocupacion
-                        </p>
-                        <p class="llenarTabla">{{documentacion.ocupacionConyugue}}</p> 
-                    </td>
-                    <td
-                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Ingreso
-                            Mensual</p>
-                        <p class="llenarTabla">{{documentacion.ingresoMensualConyugue}}</p> 
-                    </td>
-                </tr>
-                <tr style="height:10pt">
-                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="7" bgcolor="#2F5395">
-                        <p class="s3"
-                            style="padding-left: 122pt;padding-right: 122pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
-                            PORFAVOR PROPORCIONE DOS REFERENCIAS QUE NO VIVAN CON USTED</p>
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td
-                        style="width:64pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Nombre(s)
-                        </p>
-                         <p class="llenarTabla">{{documentacion.referenciaNombre1}}</p> 
-                        
-                    </td>
-                    <td
-                        style="width:94pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 23pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
-                            Paterno</p>
-                    </td>
-                    <td
-                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 6pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
-                            Materno</p>
-                    </td>
-                    <td
-                        style="width:39pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                    </td>
-                    <td
-                        style="width:40pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                    </td>
-                    <td
-                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Parentesco
-                        </p>
-                    </td>
-                    <td
-                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Telefono
-                            Cel o Local</p>
-                           <p class="llenarTabla">{{documentacion.referenciaTelefono1}}</p> 
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td
-                        style="width:64pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Nombre(s)
-                        </p>
-                          <p class="llenarTabla">{{documentacion.referenciaNombre2}}</p> 
-                    </td>
-                    <td
-                        style="width:94pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 23pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
-                            Paterno</p>
-                    </td>
-                    <td
-                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 6pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
-                            Materno</p>
-                    </td>
-                    <td
-                        style="width:39pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                    </td>
-                    <td
-                        style="width:40pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                    </td>
-                    <td
-                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Parentesco
-                        </p>
-                    </td>
-                    <td
-                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Telefono
-                            Cel o Local</p>
-                          <p class="llenarTabla">{{documentacion.referenciaTelefono2}}</p> 
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td
-                        style="width:64pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Nombre(s)
-                        </p>
-                    </td>
-                    <td
-                        style="width:94pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 23pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
-                            Paterno</p>
-                    </td>
-                    <td
-                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 6pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
-                            Materno</p>
-                    </td>
-                    <td
-                        style="width:39pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                    </td>
-                    <td
-                        style="width:40pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                    </td>
-                    <td
-                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Parentesco
-                        </p>
-                    </td>
-                    <td
-                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Telefono
-                            Cel o Local</p>
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td
-                        style="width:64pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Nombre(s)
-                        </p>
-                    </td>
-                    <td
-                        style="width:94pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 23pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
-                            Paterno</p>
-                    </td>
-                    <td
-                        style="width:79pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p class="s1" style="padding-left: 6pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Apellido
-                            Materno</p>
-                    </td>
-                    <td
-                        style="width:39pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
-                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                    </td>
-                    <td
-                        style="width:40pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                    </td>
-                    <td
-                        style="width:118pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Parentesco
-                        </p>
-                    </td>
-                    <td
-                        style="width:119pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s1" style="padding-left: 1pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Telefono
-                            Cel o Local</p>
-                    </td>
-                </tr>
-                <tr style="height:10pt">
-                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="7" bgcolor="#2F5395">
-                        <p class="s4"
-                            style="padding-left: 122pt;padding-right: 122pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
-                            DATOS DE LA CUENTA DEL DEUDOR PARA TRANSFERENCIA ELECTRONICA</p>
-                    </td>
-                </tr>
-                <tr style="height:20pt">
-                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="7">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Institucion
-                            de Credito:</p>
-                       <p class="llenarTabla">{{documentacion.bancoCredito}}</p> 
-                    </td>
-                </tr>
-                <tr style="height:20pt">
-                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="7">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Numero de
-                            Cuenta CLABE o Tarjeta Bancaria:</p>
-                           <p class="llenarTabla">{{documentacion.ctaClabeTarjeta}}</p> 
-                    </td>
-                </tr>
-                <tr style="height:10pt">
-                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="7" bgcolor="#2F5395">
-                        <p class="s3"
-                            style="padding-left: 122pt;padding-right: 122pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
-                            DESCRIPCION DEL CREDITO SOLICITADO</p>
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:197pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Monto del
-                            Credito</p>
-                    </td>
-                    <td style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Intereses
-                            Ordinario</p>
-                    </td>
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Total a
-                            Pagar</p>
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:197pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Numero de
-                            Pagos</p>
-                    </td>
-                    <td style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Frecuencia
-                            de Pago</p>
-                    </td>
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Valor de
-                            cada Pago</p>
-                    </td>
-                </tr>
-                <tr style="height:10pt">
-                    <td style="width:553pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="7" bgcolor="#2F5395">
-                        <p class="s3"
-                            style="padding-left: 122pt;padding-right: 120pt;text-indent: 0pt;line-height: 8pt;text-align: center;">
-                            DESCRIPCION DEL CREDITO AUTORIZADO</p>
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:197pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Monto del
-                            Credito</p>
-                    </td>
-                    <td style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Intereses
-                            Ordinario</p>
-                    </td>
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Total a
-                            Pagar</p>
-                    </td>
-                </tr>
-                <tr style="height:21pt">
-                    <td style="width:197pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Numero de
-                            Pagos</p>
-                    </td>
-                    <td style="width:198pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
-                        colspan="3">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Frecuencia
-                            de Pago</p>
-                    </td>
-                    <td
-                        style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-                        <p class="s2" style="padding-left: 1pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Valor de
-                            cada Pago</p>
-                    </td>
-                </tr>
-            </table>
-<%--                           <br />
-                           <br />
-                           <br />
-                           <div class="row">
-                                <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                            <p style="padding-left: 126pt;text-indent: 0pt;line-height: 1pt;text-align: left;"><span><img width="408" height="2"
-                                        alt="image" src="images/firma.png" /></span></p>
-                             <p style="padding-left: 17rem; text-indent: 0pt; line-height: 1pt; text-align: center;"><span>NOMBRE Y FIRMA DEL SOLICITANTE</span></p>
-                        </div>
-                        </div>
-
-                   <div class="modal-footer">
-                           <b-button variant="info" class="float-right" @click="GeneraSolicitud()">
-                        <i class="fas fa-download"></i> Descargar solicitud
-                    </b-button>
-                </div>
-
-                   </b-modal>--%>
-
         </template>
         </div>
     </div>
-    <script src="js/Documentacion.js?2.0.1"></script>
+    <script src="js/Documentacion.js?2.0.5"></script>
     <style type="text/css">
         * {
             margin: 0;

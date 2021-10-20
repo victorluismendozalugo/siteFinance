@@ -69,11 +69,25 @@ var vue2 = new Vue({
             parentesco1: '',
             parentesco2: '',
             parentesco3: '',
-            parentesco4: ''
+            parentesco4: '',
+            montoSolicitado: 0,
+            interesOrdinario: 0,
+            totalPagar: 0,
+            valorXpago: 0,
         },
+        numeroPagos: 12,
+        frecuenciaPagosCredito: 'SEMANAL',
         optionsGenero: [
             { value: 'H', text: 'Hombre' },
             { value: 'M', text: 'Mujer' }
+        ],
+        optionsMontoSolicitado: [
+            { value: 0, text: '0' },
+            { value: 1000, text: '1000' },
+            { value: 2000, text: '2000' },
+            { value: 3000, text: '3000' },
+            { value: 4000, text: '4000' },
+            { value: 5000, text: '5000' },
         ],
         identificacion: '',
         compDomicilio: '',
@@ -81,6 +95,7 @@ var vue2 = new Vue({
         PDFidentificacion: '',
         PDFcompDomicilio: '',
         PDFcompIngresos: '',
+
 
     },
     mounted() {
@@ -522,14 +537,23 @@ var vue2 = new Vue({
             doc.rect(10, 183, 190, 6)
             doc.setFontSize(8)
             doc.text(10, 185, 'Monto del crédito')
+            doc.text(15, 188, String(this.documentacion.montoSolicitado))
+
             doc.text(75, 185, 'Interés ordinario')
+            doc.text(80, 188, String(this.documentacion.interesOrdinario))
+
             doc.text(140, 185, 'Total a pagar')
+            doc.text(145, 188, String(this.documentacion.totalPagar))
+
             doc.setFontSize(13)
             doc.rect(10, 189, 190, 6)
             doc.setFontSize(8)
             doc.text(10, 191, 'Número de pagos')
+            doc.text(15, 194, String(this.numeroPagos))
             doc.text(75, 191, 'Frecuencia de pago')
+            doc.text(80, 194, this.frecuenciaPagosCredito)
             doc.text(140, 191, 'Valor de cada pago')
+            doc.text(145, 194, String(this.documentacion.valorXpago))
             doc.setFontSize(13)
             //lineas
             doc.line(75, 183, 75, 195)
@@ -583,5 +607,10 @@ var vue2 = new Vue({
                     console.log(e);
                 })
         },
+        calculaPagos() {
+            this.documentacion.valorXpago = (parseFloat(this.documentacion.montoSolicitado) * 0.5 + parseFloat(this.documentacion.montoSolicitado)) / this.numeroPagos
+            this.documentacion.totalPagar = this.numeroPagos * this.documentacion.valorXpago
+            this.documentacion.interesOrdinario = this.documentacion.totalPagar - this.documentacion.montoSolicitado
+        }
     }
 });
