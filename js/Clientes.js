@@ -82,7 +82,7 @@ var vue2 = new Vue({
             totalPagar: 0,
             valorXpago: 0,
         },
-        numeroPagos: 12,
+        numeroPagos: 10,
         frecuenciaPagosCredito: 'SEMANAL',
     },
     computed: {

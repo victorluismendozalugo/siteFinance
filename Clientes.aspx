@@ -102,15 +102,15 @@
                         <embed v-bind:src="cliente.compDomicilio" class="img-fluid img-thumbnail zoom"
                             style="height: auto;" />
                     </div>
-                    <div class="col-4" id="ingresos">
+                    <div class="col-4" id="ingresos" v-if="this.cliente.tipoUsuario == 3 ">
                         <embed v-bind:src="cliente.compIngresos" class="img-fluid img-thumbnail zoom"
                             style="height: auto;" />
                     </div>
                 </div>
                 <br />
-                <div class="row">
+                <div class="row" v-if="this.cliente.tipoUsuario == 3 ">
 
-                    <div class="col-6">
+                    <div class="col-6" >
                         <label>Referencia 1</label>
                         <b-form-input type="text" class="form-control" v-model=cliente.referenciaNombre1 disabled>
                         </b-form-input>
@@ -121,8 +121,26 @@
                         </b-form-input>
                     </div>
                 </div>
+                  <div class="row" v-else>
+
+                    <div class="col-4">
+                        <label>Beneficiario</label>
+                        <b-form-input type="text" class="form-control" v-model=cliente.referenciaNombre1 disabled>
+                        </b-form-input>
+                    </div>
+                        <div class="col-4">
+                        <label>Parentesco</label>
+                        <b-form-input type="text" class="form-control" v-model=cliente.parentesco1 disabled>
+                        </b-form-input>
+                    </div>
+                    <div class="col-4">
+                        <label>Fecha de nacimiento</label>
+                        <b-form-input type="text" class="form-control" v-model=cliente.referenciaTelefono1 disabled>
+                        </b-form-input>
+                    </div>
+                </div>
                 <br />
-                <div class="row">
+                   <div class="row" v-if="this.cliente.tipoUsuario == 3 ">
                     <div class="col-6">
                         <label>Referencia 2</label>
                         <b-form-input type="text" class="form-control" v-model=cliente.referenciaNombre2 disabled>
@@ -131,6 +149,13 @@
                     <div class="col-6">
                         <label>Teléfono</label>
                         <b-form-input type="text" class="form-control" v-model=cliente.referenciaTelefono2 disabled>
+                        </b-form-input>
+                    </div>
+                </div>
+                <div class="row" v-else>
+                    <div class="col-6">
+                        <label>Nombre de quién recomendó?</label>
+                        <b-form-input type="text" class="form-control" v-model=cliente.referenciaNombre2 disabled>
                         </b-form-input>
                     </div>
                 </div>
@@ -159,7 +184,7 @@
     </div>
 </div>
 <script src="js/libs/xlsx.full.min.js"></script>
-<script src="js/Clientes.js?2.0.2"></script>
+<script src="js/Clientes.js?2.0.5"></script>
 <style>
     .zoom {
         transition: transform.3s;

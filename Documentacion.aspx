@@ -10,7 +10,8 @@
 
              <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Datos del acreditado</h3>
+                    <h3 class="card-title" v-if="usuario.tipoUsuario == 'PRESTAMO'">Datos del acreditado</h3>
+                    <h3 class="card-title" v-else>Datos del cliente</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -233,7 +234,7 @@
 
                  <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Datos de cuenta del deudor para transferencia electrónica</h3>
+                    <h3 class="card-title">Datos de cuenta para transferencia electrónica</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -253,9 +254,40 @@
 
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Referencias</h3>
+                    <h3 class="card-title" v-if="usuario.tipoUsuario == 'PRESTAMO'">Referencias</h3>
+                    <h3 class="card-title" v-else>Beneficiario</h3>
                 </div>
-                <div class="card-body">
+                   <div class="card-body" v-if="usuario.tipoUsuario == 'INVERSION'">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <label>Nombre</label>
+                            <b-form-input type="text" class="form-control" v-model="documentacion.referenciaNombre1"
+                                name="Referencia" maxlength="100"
+                                @input="v => { documentacion.referenciaNombre1 = v.toUpperCase()}"></b-form-input>
+                        </div>
+                         <div class="col-sm-3 col-xs-12">
+                            <label>Parentesco</label>
+                            <b-form-input type="text" class="form-control" v-model="documentacion.parentesco1"
+                                name="Referencia" maxlength="100"
+                                @input="v => { documentacion.parentesco1 = v.toUpperCase()}"></b-form-input>
+                        </div>
+                        <div class="col-sm-3 col-xs-8">
+                            <label>Fecha nacimiento</label>
+                            <input type="text" class="form-control" v-model="documentacion.referenciaTelefono1" name="Teléfono"
+                                maxlength="10" />
+                        </div>
+                    </div>
+                       <br />
+                       <div class="row">
+                           <div class="col-sm-6 col-xs-6">
+                            <label>Nombre de quién recomendó?</label>
+                            <b-form-input type="text" class="form-control" v-model="documentacion.referenciaNombre2"
+                                name="Referencia" maxlength="100"
+                                @input="v => { documentacion.referenciaNombre2 = v.toUpperCase()}"></b-form-input>
+                        </div>
+                       </div>
+                    </div>
+                <div class="card-body" v-else>
                     <div class="row">
                         <div class="col-sm-6 col-xs-12">
                             <label>Referencia familiar</label>
@@ -336,8 +368,7 @@
                 <!-- /.card-body -->
             </div>
 
-
-             <div class="card card-info">
+             <div class="card card-info" v-if="usuario.tipoUsuario=='PRESTAMO'">
                 <div class="card-header">
                     <h3 class="card-title">Datos del préstamo</h3>
                 </div>
@@ -366,7 +397,7 @@
                      
                          <div class="col-sm-4 col-xs-8">
                            <label>Número de pagos</label>
-                       <input type="number" class="form-control" v-model="numeroPagos" value="12"
+                       <input type="number" class="form-control" v-model="numeroPagos"
                               readonly />
                         </div>
 
@@ -418,7 +449,7 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-4 col-xs-12">
+                        <div class="col-sm-4 col-xs-12" v-if="usuario.tipoUsuario == 'PRESTAMO'">
                             <label for="files3" class="custom-input btn btn-success col fileinput-button"><i
                                     class="fas fa-upload"></i>&nbsp; Cargar
                                 comprobante de ingresos</label>
@@ -446,7 +477,7 @@
         </template>
         </div>
     </div>
-    <script src="js/Documentacion.js?2.0.5"></script>
+    <script src="js/Documentacion.js?2.0.6"></script>
     <style type="text/css">
         * {
             margin: 0;

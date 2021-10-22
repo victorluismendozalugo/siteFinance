@@ -75,7 +75,7 @@ var vue2 = new Vue({
             totalPagar: 0,
             valorXpago: 0,
         },
-        numeroPagos: 12,
+        numeroPagos: 10,
         frecuenciaPagosCredito: 'SEMANAL',
         optionsGenero: [
             { value: 'H', text: 'Hombre' },
@@ -85,9 +85,10 @@ var vue2 = new Vue({
             { value: 0, text: '0' },
             { value: 1000, text: '1000' },
             { value: 2000, text: '2000' },
+            { value: 2500, text: '2500' },
             { value: 3000, text: '3000' },
+            { value: 3500, text: '3500' },
             { value: 4000, text: '4000' },
-            { value: 5000, text: '5000' },
         ],
         identificacion: '',
         compDomicilio: '',
@@ -95,17 +96,17 @@ var vue2 = new Vue({
         PDFidentificacion: '',
         PDFcompDomicilio: '',
         PDFcompIngresos: '',
-
+        usuario: []
 
     },
     mounted() {
+        this.TipoUsuario()
         this.sucursalusuario()
         this.ObtieneDocumentacion()
     },
     methods: {
         ObtieneDocumentacion() {
             http.postLoader('doc/consulta', this.documentacion).then(response => {
-                console.log(response)
                 if (response.data.data.data.length != 0) {
                     this.documentacion = response.data.data.data[0];
 
@@ -126,9 +127,6 @@ var vue2 = new Vue({
                     } else {
                         this.compIngresos = this.documentacion.compIngresos
                     }
-
-                    console.log(this.documentacion)
-
                 }
             })
                 .catch(e => {
@@ -149,6 +147,24 @@ var vue2 = new Vue({
                 .catch(e => {
                     console.log(e);
                     this.toggleCargando()
+                })
+        },
+        TipoUsuario() {
+            var datos = {
+                "Usuario": localStorage.getItem('Usuario'),
+                "Sucursal": 1
+            }
+            http.postLoader('usuarios/tipo', datos).then(response => {
+
+                if (response.data.data.codigoError == 0) {
+                    this.usuario = response.data.data.data[0]
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
                 })
         },
         //manejo de imagenes
