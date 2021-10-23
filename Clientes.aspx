@@ -5,20 +5,29 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="vuePage">
-    <div class="container">
-        <template>
+        <div class="container">
+            <template>
             <section class="content">
+                <div class="row">
+                 <div class="col-md-3 col-xs-6">
+                          <label>Tipo de cliente</label>
+                          <b-form-select class="form-control" v-model="tipoCliente" :options="optionsFiltro" @change="ObtieneClientesXTipo()">
+                        </b-form-select>
+                    </div>
+                    </div>
+                <br />
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Clientes</h3>
                         <div class="card-tools">
-                            <b-button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                             
+                       <%--     <b-button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
                             </b-button>
                             <b-button type="button" class="btn btn-tool" data-card-widget="reload" title="Recargar"
                                 @click="ObtieneClientes()">
                                 <i class="fas fa-sync-alt"></i>
-                            </b-button>
+                            </b-button>--%>
                         </div>
                     </div>
                     <div class="card-body p-0">
@@ -26,9 +35,10 @@
                             <thead>
                                 <tr>
                                     <th style="width: 1%">#</th>
-                                    <th style="width: 20%">Nombre</th>
+                                    <th style="width: 16%">Nombre</th>
                                     <th style="width: 8%">Tipo</th>
-                                    <th style="width: 20%">% Documentación</th>
+                                    <th style="width: 8%">Estatus</th>
+                                    <th style="width: 16%">% Documentación</th>
                                     <th style="width: 20%">Acciones</th>
                                 </tr>
                             </thead>
@@ -47,6 +57,11 @@
                                             v-if="item.tipoUsuario == 2">Inversiones</span>
                                         <span class="badge badge-success" v-else>Préstamo</span>
                                     </td>
+                                      <td class="project-state">
+                                        <span class="badge badge-success"
+                                            v-if="item.estatus == 'A' ">Activo</span>
+                                        <span class="badge badge-warning" v-else>Inactivo</span>
+                                    </td>
                                     <td>
                                         <b-progress :value="item.porcentajeDoc" :max="100" class="mb-3"></b-progress>
                                         <small>
@@ -54,19 +69,32 @@
                                         </small>
                                     </td>
                                     <td class="project-actions text-right">
+                                          <a class="btn btn-danger btn-sm" href="#" @click="BajaCliente(item)" v-if="item.estatus == 'A' ">
+                                            <i class="fas fa-user-times">
+                                            </i>
+                                         </a>
+                                          <a class="btn btn-info btn-sm" href="#" @click="MotivoBajaCliente(item)" v-else>
+                                            <i class="fas fa-user-times">
+                                            </i>
+                                         </a>
                                         <a class="btn btn-primary btn-sm" href="#" @click="ObtieneDatosCliente(item)">
                                             <i class="far fa-eye">
                                             </i>
-                                            Ver
                                         </a>
                                         <a class="btn btn-info btn-sm" href="#" @click="CargarInformacion(item)">
                                             <i class="fas fa-upload">
                                             </i>
-                                            Cargar información
+                                            Carga información
                                         </a>
                                     </td>
                                 </tr>
                             </tbody>
+                                   <template v-if="isBusy">
+                                    <div class="text-center text-info my-2">
+                                        <b-spinner class="align-middle"></b-spinner>
+                                        <strong>Cargando clientes...</strong>
+                                    </div>
+                                </template>
                         </table>
                     </div>
                 </div>
@@ -165,9 +193,9 @@
                     </b-button>
                     </div>
             </b-modal>
+
             <b-modal id="modal-cargar-informacion-usuario" title="Cargar información" size="lg" hide-footer>
                 <p>{{cliente.nombreCompleto}}</p>
-                <div>
                     <b>Seleccione un archivo de excel para importar:</b>
                     <div>
                         <input type="file" class="fileSelect" @change="fileChange($event)" />
@@ -180,21 +208,49 @@
                         </b-button>
                     </div>
             </b-modal>
-        </template>
-    </div>
-</div>
-<script src="js/libs/xlsx.full.min.js"></script>
-<script src="js/Clientes.js?2.0.10"></script>
-<style>
-    .zoom {
-        transition: transform.3s;
-        position: relative;
-        z-index: 2;
-    }
+            
+            <b-modal id="modal-baja-cliente" title="Baja de clientes" size="lg" hide-footer>
+                <p>Cliente: {{cliente.nombreCompleto}}</p>
+                    <b>Proporcione el motivo para la baja del cliente</b>
+                    <div>
+                        <b-form-input type="text" class="form-control" v-model="motivoBaja">
+                        </b-form-input>
+                    </div>
+                    <br />
+                    <b-table id="wrapper" class="table table-striped table-responsive" responsive="sm">
+                    </b-table>
+                    <div class="modal-footer">
+                        <b-button type="button" variant="warning" @click="DardeBaja()">Dar de baja
+                        </b-button>
+                    </div>
+            </b-modal>
 
-    .zoom:hover {
-        transform: scale(2.5);
-        /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-    }
-</style>
+            <b-modal id="modal-motivo-baja-cliente" title="Baja de clientes" size="lg" hide-footer>
+                <p>Cliente: {{cliente.nombreCompleto}}</p>
+                   <p>Fecha de baja: {{clienteBaja.fecha}}</p>
+                    <div>
+                         <label>Motivo de baja</label>
+                        <b-form-input type="text" class="form-control" v-model="clienteBaja.motivoBaja" disabled>
+                        </b-form-input>
+                    </div>
+            </b-modal>
+
+
+        </template>
+        </div>
+    </div>
+    <script src="js/libs/xlsx.full.min.js"></script>
+    <script src="js/Clientes.js?3.5.1"></script>
+    <style>
+        .zoom {
+            transition: transform.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+            .zoom:hover {
+                transform: scale(2.5);
+                /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }
+    </style>
 </asp:Content>

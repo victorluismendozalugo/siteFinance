@@ -84,31 +84,66 @@ var vue2 = new Vue({
         },
         numeroPagos: 10,
         frecuenciaPagosCredito: 'SEMANAL',
+        optionsFiltro: [
+            { value: 0, text: 'Seleccione' },
+            { value: 2, text: 'INVERSIONES' },
+            { value: 3, text: 'PRESTAMOS' },
+        ],
+        tipoCliente: 0,
+        isBusy: true,
+        motivoBaja: '',
+        clienteBaja: [],
     },
     computed: {
 
     },
     mounted() {
-        this.ObtieneClientes()
+        this.isBusy = false;
+        //this.ObtieneClientes()
     },
     methods: {
-        ObtieneClientes() {
-            var datos = {
-                "Usuario": localStorage.getItem('Usuario'),
-                "SucursalID": 1
-            }
-            http.postLoader('doc/clientes/documentacion', datos).then(response => {
-                if (response.data.data.codigoError == 0) {
-                    this.clientes = response.data.data.data
-
-                } else {
-                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+        ObtieneClientesXTipo() {
+            if (this.tipoCliente != 0) {
+                this.clientes = []
+                this.isBusy = true
+                var datos = {
+                    "Usuario": localStorage.getItem('Usuario'),
+                    "SucursalID": 1,
+                    "TipoCliente": this.tipoCliente
                 }
-            })
-                .catch(e => {
-                    console.log(e);
+                http.postLoader('doc/clientesXTipo/documentacion', datos).then(response => {
+                    if (response.data.data.codigoError == 0) {
+                        this.clientes = response.data.data.data
+                        this.isBusy = false;
+
+                    } else {
+                        $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                        this.isBusy = false;
+                    }
                 })
+                    .catch(e => {
+                        console.log(e);
+                        this.isBusy = false;
+                    })
+            }
         },
+        //ObtieneClientes() {
+        //    var datos = {
+        //        "Usuario": localStorage.getItem('Usuario'),
+        //        "SucursalID": 1
+        //    }
+        //    http.postLoader('doc/clientes/documentacion', datos).then(response => {
+        //        if (response.data.data.codigoError == 0) {
+        //            this.clientes = response.data.data.data
+
+        //        } else {
+        //            $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+        //        }
+        //    })
+        //        .catch(e => {
+        //            console.log(e);
+        //        })
+        //},
         ObtieneDatosCliente(item) {
             this.$bvModal.show('modal-informacion-usuario');
             this.cliente = item
@@ -122,6 +157,65 @@ var vue2 = new Vue({
             this.$bvModal.show('modal-cargar-informacion-usuario');
             this.cliente = item
             this.saldo.usuario = this.cliente.usuario
+        },
+        BajaCliente(item) {
+            this.$bvModal.show('modal-baja-cliente');
+            this.cliente = item
+        },
+        MotivoBajaCliente(item) {
+            this.$bvModal.show('modal-motivo-baja-cliente');
+            this.cliente = item
+
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "Sucursal": 1,
+
+            }
+            http.postLoader('usuarios/baja/consulta', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    this.clienteBaja = response.data.data.data[0]
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+
+        },
+        DardeBaja() {
+
+            if (this.cliente.usuario == '') {
+                $.noticeError("ERROR : Seleccione un usuario")
+            } else {
+                this.motivoBaja == '' ? $.noticeAlert("ERROR : Ingrese un motivo para dar de baja al cliente") : this.RegistroBaja()
+            }
+
+        },
+        RegistroBaja() {
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "Sucursal": 1,
+                "MotivoBaja": this.motivoBaja,
+
+            }
+            http.postLoader('usuarios/baja', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    $.noticeSuccess(response.data.data.mensajeBitacora)
+                    this.motivoBaja = ''
+                    this.$bvModal.hide('modal-baja-cliente');
+                    this.ObtieneClientesXTipo()
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
         },
         fileChange(e) {
 
