@@ -184,7 +184,7 @@
     </div>
 </div>
 <script src="js/libs/xlsx.full.min.js"></script>
-<script src="js/Clientes.js?2.0.5"></script>
+<script src="js/Clientes.js?2.0.10"></script>
 <style>
     .zoom {
         transition: transform.3s;

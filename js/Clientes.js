@@ -94,7 +94,7 @@ var vue2 = new Vue({
     methods: {
         ObtieneClientes() {
             var datos = {
-                "Usuario": 1,
+                "Usuario": localStorage.getItem('Usuario'),
                 "SucursalID": 1
             }
             http.postLoader('doc/clientes/documentacion', datos).then(response => {
@@ -208,7 +208,12 @@ var vue2 = new Vue({
                     doc.setFillColor(0, 0, 255)
                     doc.rect(10, 45, 190, 6, 'B')
                     doc.setFontSize(13)
-                    doc.text(75, 50, 'DATOS DEL ACREDITADO')
+                    if (this.cliente.tipoUsuario == 3) {
+                        doc.text(75, 50, 'DATOS DEL ACREDITADO')
+                    } else {
+                        doc.text(75, 50, 'DATOS DEL CLIENTE')
+                    }
+
                     doc.rect(10, 51, 190, 6)
                     //lineas
                     doc.line(65, 51, 65, 57)
@@ -400,15 +405,28 @@ var vue2 = new Vue({
                     doc.setFillColor(0, 0, 255)
                     doc.rect(10, 129, 190, 6, 'B')
                     doc.setFontSize(13)
-                    doc.text(20, 133, 'PORFAVOR PROPORCIONE DOS REFERENCIAS QUE NO VIVAN CON USTED ')
+                    if (this.cliente.tipoUsuario == 3) {
+                        doc.text(20, 133, 'PORFAVOR PROPORCIONE DOS REFERENCIAS QUE NO VIVAN CON USTED ')
+                    } else {
+                        doc.text(90, 133, 'BENEFICIARIO')
+                    }
                     doc.rect(10, 135, 190, 6)
                     doc.setFontSize(8)
-                    doc.text(10, 137, 'Nombre')
-                    doc.text(20, 140, this.documentacion.referenciaNombre1)
-                    doc.text(100, 137, 'Parentesco:')
-                    doc.text(110, 140, this.documentacion.parentesco1)
-                    doc.text(145, 137, 'Teléfono Cel o Local')
-                    doc.text(148, 140, this.documentacion.referenciaTelefono1)
+                    if (this.cliente.tipoUsuario == 3) {
+                        doc.text(10, 137, 'Nombre')
+                        doc.text(20, 140, this.documentacion.referenciaNombre1)
+                        doc.text(100, 137, 'Parentesco:')
+                        doc.text(110, 140, this.documentacion.parentesco1)
+                        doc.text(145, 137, 'Teléfono Cel o Local')
+                        doc.text(148, 140, this.documentacion.referenciaTelefono1)
+                    } else {
+                        doc.text(10, 137, 'Nombre')
+                        doc.text(20, 140, this.documentacion.referenciaNombre1)
+                        doc.text(100, 137, 'Parentesco:')
+                        doc.text(110, 140, this.documentacion.parentesco1)
+                        doc.text(145, 137, 'Fecha Nacimiento')
+                        doc.text(148, 140, this.documentacion.referenciaTelefono1)
+                    }
                     doc.setFontSize(13)
                     //lineas
                     doc.line(100, 135, 100, 159)
@@ -416,38 +434,69 @@ var vue2 = new Vue({
                     //lineas
                     doc.rect(10, 141, 190, 6)
                     doc.setFontSize(8)
-                    doc.text(10, 143, 'Nombre')
-                    doc.text(20, 146, this.documentacion.referenciaNombre2)
-                    doc.text(100, 143, 'Parentesco:')
-                    doc.text(110, 146, this.documentacion.parentesco2)
-                    doc.text(145, 143, 'Teléfono Cel o Local')
-                    doc.text(148, 146, this.documentacion.referenciaTelefono2)
-                    doc.setFontSize(13)
-                    doc.rect(10, 147, 190, 6)
-                    doc.setFontSize(8)
-                    doc.text(10, 149, 'Nombre')
-                    doc.text(20, 152, this.documentacion.referenciaNombre3)
-                    doc.text(100, 149, 'Parentesco:')
-                    doc.text(110, 152, this.documentacion.parentesco3)
-                    doc.text(145, 149, 'Teléfono Cel o Local')
-                    doc.text(148, 152, this.documentacion.referenciaTelefono3)
-                    doc.setFontSize(13)
-                    doc.rect(10, 153, 190, 6)
-                    doc.setFontSize(8)
-                    doc.text(10, 155, 'Nombre')
-                    doc.text(20, 158, this.documentacion.referenciaNombre4)
-                    doc.text(100, 155, 'Parentesco:')
-                    doc.text(110, 158, this.documentacion.parentesco4)
-                    doc.text(145, 155, 'Teléfono Cel o Local')
-                    doc.text(148, 158, this.documentacion.referenciaTelefono4)
-                    doc.setFontSize(13)
-
+                    if (this.cliente.tipoUsuario == 3) {
+                        doc.text(10, 143, 'Nombre')
+                        doc.text(20, 146, this.documentacion.referenciaNombre2)
+                        doc.text(100, 143, 'Parentesco:')
+                        doc.text(110, 146, this.documentacion.parentesco2)
+                        doc.text(145, 143, 'Teléfono Cel o Local')
+                        doc.text(148, 146, this.documentacion.referenciaTelefono2)
+                        doc.setFontSize(13)
+                        doc.rect(10, 147, 190, 6)
+                        doc.setFontSize(8)
+                        doc.text(10, 149, 'Nombre')
+                        doc.text(20, 152, this.documentacion.referenciaNombre3)
+                        doc.text(100, 149, 'Parentesco:')
+                        doc.text(110, 152, this.documentacion.parentesco3)
+                        doc.text(145, 149, 'Teléfono Cel o Local')
+                        doc.text(148, 152, this.documentacion.referenciaTelefono3)
+                        doc.setFontSize(13)
+                        doc.rect(10, 153, 190, 6)
+                        doc.setFontSize(8)
+                        doc.text(10, 155, 'Nombre')
+                        doc.text(20, 158, this.documentacion.referenciaNombre4)
+                        doc.text(100, 155, 'Parentesco:')
+                        doc.text(110, 158, this.documentacion.parentesco4)
+                        doc.text(145, 155, 'Teléfono Cel o Local')
+                        doc.text(148, 158, this.documentacion.referenciaTelefono4)
+                        doc.setFontSize(13)
+                    } else {
+                        doc.text(10, 143, 'Nombre de quién recomendó?')
+                        doc.text(20, 146, this.documentacion.referenciaNombre2)
+                        doc.text(100, 143, '')
+                        doc.text(110, 146, '')
+                        doc.text(145, 143, '')
+                        doc.text(148, 146, '')
+                        doc.setFontSize(13)
+                        doc.rect(10, 147, 190, 6)
+                        doc.setFontSize(8)
+                        doc.text(10, 149, '')
+                        doc.text(20, 152, '')
+                        doc.text(100, 149, '')
+                        doc.text(110, 152, '')
+                        doc.text(145, 149, '')
+                        doc.text(148, 152, '')
+                        doc.setFontSize(13)
+                        doc.rect(10, 153, 190, 6)
+                        doc.setFontSize(8)
+                        doc.text(10, 155, '')
+                        doc.text(20, 158, '')
+                        doc.text(100, 155, '')
+                        doc.text(110, 158, '')
+                        doc.text(145, 155, '')
+                        doc.text(148, 158, '')
+                        doc.setFontSize(13)
+                    }
 
                     //cuarto rectangulo azul
                     doc.setFillColor(0, 0, 255)
                     doc.rect(10, 159, 190, 6, 'B')
                     doc.setFontSize(13)
-                    doc.text(20, 164, 'DATOS DE LA CUENTA DEL DEUDOR PARA TRANSFERENCIA ELECTRONICA')
+                    if (this.cliente.tipoUsuario == 3) {
+                        doc.text(20, 164, 'DATOS DE LA CUENTA DEL DEUDOR PARA TRANSFERENCIA ELECTRONICA')
+                    } else {
+                        doc.text(30, 164, 'DATOS DE LA CUENTA PARA TRANSFERENCIA ELECTRONICA')
+                    }
                     doc.rect(10, 165, 190, 6)
                     doc.setFontSize(8)
                     doc.text(10, 167, 'Institucion de Credito: ')
@@ -457,60 +506,61 @@ var vue2 = new Vue({
                     doc.setFontSize(13)
                     doc.rect(10, 171, 190, 6)
 
-                    //quinto rectangulo azul
-                    doc.setFillColor(0, 0, 255)
-                    doc.rect(10, 177, 190, 6, 'B')
-                    doc.setFontSize(13)
-                    doc.text(60, 182, 'DESCRIPCION DEL CREDITO SOLICITADO')
-                    doc.rect(10, 183, 190, 6)
-                    doc.setFontSize(8)
-                    doc.text(10, 185, 'Monto del crédito')
-                    doc.text(15, 188, String(this.documentacion.montoSolicitado))
+                    if (this.cliente.tipoUsuario == 3) {
+                        //quinto rectangulo azul
+                        doc.setFillColor(0, 0, 255)
+                        doc.rect(10, 177, 190, 6, 'B')
+                        doc.setFontSize(13)
+                        doc.text(60, 182, 'DESCRIPCION DEL CREDITO SOLICITADO')
+                        doc.rect(10, 183, 190, 6)
+                        doc.setFontSize(8)
+                        doc.text(10, 185, 'Monto del crédito')
+                        doc.text(15, 188, String(this.documentacion.montoSolicitado))
 
-                    doc.text(75, 185, 'Interés ordinario')
-                    doc.text(80, 188, String(this.documentacion.interesOrdinario))
+                        doc.text(75, 185, 'Interés ordinario')
+                        doc.text(80, 188, String(this.documentacion.interesOrdinario))
 
-                    doc.text(140, 185, 'Total a pagar')
-                    doc.text(145, 188, String(this.documentacion.totalPagar))
+                        doc.text(140, 185, 'Total a pagar')
+                        doc.text(145, 188, String(this.documentacion.totalPagar))
 
-                    doc.setFontSize(13)
-                    doc.rect(10, 189, 190, 6)
-                    doc.setFontSize(8)
-                    doc.text(10, 191, 'Número de pagos')
-                    doc.text(15, 194, String(this.numeroPagos))
-                    doc.text(75, 191, 'Frecuencia de pago')
-                    doc.text(80, 194, this.frecuenciaPagosCredito)
-                    doc.text(140, 191, 'Valor de cada pago')
-                    doc.text(145, 194, String(this.documentacion.valorXpago))
-                    doc.setFontSize(13)
-                    //lineas
-                    doc.line(75, 183, 75, 195)
-                    doc.line(140, 183, 140, 195)
-                    //lineas
+                        doc.setFontSize(13)
+                        doc.rect(10, 189, 190, 6)
+                        doc.setFontSize(8)
+                        doc.text(10, 191, 'Número de pagos')
+                        doc.text(15, 194, String(this.numeroPagos))
+                        doc.text(75, 191, 'Frecuencia de pago')
+                        doc.text(80, 194, this.frecuenciaPagosCredito)
+                        doc.text(140, 191, 'Valor de cada pago')
+                        doc.text(145, 194, String(this.documentacion.valorXpago))
+                        doc.setFontSize(13)
+                        //lineas
+                        doc.line(75, 183, 75, 195)
+                        doc.line(140, 183, 140, 195)
+                        //lineas
 
 
-                    //sexto rectangulo azul
-                    doc.setFillColor(0, 0, 255)
-                    doc.rect(10, 195, 190, 6, 'B')
-                    doc.setFontSize(13)
-                    doc.text(60, 200, 'DESCRIPCION DEL CREDITO AUTORIZADO')
-                    doc.rect(10, 201, 190, 6)
-                    doc.setFontSize(8)
-                    doc.text(10, 203, 'Monto del crédito')
-                    doc.text(75, 203, 'Interés ordinario')
-                    doc.text(140, 203, 'Total a pagar')
-                    doc.setFontSize(13)
-                    doc.rect(10, 207, 190, 6)
-                    doc.setFontSize(8)
-                    doc.text(10, 209, 'Número de pagos')
-                    doc.text(75, 209, 'Frecuencia de pago')
-                    doc.text(140, 209, 'Valor de cada pago')
-                    doc.setFontSize(13)
-                    //lineas
-                    doc.line(75, 201, 75, 213)
-                    doc.line(140, 201, 140, 213)
-                    //lineas
-
+                        //sexto rectangulo azul
+                        doc.setFillColor(0, 0, 255)
+                        doc.rect(10, 195, 190, 6, 'B')
+                        doc.setFontSize(13)
+                        doc.text(60, 200, 'DESCRIPCION DEL CREDITO AUTORIZADO')
+                        doc.rect(10, 201, 190, 6)
+                        doc.setFontSize(8)
+                        doc.text(10, 203, 'Monto del crédito')
+                        doc.text(75, 203, 'Interés ordinario')
+                        doc.text(140, 203, 'Total a pagar')
+                        doc.setFontSize(13)
+                        doc.rect(10, 207, 190, 6)
+                        doc.setFontSize(8)
+                        doc.text(10, 209, 'Número de pagos')
+                        doc.text(75, 209, 'Frecuencia de pago')
+                        doc.text(140, 209, 'Valor de cada pago')
+                        doc.setFontSize(13)
+                        //lineas
+                        doc.line(75, 201, 75, 213)
+                        doc.line(140, 201, 140, 213)
+                        //lineas
+                    }
                     //firma
                     doc.line(50, 265, 160, 265)
                     doc.text(65, 270, 'NOMBRE Y FIRMA DEL SOLICITANTE')

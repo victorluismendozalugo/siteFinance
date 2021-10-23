@@ -89,6 +89,7 @@ var vue2 = new Vue({
             { value: 3000, text: '3000' },
             { value: 3500, text: '3500' },
             { value: 4000, text: '4000' },
+            { value: 5000, text: '5000' },
         ],
         identificacion: '',
         compDomicilio: '',
