@@ -148,10 +148,38 @@ var vue2 = new Vue({
             this.$bvModal.show('modal-informacion-usuario');
             this.cliente = item
 
-            console.log(item)
-
             this.saldo.usuario = this.cliente.usuario
             this.documentacion.usuario = this.cliente.usuario
+
+            if (this.cliente.identificacion == null && this.cliente.compDomicilio == null || this.cliente.compIngresos == null) {
+                this.ObtieneDocumentacionCliente()
+            }
+        },
+        ObtieneDocumentacionCliente() {
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "SucursalID": 1,
+            }
+            http.postLoader('doc/clientesXTipo/comprobantes', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    if (response.data.data.data.length) {
+
+                        this.cliente.identificacion = response.data.data.data[0].identificacion
+                        this.cliente.compDomicilio = response.data.data.data[0].compDomicilio
+                        this.cliente.compIngresos = response.data.data.data[0].compIngresos
+
+                        this.documentacion.identificacion = response.data.data.data[0].identificacion
+                        this.documentacion.compDomicilio = response.data.data.data[0].compDomicilio
+                        this.documentacion.compIngresos = response.data.data.data[0].compIngresos
+                    }
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
         },
         CargarInformacion(item) {
             this.$bvModal.show('modal-cargar-informacion-usuario');
@@ -216,6 +244,30 @@ var vue2 = new Vue({
                 .catch(e => {
                     console.log(e);
                 })
+        },
+        DardeAlta() {
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "Sucursal": 1,
+
+            }
+            http.postLoader('usuarios/alta', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    $.noticeSuccess(response.data.data.mensajeBitacora)
+                    this.clienteBaja = []
+                    this.$bvModal.hide('modal-motivo-baja-cliente');
+                    this.ObtieneClientesXTipo()
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+
+
         },
         fileChange(e) {
 

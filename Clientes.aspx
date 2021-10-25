@@ -217,8 +217,6 @@
                         </b-form-input>
                     </div>
                     <br />
-                    <b-table id="wrapper" class="table table-striped table-responsive" responsive="sm">
-                    </b-table>
                     <div class="modal-footer">
                         <b-button type="button" variant="warning" @click="DardeBaja()">Dar de baja
                         </b-button>
@@ -233,6 +231,11 @@
                         <b-form-input type="text" class="form-control" v-model="clienteBaja.motivoBaja" disabled>
                         </b-form-input>
                     </div>
+                <br />
+                  <div class="modal-footer">
+                        <b-button type="button" variant="warning" @click="DardeAlta()">Reactivar cliente
+                        </b-button>
+                    </div>
             </b-modal>
 
 
@@ -240,7 +243,7 @@
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Clientes.js?3.5.1"></script>
+    <script src="js/Clientes.js?5.5.0"></script>
     <style>
         .zoom {
             transition: transform.3s;
