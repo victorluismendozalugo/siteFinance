@@ -2367,7 +2367,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="js\libs\DataTables\Bootstrap-4-4.1.1\css\bootstrap.css.map" />

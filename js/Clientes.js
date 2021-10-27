@@ -90,22 +90,67 @@ var vue2 = new Vue({
             { value: 3, text: 'PRESTAMOS' },
         ],
         tipoCliente: 0,
-        isBusy: true,
         motivoBaja: '',
         clienteBaja: [],
+        optionsMontoAutorizado: [
+            { value: 0, text: '0' },
+            { value: 1000, text: '1000' },
+            { value: 2000, text: '2000' },
+            { value: 2500, text: '2500' },
+            { value: 3000, text: '3000' },
+            { value: 3500, text: '3500' },
+            { value: 4000, text: '4000' },
+            { value: 5000, text: '5000' },
+        ],
+        creditoCte: [],
+        fields: [
+            { key: 'usuarioID', label: "ID", sortable: true },
+            { key: 'nombreCompleto', label: "Nombre", sortable: true },
+            { key: 'fechaRegistro', label: "Fecha registro", sortable: true },
+            { key: 'estatusNombre', label: "Estatus", sortable: true },
+            { key: 'porcentajeDoc', label: "% Documentación", sortable: true },
+            { key: 'nombre', label:"Acciones", sortable: false },
+        ],
+        filter: null,
+        filterOn: ['nombreCompleto','estatusNombre'],
+        perPage: 10,
+        pageOptions: [5, 10, 15, 30, 50, 100],
+        currentPage: 1,
+        isBusy: false,
     },
     computed: {
-
+        sortOptions() {
+            // Create an options list from our fields
+            return this.fields
+                .filter(f => f.sortable)
+                .map(f => {
+                    return { text: f.label, value: f.key }
+                })
+        },
+        rows() {
+            return this.clientes.length
+        }
     },
     mounted() {
         this.isBusy = false;
         //this.ObtieneClientes()
     },
     methods: {
+        toggleBusy() {
+            this.isBusy = !this.isBusy
+        },
+        editarRegistro(item) { },
+        ModalDatosEditar(item) { },
+        onFiltered(filteredItems) {
+            // Trigger pagination to update the number of buttons/pages due to filtering
+            this.totalRows = filteredItems.length
+
+            this.currentPage = 1
+        },
         ObtieneClientesXTipo() {
             if (this.tipoCliente != 0) {
                 this.clientes = []
-                this.isBusy = true
+                this.toggleBusy()
                 var datos = {
                     "Usuario": localStorage.getItem('Usuario'),
                     "SucursalID": 1,
@@ -114,16 +159,15 @@ var vue2 = new Vue({
                 http.postLoader('doc/clientesXTipo/documentacion', datos).then(response => {
                     if (response.data.data.codigoError == 0) {
                         this.clientes = response.data.data.data
-                        this.isBusy = false;
-
+                        this.toggleBusy()
                     } else {
                         $.noticeError("ERROR " + response.data.data.mensajeBitacora)
-                        this.isBusy = false;
+                        this.toggleBusy()
                     }
                 })
                     .catch(e => {
                         console.log(e);
-                        this.isBusy = false;
+                        this.toggleBusy()
                     })
             }
         },
@@ -268,6 +312,58 @@ var vue2 = new Vue({
                 })
 
 
+        },
+        Autorizar(item) {
+            this.$bvModal.show('modal-autorizar-credito');
+            this.cliente = item
+
+        },
+        AceptarAutorizar() {
+
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "Sucursal": 1,
+                "MontoAutorizado": this.cliente.montoSolicitado,
+                "Responsable": localStorage.getItem('Usuario')
+
+            }
+            http.postLoader('usuarios/autorizar', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    $.noticeSuccess(response.data.data.mensajeBitacora)
+                    this.$bvModal.hide('modal-autorizar-credito');
+                    this.ObtieneClientesXTipo()
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+
+        },
+        MostrarCreditoAutorizado(item) {
+            this.$bvModal.show('modal-credito-autorizado');
+            this.cliente = item
+
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "Sucursal": 1,
+
+            }
+            http.postLoader('usuarios/credito/consulta', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    this.creditoCte = response.data.data.data[0]
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
         },
         fileChange(e) {
 

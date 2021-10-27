@@ -97,7 +97,8 @@ var vue2 = new Vue({
         PDFidentificacion: '',
         PDFcompDomicilio: '',
         PDFcompIngresos: '',
-        usuario: []
+        usuario: [],
+        estaGuardando: false
 
     },
     mounted() {
@@ -135,19 +136,24 @@ var vue2 = new Vue({
                 })
         },
         GuardarDocumentacion() {
+            this.estaGuardando = true
             this.documentacion.usuario = localStorage.getItem('Usuario')
+            console.log(this.documentacion)
             http.postLoader('doc/guardar', this.documentacion).then(response => {
 
+                console.log(response.data.data)
                 if (response.data.data.codigoError == 0) {
                     $.noticeSuccess(response.data.data.mensajeBitacora)
+                    this.estaGuardando = false
 
                 } else {
                     $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                    this.estaGuardando = false
                 }
             })
                 .catch(e => {
                     console.log(e);
-                    this.toggleCargando()
+                    this.estaGuardando = false
                 })
         },
         TipoUsuario() {

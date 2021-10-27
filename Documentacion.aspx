@@ -425,6 +425,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+
                         <div class="col-sm-4 col-xs-12">
                             <label for="files1" class="custom-input btn btn-success col fileinput-button"><i
                                     class="fas fa-upload"></i>&nbsp; Cargar
@@ -467,7 +468,17 @@
               <div class="form-group row">
                     <div class="col">
                      <b-button variant="primary" class="float-right" @click="GuardarDocumentacion()">
-                        <i class="fas fa-save"></i> Guardar
+                         <template  v-if="estaGuardando">
+                                    <div class="text-center text-default my-2">
+                                        <b-spinner small class="align-middle"></b-spinner>
+                                        Guardando
+                                    </div>
+                                </template>
+                            <template v-else>
+                        <i class="fas fa-save">
+                            
+                        </i> Guardar
+                                      </template>
                     </b-button>
                     <%--   <b-button variant="info" class="float-right" @click="GeneraSolicitud()">
                         <i class="fas fa-download"></i> Descargar solicitud
@@ -477,7 +488,7 @@
         </template>
         </div>
     </div>
-    <script src="js/Documentacion.js?3.5.1"></script>
+    <script src="js/Documentacion.js?6.0.0"></script>
     <style type="text/css">
         * {
             margin: 0;
