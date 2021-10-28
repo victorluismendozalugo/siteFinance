@@ -152,6 +152,14 @@
                                             @input="v => { registro.validaUsuario = v.toUpperCase()}"
                                             @blur="validaEmails"></b-form-input>
                                     </div>
+                                       <div class="form-group">
+  
+                                            <label>CURP</label>
+                                    <b-form-input type="text" class="form-control" v-model="registro.curp"
+                                        placeholder="Ingrese su CURP" maxlength="18"
+                                        @input="v => { registro.curp = v.toUpperCase()}"
+                                        @blur="validaCurp"></b-form-input>
+                                           </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-6">
@@ -226,6 +234,6 @@
     <script src="js/libs/jquery.blockUI.js?1.1.0"></script>
     <script src="js/libs/toastr.min.js?1.1.0"></script>
     <script src="js/libs/jquery.blockUI.messages.js?1.1.0"></script>
-    <script src="js/Login.js?2.0.0"></script>
+    <script src="js/Login.js?6.5.0"></script>
 </body>
 </html>
