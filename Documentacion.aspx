@@ -480,9 +480,6 @@
                         </i> Guardar
                                       </template>
                     </b-button>
-                    <%--   <b-button variant="info" class="float-right" @click="GeneraSolicitud()">
-                        <i class="fas fa-download"></i> Descargar solicitud
-                    </b-button>--%>
                     </div>
               </div>
         </template>

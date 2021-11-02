@@ -109,14 +109,73 @@ var vue2 = new Vue({
             { key: 'fechaRegistro', label: "Fecha registro", sortable: true },
             { key: 'estatusNombre', label: "Estatus", sortable: true },
             { key: 'porcentajeDoc', label: "% Documentación", sortable: true },
-            { key: 'nombre', label:"Acciones", sortable: false },
+            { key: 'nombre', label: "Acciones", sortable: false },
         ],
         filter: null,
-        filterOn: ['nombreCompleto','estatusNombre'],
+        filterOn: ['nombreCompleto', 'estatusNombre'],
         perPage: 10,
         pageOptions: [5, 10, 15, 30, 50, 100],
         currentPage: 1,
         isBusy: false,
+        fechaDeposito: '',
+        operacion: {
+            Autorizador: 'admin@finance',
+            Sucursal: 1,
+            Responsable: localStorage.getItem('Usuario'),
+            Operacion: '',
+            Password: '',
+            Cliente: ''
+        },
+        opSupervizada: '',
+        usuario: [],
+        numeroPagos: 10,
+        frecuenciaPagosCredito: 'SEMANAL',
+        optionsGenero: [
+            { value: 'H', text: 'Hombre' },
+            { value: 'M', text: 'Mujer' }
+        ],
+        optionsMontoSolicitado: [
+            { value: 0, text: '0' },
+            { value: 1000, text: '1000' },
+            { value: 2000, text: '2000' },
+            { value: 2500, text: '2500' },
+            { value: 3000, text: '3000' },
+            { value: 3500, text: '3500' },
+            { value: 4000, text: '4000' },
+            { value: 5000, text: '5000' },
+        ],
+        identificacion: '',
+        compDomicilio: '',
+        compIngresos: '',
+        PDFidentificacion: '',
+        PDFcompDomicilio: '',
+        PDFcompIngresos: '',
+        usuario: [],
+        estaGuardando: false,
+
+        //para el registro de los clientes nuevos
+        registro: {
+            iDUsuario: 0,
+            nombre: '',
+            primerApellido: '',
+            segundoApellido: '',
+            celular: '',
+            usuario: '',
+            validaUsuario: '',
+            contrasena: '',
+            validaContrasena: '',
+            fechaTermino: '20501231',
+            quienAutoriza: 1,
+            correo: '',
+            sucursalID: 1,
+            requiereToken: 1,
+            rolID: 0,
+            curp: ''
+        },
+        optiosRolUsuario: [
+            { value: 2, text: 'Invertir' },
+            { value: 3, text: 'Solicitar un préstamo' }
+        ],
     },
     computed: {
         sortOptions() {
@@ -188,12 +247,49 @@ var vue2 = new Vue({
         //            console.log(e);
         //        })
         //},
+        ObtieneDocumentacion() {
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "SucursalID": 1
+            }
+            http.postLoader('doc/consulta', datos).then(response => {
+                if (response.data.data.data.length != 0) {
+                    this.documentacion = response.data.data.data[0];
+
+
+                    if (this.documentacion.identificacion.split(';')[0] == "data:application/pdf") {
+                        this.PDFidentificacion = this.documentacion.identificacion
+                    } else {
+                        this.identificacion = this.documentacion.identificacion
+                    }
+
+                    if (this.documentacion.compDomicilio.split(';')[0] == "data:application/pdf") {
+                        this.PDFcompDomicilio = this.documentacion.compDomicilio
+                    } else {
+                        this.compDomicilio = this.documentacion.compDomicilio
+                    }
+
+                    if (this.documentacion.compIngresos.split(';')[0] == "data:application/pdf") {
+                        this.PDFcompIngresos = this.documentacion.compIngresos
+                    } else {
+                        this.compIngresos = this.documentacion.compIngresos
+                    }
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
         ObtieneDatosCliente(item) {
             this.$bvModal.show('modal-informacion-usuario');
             this.cliente = item
 
             this.saldo.usuario = this.cliente.usuario
             this.documentacion.usuario = this.cliente.usuario
+
+            this.TipoUsuario()
+
+            console.log(this.cliente)
 
             if (this.cliente.identificacion == null && this.cliente.compDomicilio == null || this.cliente.compIngresos == null) {
                 this.ObtieneDocumentacionCliente()
@@ -213,10 +309,40 @@ var vue2 = new Vue({
                         this.cliente.compDomicilio = response.data.data.data[0].compDomicilio
                         this.cliente.compIngresos = response.data.data.data[0].compIngresos
 
-                        this.documentacion.identificacion = response.data.data.data[0].identificacion
-                        this.documentacion.compDomicilio = response.data.data.data[0].compDomicilio
-                        this.documentacion.compIngresos = response.data.data.data[0].compIngresos
+                        //this.documentacion.identificacion = response.data.data.data[0].identificacion
+                        //this.documentacion.compDomicilio = response.data.data.data[0].compDomicilio
+                        //this.documentacion.compIngresos = response.data.data.data[0].compIngresos
+
+                        this.documentacion = response.data.data.data[0]
                     }
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
+        LlenarSolicitud() {
+            this.identificacion = ''
+            this.compDomicilio = ''
+            this.compIngresos = ''
+            this.PDFidentificacion = ''
+            this.PDFcompDomicilio = ''
+            this.PDFcompIngresos = ''
+            this.ObtieneDocumentacion()
+            this.$bvModal.show('modal-llenar-solicitud');
+        },
+        TipoUsuario() {
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "Sucursal": 1
+            }
+            http.postLoader('usuarios/tipo', datos).then(response => {
+
+                if (response.data.data.codigoError == 0) {
+                    this.usuario = response.data.data.data[0]
+
                 } else {
                     $.noticeError("ERROR " + response.data.data.mensajeBitacora)
                 }
@@ -267,50 +393,13 @@ var vue2 = new Vue({
 
         },
         RegistroBaja() {
-            var datos = {
-                "Usuario": this.cliente.usuario,
-                "Sucursal": 1,
-                "MotivoBaja": this.motivoBaja,
-
-            }
-            http.postLoader('usuarios/baja', datos).then(response => {
-                if (response.data.data.codigoError == 0) {
-
-                    $.noticeSuccess(response.data.data.mensajeBitacora)
-                    this.motivoBaja = ''
-                    this.$bvModal.hide('modal-baja-cliente');
-                    this.ObtieneClientesXTipo()
-
-                } else {
-                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
-                }
-            })
-                .catch(e => {
-                    console.log(e);
-                })
+            this.opSupervizada = 'B'
+            this.$bvModal.show('modal-operacion-supervizada');
         },
         DardeAlta() {
-            var datos = {
-                "Usuario": this.cliente.usuario,
-                "Sucursal": 1,
 
-            }
-            http.postLoader('usuarios/alta', datos).then(response => {
-                if (response.data.data.codigoError == 0) {
-
-                    $.noticeSuccess(response.data.data.mensajeBitacora)
-                    this.clienteBaja = []
-                    this.$bvModal.hide('modal-motivo-baja-cliente');
-                    this.ObtieneClientesXTipo()
-
-                } else {
-                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
-                }
-            })
-                .catch(e => {
-                    console.log(e);
-                })
-
+            this.opSupervizada = 'L'
+            this.$bvModal.show('modal-operacion-supervizada');
 
         },
         Autorizar(item) {
@@ -319,28 +408,8 @@ var vue2 = new Vue({
 
         },
         AceptarAutorizar() {
-
-            var datos = {
-                "Usuario": this.cliente.usuario,
-                "Sucursal": 1,
-                "MontoAutorizado": this.cliente.montoSolicitado,
-                "Responsable": localStorage.getItem('Usuario')
-
-            }
-            http.postLoader('usuarios/autorizar', datos).then(response => {
-                if (response.data.data.codigoError == 0) {
-
-                    $.noticeSuccess(response.data.data.mensajeBitacora)
-                    this.$bvModal.hide('modal-autorizar-credito');
-                    this.ObtieneClientesXTipo()
-
-                } else {
-                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
-                }
-            })
-                .catch(e => {
-                    console.log(e);
-                })
+            this.opSupervizada = 'A'
+            this.$bvModal.show('modal-operacion-supervizada');
 
         },
         MostrarCreditoAutorizado(item) {
@@ -413,10 +482,162 @@ var vue2 = new Vue({
                     console.log(e);
                 })
         },
-        GeneraSolicitud() {
+        DispersarCliente(item) {
+            this.$bvModal.show('modal-dispersar');
+            this.cliente = item
+        },
+        DispersarClienteModal() {
+            this.$bvModal.show('modal-dispersar-consulta');
+            this.cliente = item
+        },
+        AceptarDispersarClientes() {
+            this.opSupervizada = 'D'
+            this.$bvModal.show('modal-operacion-supervizada');
+        },
+        AutorizarOPSupervizada() {
 
+            this.operacion.Cliente = this.cliente.usuario
+            this.operacion.Operacion = this.opSupervizada
+
+            http.postLoader('usuarios/op/autorizar', this.operacion).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    if (this.opSupervizada == 'A') {
+                        this.operacionA();
+                    }
+                    if (this.opSupervizada == 'B') {
+                        this.operacionB();
+                    }
+                    if (this.opSupervizada == 'L') {
+                        this.operacionL();
+                    }
+
+                    if (this.opSupervizada == 'D') {
+                        this.operacionD();
+                    }
+                    this.$bvModal.hide('modal-operacion-supervizada');
+
+                    this.operacion.Autorizador = 'admin@finance'
+                    this.operacion.Sucursal = 1
+                    this.operacion.Responsable = localStorage.getItem('Usuario')
+                    this.operacion.Operacion = ''
+                    this.operacion.Password = ''
+                    this.operacion.Cliente = ''
+
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+
+
+
+        },
+        operacionA() {
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "Sucursal": 1,
+                "MontoAutorizado": this.cliente.montoSolicitado,
+                "Responsable": localStorage.getItem('Usuario')
+
+            }
+            http.postLoader('usuarios/autorizar', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    $.noticeSuccess(response.data.data.mensajeBitacora)
+                    this.$bvModal.hide('modal-autorizar-credito');
+                    this.ObtieneClientesXTipo()
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
+        operacionB() {
+
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "Sucursal": 1,
+                "MotivoBaja": this.motivoBaja,
+
+            }
+            http.postLoader('usuarios/baja', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    $.noticeSuccess(response.data.data.mensajeBitacora)
+                    this.motivoBaja = ''
+                    this.$bvModal.hide('modal-baja-cliente');
+                    this.ObtieneClientesXTipo()
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
+        operacionL() {
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "Sucursal": 1,
+
+            }
+            http.postLoader('usuarios/alta', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    $.noticeSuccess(response.data.data.mensajeBitacora)
+                    this.clienteBaja = []
+                    this.$bvModal.hide('modal-motivo-baja-cliente');
+                    this.ObtieneClientesXTipo()
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
+        operacionD() {
+
+            if (this.fechaDeposito == '') {
+                $.noticeAlert("Seleccione la fecha del primer depósito al cliente para continuar con su registro")
+            } else {
+                var datos = {
+                    "Usuario": this.cliente.usuario,
+                    "Sucursal": 1,
+                    "FechaDeposito": this.fechaDeposito,
+                    "Responsable": localStorage.getItem('Usuario')
+
+                }
+                http.postLoader('usuarios/dispersar', datos).then(response => {
+                    if (response.data.data.codigoError == 0) {
+
+                        $.noticeSuccess(response.data.data.mensajeBitacora)
+                        this.$bvModal.hide('modal-dispersar');
+                        this.ObtieneClientesXTipo()
+
+                    } else {
+                        $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                    }
+                })
+                    .catch(e => {
+                        console.log(e);
+                    })
+
+            }
+        },
+        GeneraSolicitud() {
+            this.documentacion.usuario = this.cliente.usuario
+            this.documentacion.sucursalID = 1
             http.postLoader('doc/consulta', this.documentacion).then(response => {
-                console.log(response)
                 if (response.data.data.data.length != 0) {
                     this.documentacion = response.data.data.data[0];
 
@@ -812,6 +1033,208 @@ var vue2 = new Vue({
                 .catch(e => {
                     console.log(e);
                 })
+        },
+        //manejo de imagenes
+        handleImage1(e) {
+            const selectedImage1 = e.target.files[0]; // get first file
+            this.identificacion = ""
+            this.PDFidentificacion = ""
+            this.createBase64Image1(selectedImage1)
+        },
+        handleImage2(e) {
+            const selectedImage2 = e.target.files[0]; // get first file
+            this.compDomicilio = ""
+            this.PDFcompDomicilio = ""
+            this.createBase64Image2(selectedImage2)
+        },
+        handleImage3(e) {
+            const selectedImage3 = e.target.files[0]; // get first file
+            this.compIngresos = ""
+            this.PDFcompIngresos = ""
+            this.createBase64Image3(selectedImage3)
+        },
+        createBase64Image1(fileObject) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+
+                if (fileObject.type == 'application/pdf') {
+                    this.PDFidentificacion = e.target.result;
+                    this.uploadImage(4);
+                } else {
+                    this.identificacion = e.target.result;
+                    this.uploadImage(1);
+                }
+
+            };
+            if (fileObject != '') {
+                reader.readAsDataURL(fileObject);
+            }
+        },
+        createBase64Image2(fileObject) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                if (fileObject.type == 'application/pdf') {
+                    this.PDFcompDomicilio = e.target.result;
+                    this.uploadImage(5);
+                } else {
+                    this.compDomicilio = e.target.result;
+                    this.uploadImage(2);
+                }
+            };
+            if (fileObject != '') {
+                reader.readAsDataURL(fileObject);
+            }
+        },
+        createBase64Image3(fileObject) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                if (fileObject.type == 'application/pdf') {
+                    this.PDFcompIngresos = e.target.result;
+                    this.uploadImage(6);
+                } else {
+                    this.compIngresos = e.target.result;
+                    this.uploadImage(3);
+                }
+            };
+            if (fileObject != '') {
+                reader.readAsDataURL(fileObject);
+            }
+        },
+        uploadImage(obj) {
+            if (obj == 1) {
+                const { image1 } = this.identificacion;
+                this.documentacion.identificacion = this.identificacion
+            }
+            if (obj == 2) {
+                const { image2 } = this.compDomicilio;
+                this.documentacion.compDomicilio = this.compDomicilio
+            }
+            if (obj == 3) {
+                const { image3 } = this.compIngresos;
+                this.documentacion.compIngresos = this.compIngresos
+            }
+            if (obj == 4) {
+                const { image4 } = this.PDFidentificacion;
+                this.documentacion.identificacion = this.PDFidentificacion
+            }
+            if (obj == 5) {
+                const { image5 } = this.PDFcompDomicilio;
+                this.documentacion.compDomicilio = this.PDFcompDomicilio
+            }
+            if (obj == 6) {
+                const { image6 } = this.PDFcompIngresos;
+                this.documentacion.compIngresos = this.PDFcompIngresos
+            }
+        },
+        calculaPagos() {
+            this.documentacion.valorXpago = (parseFloat(this.documentacion.montoSolicitado) * 0.5 + parseFloat(this.documentacion.montoSolicitado)) / this.numeroPagos
+            this.documentacion.totalPagar = this.numeroPagos * this.documentacion.valorXpago
+            this.documentacion.interesOrdinario = this.documentacion.totalPagar - this.documentacion.montoSolicitado
+        },
+        GuardarDocumentacion() {
+            this.estaGuardando = true
+            this.documentacion.usuario = this.cliente.usuario
+            http.postLoader('doc/guardar', this.documentacion).then(response => {
+
+                console.log(response.data.data)
+                if (response.data.data.codigoError == 0) {
+                    $.noticeSuccess(response.data.data.mensajeBitacora)
+                    this.estaGuardando = false
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                    this.estaGuardando = false
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                    this.estaGuardando = false
+                })
+        },
+
+        ModalRegistroClientes() {
+            this.$bvModal.show('modal-registro-clientes');
+        },
+
+        validaTelefono() {
+            if (this.registro.celular.length < 10) {
+                $.noticeAlert("Favor de verificar su teléfono de contacto")
+                this.registro.celular = ''
+            }
+        },
+        validaCurp() {
+            if (this.registro.curp.length < 18) {
+                $.noticeAlert("Favor de verificar su curp")
+                this.registro.curp = ''
+            } else {
+                if (!this.curpValida(this.registro.curp)) {
+                    $.noticeAlert("Favor de verificar su curp")
+                    this.registro.curp = ''
+                }
+            }
+        },
+        curpValida(curp) {
+            var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
+                validado = curp.match(re);
+
+            if (!validado)  //Coincide con el formato general?
+                return false;
+
+            //Validar que coincida el dígito verificador
+            function digitoVerificador(curp17) {
+                //Fuente https://consultas.curp.gob.mx/CurpSP/
+                var diccionario = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ",
+                    lngSuma = 0.0,
+                    lngDigito = 0.0;
+                for (var i = 0; i < 17; i++)
+                    lngSuma = lngSuma + diccionario.indexOf(curp17.charAt(i)) * (18 - i);
+                lngDigito = 10 - lngSuma % 10;
+                if (lngDigito == 10) return 0;
+                return lngDigito;
+            }
+
+            if (validado[2] != digitoVerificador(validado[1]))
+                return false;
+
+            return true; //Validado
+        },
+
+        GuardarCliente() {
+            http.postLoader('activation/usersincorreo', this.registro).then(response => {
+
+                if (response.data.data.codigoError == 0) {
+                    $.noticeSuccess(response.data.data.mensajeBitacora)
+                    this.limpiarCamposRegistro()
+                    this.$bvModal.hide('modal-registro-clientes');
+
+                } else {
+                    $.noticeError("ERROR " + response.data.message)
+                }
+            })
+                .catch(e => {
+                    this.limpiarCampos()
+                    $.noticeError("ERROR DE RED, COMPRUEBE SU CONEXION A INTERNET")
+                })
+        },
+        limpiarCamposRegistro() {
+
+            this.registro.iDUsuario = 0
+            this.registro.nombre = ''
+            this.registro.primerApellido = ''
+            this.registro.segundoApellido = ''
+            this.registro.celular = ''
+            this.registro.usuario = ''
+            this.registro.validaUsuario = ''
+            this.registro.contrasena = ''
+            this.registro.validaContrasena = ''
+            this.registro.fechaTermino = '20501231'
+            this.registro.quienAutoriza = 1
+            this.registro.correo = ''
+            this.registro.sucursalID = 1
+            this.registro.requiereToken = 1
+            this.registro.rolID = 0
+            this.registro.curp = ''
+
         },
     }
 });
