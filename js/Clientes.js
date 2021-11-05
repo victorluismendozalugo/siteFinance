@@ -176,6 +176,17 @@ var vue2 = new Vue({
             { value: 2, text: 'Invertir' },
             { value: 3, text: 'Solicitar un préstamo' }
         ],
+
+        //para la carga de solicitudes
+        PDFSolicitudFirmada: '',
+        solicitudes: {
+            sucursal: 1,
+            usuario: '',
+            solicitud: '',
+            responsable: localStorage.getItem('Usuario'),
+            fechaCarga: '',
+            estatus: ''
+        }
     },
     computed: {
         sortOptions() {
@@ -230,23 +241,6 @@ var vue2 = new Vue({
                     })
             }
         },
-        //ObtieneClientes() {
-        //    var datos = {
-        //        "Usuario": localStorage.getItem('Usuario'),
-        //        "SucursalID": 1
-        //    }
-        //    http.postLoader('doc/clientes/documentacion', datos).then(response => {
-        //        if (response.data.data.codigoError == 0) {
-        //            this.clientes = response.data.data.data
-
-        //        } else {
-        //            $.noticeError("ERROR " + response.data.data.mensajeBitacora)
-        //        }
-        //    })
-        //        .catch(e => {
-        //            console.log(e);
-        //        })
-        //},
         ObtieneDocumentacion() {
             var datos = {
                 "Usuario": this.cliente.usuario,
@@ -1236,6 +1230,63 @@ var vue2 = new Vue({
             this.registro.curp = ''
 
         },
+        CargarSolicitud(item) {
+            console.log(item)
+            this.solicitudes.usuario = item.usuario
+            this.cliente = item
+            this.$bvModal.show('modal-cargar-solicitud');
+
+        },
+        handleSolicitud(e) {
+            const solicitudCargada = e.target.files[0]; // get first file
+
+            this.convertirSolicitudBASE64(solicitudCargada)
+        },
+        convertirSolicitudBASE64(fileObject) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+
+                if (fileObject.type == 'application/pdf') {
+                    this.PDFSolicitudFirmada = e.target.result;
+                    this.uploadSolic()
+                }
+            };
+            if (fileObject != '') {
+                reader.readAsDataURL(fileObject);
+            }
+        },
+        uploadSolic(obj) {
+            const { solic } = this.PDFSolicitudFirmada;
+
+            this.solicitudes.solicitud = this.PDFSolicitudFirmada;
+        },
+        GuardarSolicitud() {
+
+            http.postLoader('doc/solicitudes/guardar', this.solicitudes).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    $.noticeSuccess(response.data.data.mensajeBitacora)
+
+                    this.$bvModal.hide('modal-cargar-solicitud');
+
+                    this.solicitudes.sucursal = 1
+                    this.solicitudes.usuario = ''
+                    this.solicitudes.solicitud = ''
+                    this.solicitudes.responsable = localStorage.getItem('Usuario')
+                    this.solicitudes.fechaCarga = ''
+                    this.solicitudes.estatus = ''
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
+        fileChange2(e) {
+            console.log(e)
+        }
     }
 });
 

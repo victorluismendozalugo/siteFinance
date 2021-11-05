@@ -122,6 +122,10 @@
                                             <i class="fas fa-upload">
                                             </i>
                                       </a>
+                                  <a class="btn btn-info btn-sm" href="#" @click="CargarSolicitud(data.item)">
+                                           <i class="fas fa-file-upload"></i>
+                                            </i>
+                                      </a>
                                
 
 <%--                                        <a class="btn btn-warning btn-sm" href="#" @click="DispersarCliente(data.item)" v-if="data.item.estatus == 'T' ">
@@ -932,6 +936,23 @@
 
                 <div class="modal-footer">
                     <b-button type="button" variant="info" @click="GuardarCliente()">Guardar
+                    </b-button>
+                </div>
+            </b-modal>
+
+                 <b-modal id="modal-cargar-solicitud" title="Cargar solicitud" size="lg" hide-footer>
+                <p>{{cliente.nombreCompleto}}</p>
+                <b>Seleccione el PDF de la solicitud para cargarlo:</b>
+                <div class="col-sm-4 col-xs-12">
+                       <input @change="handleSolicitud" class="custom-input btn btn-success col fileinput-button" type="file"
+                                accept="application/pdf" id="files8">
+                        </div>
+                     <br />
+                  <iframe :src="PDFSolicitudFirmada" frameborder="0" style="width:100%;"
+                    onload="this.height=$(window).height()-200;"></iframe>
+
+                <div class="modal-footer">
+                    <b-button type="button" variant="primary" @click="GuardarSolicitud">Guardar
                     </b-button>
                 </div>
             </b-modal>
