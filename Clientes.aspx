@@ -940,7 +940,7 @@
                 </div>
             </b-modal>
 
-                 <b-modal id="modal-cargar-solicitud" title="Cargar solicitud" size="lg" hide-footer>
+                 <b-modal id="modal-cargar-solicitud" title="Cargar solicitud" size="lg" hide-footer @hide="doSometing">
                 <p>{{cliente.nombreCompleto}}</p>
                 <b>Seleccione el PDF de la solicitud para cargarlo:</b>
                 <div class="col-sm-4 col-xs-12">
@@ -961,7 +961,7 @@
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Clientes.js?8.0.9"></script>
+    <script src="js/Clientes.js?9.5.0"></script>
     <style>
         .zoom {
             transition: transform.3s;

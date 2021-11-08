@@ -204,8 +204,12 @@ var vue2 = new Vue({
     mounted() {
         this.isBusy = false;
         //this.ObtieneClientes()
+
     },
     methods: {
+        doSometing() {
+            this.PDFSolicitudFirmada = ''
+        },
         toggleBusy() {
             this.isBusy = !this.isBusy
         },
@@ -399,7 +403,7 @@ var vue2 = new Vue({
         Autorizar(item) {
             this.$bvModal.show('modal-autorizar-credito');
             this.cliente = item
-
+            console.log(this.cliente)
         },
         AceptarAutorizar() {
             this.opSupervizada = 'A'
@@ -1231,11 +1235,10 @@ var vue2 = new Vue({
 
         },
         CargarSolicitud(item) {
-            console.log(item)
             this.solicitudes.usuario = item.usuario
             this.cliente = item
             this.$bvModal.show('modal-cargar-solicitud');
-
+            this.SolicitudCon()
         },
         handleSolicitud(e) {
             const solicitudCargada = e.target.files[0]; // get first file
@@ -1278,6 +1281,25 @@ var vue2 = new Vue({
 
                 } else {
                     $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
+        SolicitudCon() {
+
+            var datos = {
+                "Usuario": this.cliente.usuario,
+                "Sucursal": 1
+            }
+
+            http.postLoader('doc/solicitudes/consulta', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+                    if (response.data.data.data[0] != null) {
+                        this.PDFSolicitudFirmada = response.data.data.data[0].solicitud
+                        console.log(response.data.data.data[0].solicitud)
+                    }
                 }
             })
                 .catch(e => {
