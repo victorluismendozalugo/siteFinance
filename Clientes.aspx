@@ -85,15 +85,16 @@
                                             </i>
                                     </a>
                                 </span>    
+                                <span>
+                                       <a class="btn btn-default btn-sm" href="#"  @click="MostrarCreditoAutorizado()">
+                                        <i clas
+                                        </a>
+                        
+                                </span>
                                <span v-if="data.item.estatus == 'T' ">
                                      <a class="btn btn-warning btn-sm" href="#" @click="DispersarCliente(data.item)" v-if="data.item.estatus == 'T' ">
                                           <i class="fas fa-hand-holding-usd"></i>
                                       </a> 
-                                      <a class="btn btn-default btn-sm" href="#"  @click="MostrarCreditoAutorizado(data.item)">
-                                            <i class="fas fa-file-invoice-dollar">
-                                            </i>
-                                        </a>
-
 <%--                                        <a class="btn btn-danger btn-sm" href="#" @click="BajaCliente(data.item)">
                                             <i class="fas fa-user-times">
                                             </i>
@@ -124,17 +125,13 @@
                                       </a>
                                   <a class="btn btn-info btn-sm" href="#" @click="CargarSolicitud(data.item)">
                                            <i class="fas fa-file-upload"></i>
-                                            </i>
                                       </a>
                                
 
-<%--                                        <a class="btn btn-warning btn-sm" href="#" @click="DispersarCliente(data.item)" v-if="data.item.estatus == 'T' ">
+<%--                                 <a class="btn btn-warning btn-sm" href="#" @click="DispersarCliente(data.item)" v-if="data.item.estatus == 'T' ">
                                           <i class="fas fa-hand-holding-usd"></i>
                                         </a> 
-                                        <a class="btn btn-warning btn-sm" href="#" @click="DispersarClienteModal(data.item)" v-else-if="data.item.estatus == 'D' ">
-                                          <i class="fas fa-hand-holding-usd"></i>
-                                        </a>
-
+                                        <a class="btn btn-warning btn-sm" href="#" @click="DispersarClienteModal(data.item)" v-els</a>
                                 <a class="btn btn-success btn-sm" href="#" @click="Autorizar(data.item)"
                                             v-if="data.item.estatus == 'A' ">
                                             <i class="fas fa-check">
