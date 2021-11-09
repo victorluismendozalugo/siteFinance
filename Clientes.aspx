@@ -8,9 +8,6 @@
     <div id="vuePage">
         <div class="container">
             <template>
-
-
-
             <section class="content">
                 <div class="row">
                     <div class="col-md-3 col-xs-6">
@@ -90,10 +87,6 @@
                                      <a class="btn btn-warning btn-sm" href="#" @click="DispersarCliente(data.item)" v-if="data.item.estatus == 'T' ">
                                           <i class="fas fa-hand-holding-usd"></i>
                                       </a> 
-<%--                                        <a class="btn btn-danger btn-sm" href="#" @click="BajaCliente(data.item)">
-                                            <i class="fas fa-user-times">
-                                            </i>
-                                        </a>--%>
                                </span>
                                 <span v-if="data.item.estatus == 'D' ">
                                        <a class="btn btn-default btn-sm" href="#"  @click="Abonos(data.item)">
@@ -125,39 +118,7 @@
                                   <a class="btn btn-info btn-sm" href="#" @click="CargarSolicitud(data.item)">
                                            <i class="fas fa-file-upload"></i>
                                       </a>
-                               
-
-<%--                                 <a class="btn btn-warning btn-sm" href="#" @click="DispersarCliente(data.item)" v-if="data.item.estatus == 'T' ">
-                                          <i class="fas fa-hand-holding-usd"></i>
-                                        </a> 
-                                        <a class="btn btn-warning btn-sm" href="#" @click="DispersarClienteModal(data.item)" v-els</a>
-                                <a class="btn btn-success btn-sm" href="#" @click="Autorizar(data.item)"
-                                            v-if="data.item.estatus == 'A' ">
-                                            <i class="fas fa-check">
-                                            </i>
-                                        </a>
-                                        <a class="btn btn-default btn-sm" href="#"
-                                            @click="MostrarCreditoAutorizado(data.item)" v-if="data.item.estatus == 'T' ">
-                                            <i class="fas fa-file-invoice-dollar">
-                                            </i>
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#" @click="BajaCliente(data.item)"
-                                            v-if="data.item.estatus == 'A' ">
-                                            <i class="fas fa-user-times">
-                                            </i>
-                                        </a>
-                                        <a class="btn btn-info btn-sm" href="#" @click="MotivoBajaCliente(data.item)" v-else>
-                                            <i class="fas fa-user-times">
-                                            </i>
-                                        </a>
-                                        <a class="btn btn-primary btn-sm" href="#" @click="ObtieneDatosCliente(data.item)">
-                                            <i class="far fa-eye">
-                                            </i>
-                                        </a>
-                                        <a class="btn btn-info btn-sm" href="#" @click="CargarInformacion(data.item)">
-                                            <i class="fas fa-upload">
-                                            </i>
-                                        </a>--%>
+                              
                             </template>
                             <template v-slot:table-busy>
                                 <div class="text-center text-info my-2">
@@ -921,12 +882,7 @@
                                            </div>
 
                                 </div>
-                                <%--<p class="mb-0">
-                                    <a class="nav-link text-center" data-toggle="modal"
-                                        data-target="#solicitudCorreoModal" href="#" role="button">
-                                        No he recibido el correo
-                                    </a>
-                                </p>--%>
+                             
                             </div>
                         </div>
 
@@ -953,11 +909,55 @@
                 </div>
             </b-modal>
 
-           <b-modal id="modal-abonos-clientes" title="Abonos" size="lg" hide-footer>
-                <p>{{cliente.nombreCompleto}}</p>
-                <b>Información de abonos del clientes</b>
+           <b-modal id="modal-abonos-clientes" title="Abonos" size="lg" hide-footer no-close-on-backdrop>
+
+                 <div class="form-group row">
+
+                            <div class="col-sm">
+                                <p>{{cliente.nombreCompleto}}</p>
+                                <b>Información de abonos del clientes</b>
+                            </div>
+                             <label>Agregar abono</label>
+                            <div class="col-sm float-right">
+                                     <b-button type="button" variant="primary" @click="Abonar()"><i class="fas fa-hand-holding-usd"></i></b-button>
+                            </div>
+                        </div>
+             
+                          <b-table class="table table-striped table-responsive" id="tablaAbonos" hover width="100%" cellspacing="0" :items="abonos" :fields="fieldsTablaAbonos">
+                              <template v-slot:cell(montoAbonado)="data">
+                                        <small>
+                                            $ {{data.item.montoAbonado}}
+                                        </small>
+                            </template>
+                           <%-- <template v-slot:table-busy>
+                                <div class="text-center text-info my-2">
+                                    <b-spinner class="align-middle"></b-spinner>
+                                    <strong>Cargando clientes...</strong>
+                                </div>
+                            </template>--%>
+                        </b-table>
                
-               
+            </b-modal>
+
+             <b-modal id="modal-monto-abono" title="Abonos" size="lg" hide-footer no-close-on-backdrop>
+               <div class="form-group">
+                    <div class="row">
+                         <div class="col-md-3 col-xs-6">
+                                 <label>Monto del abono</label>
+                                     <b-form-input type="number" class="form-control" v-model="abono.montoAbonado"> </b-form-input>
+                           </div>         
+                          <div class="col-md-3 col-xs-6">
+                                <label>Fecha del abono</label>
+                                     <b-form-input type="date" class="form-control" v-model="abono.fechaAbono"></b-form-input>
+                          </div>
+                          <div class="col-md-3 col-xs-6">
+                              <label>Registrar</label>
+                              <br />
+                               <b-button type="button" variant="primary" @click="GuardarAbono()"><i class="far fa-save"></i></b-button>
+                          </div>
+                     </div>
+                </div>
+          <%--       {{abono}}--%>
             </b-modal>
 
 
@@ -965,13 +965,14 @@
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Clientes.js?9.5.0"></script>
+    <script src="js/Clientes.js?10.0.0"></script>
     <style>
         .zoom {
             transition: transform.3s;
             position: relative;
             z-index: 2;
         }
+
             .zoom:hover {
                 transform: scale(2.5);
                 /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */

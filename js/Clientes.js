@@ -111,6 +111,12 @@ var vue2 = new Vue({
             { key: 'porcentajeDoc', label: "% Documentación", sortable: true },
             { key: 'nombre', label: "Acciones", sortable: false },
         ],
+        fieldsTablaAbonos: [
+            { key: 'montoAbonado', label: "Monto abonado", sortable: true },
+            { key: 'numeroAbono', label: "Número de abono", sortable: true },
+            { key: 'fechaAbono', label: "Fecha", sortable: true },
+            { key: 'responsable', label: "Responsable", sortable: true },
+        ],
         filter: null,
         filterOn: ['nombreCompleto', 'estatusNombre'],
         perPage: 10,
@@ -186,6 +192,13 @@ var vue2 = new Vue({
             responsable: localStorage.getItem('Usuario'),
             fechaCarga: '',
             estatus: ''
+        },
+        abonos: [],
+        abono: {
+            cliente: '',
+            montoAbonado: 0,
+            fechaAbono: '',
+            responsable: ''
         }
     },
     computed: {
@@ -1149,11 +1162,9 @@ var vue2 = new Vue({
                     this.estaGuardando = false
                 })
         },
-
         ModalRegistroClientes() {
             this.$bvModal.show('modal-registro-clientes');
         },
-
         validaTelefono() {
             if (this.registro.celular.length < 10) {
                 $.noticeAlert("Favor de verificar su teléfono de contacto")
@@ -1196,7 +1207,6 @@ var vue2 = new Vue({
 
             return true; //Validado
         },
-
         GuardarCliente() {
             http.postLoader('activation/usersincorreo', this.registro).then(response => {
 
@@ -1312,6 +1322,51 @@ var vue2 = new Vue({
         Abonos(item) {
             this.cliente = item
             this.$bvModal.show('modal-abonos-clientes');
+            this.ObtieneAbonosCliente();
+        },
+        ObtieneAbonosCliente() {
+
+            var datos = {
+                "cliente": this.cliente.usuario
+            }
+
+            http.postLoader('creditos/abonos/consultar', datos).then(response => {
+                this.abonos = response.data.data.data
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
+        Abonar() {
+            this.$bvModal.show('modal-monto-abono');
+        },
+        GuardarAbono() {
+
+            this.abono.responsable = localStorage.getItem('Usuario')
+            this.abono.cliente = this.cliente.usuario
+
+            http.postLoader('creditos/abonos/guardar', this.abono).then(response => {
+                if (response.data.data.codigoError == 0) {
+
+                    $.noticeSuccess(response.data.data.mensajeBitacora)
+
+                    this.$bvModal.hide('modal-monto-abono');
+                    this.abonos = []
+
+                    this.abono.cliente = ''
+                    this.abono.montoAbonado = 0
+                    this.abono.fechaAbono = ''
+                    this.abono.responsable = ''
+
+                    this.ObtieneAbonosCliente()
+
+                } else {
+                    $.noticeError("ERROR " + response.data.data.mensajeBitacora)
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
 
         }
     }
