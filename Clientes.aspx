@@ -85,12 +85,7 @@
                                             </i>
                                     </a>
                                 </span>    
-                                <span>
-                                       <a class="btn btn-default btn-sm" href="#"  @click="MostrarCreditoAutorizado()">
-                                        <i clas
-                                        </a>
-                        
-                                </span>
+                               
                                <span v-if="data.item.estatus == 'T' ">
                                      <a class="btn btn-warning btn-sm" href="#" @click="DispersarCliente(data.item)" v-if="data.item.estatus == 'T' ">
                                           <i class="fas fa-hand-holding-usd"></i>
@@ -101,6 +96,10 @@
                                         </a>--%>
                                </span>
                                 <span v-if="data.item.estatus == 'D' ">
+                                       <a class="btn btn-default btn-sm" href="#"  @click="Abonos(data.item)">
+                                        <i class="fas fa-money-check-alt"></i>
+                                        </a>
+                        
                                         <a class="btn btn-default btn-sm" href="#"  @click="MostrarCreditoAutorizado(data.item)">
                                             <i class="fas fa-file-invoice-dollar">
                                             </i>
@@ -953,6 +952,14 @@
                     </b-button>
                 </div>
             </b-modal>
+
+           <b-modal id="modal-abonos-clientes" title="Abonos" size="lg" hide-footer>
+                <p>{{cliente.nombreCompleto}}</p>
+                <b>Información de abonos del clientes</b>
+               
+               
+            </b-modal>
+
 
         </template>
         </div>

@@ -1308,6 +1308,11 @@ var vue2 = new Vue({
         },
         fileChange2(e) {
             console.log(e)
+        },
+        Abonos(item) {
+            this.cliente = item
+            this.$bvModal.show('modal-abonos-clientes');
+
         }
     }
 });
