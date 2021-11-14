@@ -82,8 +82,6 @@ var vue2 = new Vue({
             totalPagar: 0,
             valorXpago: 0,
         },
-        numeroPagos: 10,
-        frecuenciaPagosCredito: 'SEMANAL',
         optionsFiltro: [
             { value: 0, text: 'Seleccione' },
             { value: 2, text: 'INVERSIONES' },
@@ -92,16 +90,6 @@ var vue2 = new Vue({
         tipoCliente: 0,
         motivoBaja: '',
         clienteBaja: [],
-        optionsMontoAutorizado: [
-            { value: 0, text: '0' },
-            { value: 1000, text: '1000' },
-            { value: 2000, text: '2000' },
-            { value: 2500, text: '2500' },
-            { value: 3000, text: '3000' },
-            { value: 3500, text: '3500' },
-            { value: 4000, text: '4000' },
-            { value: 5000, text: '5000' },
-        ],
         creditoCte: [],
         fields: [
             { key: 'usuarioID', label: "ID", sortable: true },
@@ -134,7 +122,7 @@ var vue2 = new Vue({
         },
         opSupervizada: '',
         usuario: [],
-        numeroPagos: 10,
+        numeroPagos: 12,
         frecuenciaPagosCredito: 'SEMANAL',
         optionsGenero: [
             { value: 'H', text: 'Hombre' },
@@ -148,6 +136,7 @@ var vue2 = new Vue({
             { value: 3000, text: '3000' },
             { value: 3500, text: '3500' },
             { value: 4000, text: '4000' },
+            { value: 4500, text: '4500' },
             { value: 5000, text: '5000' },
         ],
         identificacion: '',

@@ -485,7 +485,7 @@
         </template>
         </div>
     </div>
-    <script src="js/Documentacion.js?6.0.0"></script>
+    <script src="js/Documentacion.js?7.0.0"></script>
     <style type="text/css">
         * {
             margin: 0;
