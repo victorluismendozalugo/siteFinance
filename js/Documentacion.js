@@ -74,6 +74,7 @@ var vue2 = new Vue({
             interesOrdinario: 0,
             totalPagar: 0,
             valorXpago: 0,
+            verificador: 0
         },
         numeroPagos: 12,
         frecuenciaPagosCredito: 'SEMANAL',
@@ -99,8 +100,13 @@ var vue2 = new Vue({
         PDFcompDomicilio: '',
         PDFcompIngresos: '',
         usuario: [],
-        estaGuardando: false
-
+        estaGuardando: false,
+        optionsVerificadores: [
+            { value: 'SELECCIONE UN VERIFICADOR', text: 'SELECCIONE UN VERIFICADOR' },
+            { value: 'JORGE JESUS LEYVA RUELAS', text: 'JORGE JESUS LEYVA RUELAS' },
+            { value: 'ARMANDO VEGA ELIZALDE', text: 'ARMANDO VEGA ELIZALDE' },
+            { value: 'EMPRESA', text: 'EMPRESA' }
+        ],
     },
     mounted() {
         this.TipoUsuario()
@@ -295,6 +301,12 @@ var vue2 = new Vue({
 
             //rectangulo verificador
             doc.text(10, 41, 'Nombre del Verificador:')
+            if (this.documentacion.verificador != 'SELECCIONE UN VERIFICADOR') {
+                doc.text(10, 44, this.documentacion.verificador)
+            } else {
+                doc.text(10, 44, '')
+            }
+        
             doc.rect(10, 39, 95, 6)
             //rectangulo ciudad y estado
             doc.text(105, 41, 'Ciudad y Estado:')

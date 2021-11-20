@@ -81,6 +81,7 @@ var vue2 = new Vue({
             interesOrdinario: 0,
             totalPagar: 0,
             valorXpago: 0,
+            verificador: ''
         },
         optionsFiltro: [
             { value: 0, text: 'Seleccione' },
@@ -124,6 +125,12 @@ var vue2 = new Vue({
         usuario: [],
         numeroPagos: 12,
         frecuenciaPagosCredito: 'SEMANAL',
+        optionsVerificadores: [
+            { value: 'SELECCIONE UN VERIFICADOR', text: 'SELECCIONE UN VERIFICADOR' },
+            { value: 'JORGE JESUS LEYVA RUELAS', text: 'JORGE JESUS LEYVA RUELAS' },
+            { value: 'ARMANDO VEGA ELIZALDE', text: 'ARMANDO VEGA ELIZALDE' },
+            { value: 'EMPRESA', text: 'EMPRESA' }
+        ],
         optionsGenero: [
             { value: 'H', text: 'Hombre' },
             { value: 'M', text: 'Mujer' }
@@ -661,7 +668,13 @@ var vue2 = new Vue({
                     doc.rect(10, 27, 140, 12)
 
                     //rectangulo verificador
+                    //rectangulo verificador
                     doc.text(10, 41, 'Nombre del Verificador:')
+                    if (this.documentacion.verificador != 'SELECCIONE UN VERIFICADOR') {
+                        doc.text(10, 44, this.documentacion.verificador)
+                    } else {
+                        doc.text(10, 44, '')
+                    }
                     doc.rect(10, 39, 95, 6)
                     //rectangulo ciudad y estado
                     doc.text(105, 41, 'Ciudad y Estado:')

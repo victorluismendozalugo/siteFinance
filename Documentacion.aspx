@@ -14,6 +14,15 @@
                     <h3 class="card-title" v-else>Datos del cliente</h3>
                 </div>
                 <div class="card-body">
+
+                     <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <label>Nombre del verificador</label>
+                            <b-form-select class="form-control" v-model="documentacion.verificador" :options="optionsVerificadores">
+                        </b-form-select>
+                        </div>
+                    </div>
+
                     <div class="row">
                          <div class="col-md-3 col-xs-6">
                           <label>Nombre</label>
@@ -485,7 +494,7 @@
         </template>
         </div>
     </div>
-    <script src="js/Documentacion.js?7.0.0"></script>
+    <script src="js/Documentacion.js?10.0.0"></script>
     <style type="text/css">
         * {
             margin: 0;

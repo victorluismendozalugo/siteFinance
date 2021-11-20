@@ -353,13 +353,22 @@
 
             <b-modal id="modal-llenar-solicitud" title="Operación supervizada" size="xl" hide-footer data-backdrop="static" data-keyboard="false">
                           <template>
-
              <div class="card card-info">
                 <div class="card-header">
                     <h3 class="card-title" v-if="usuario.tipoUsuario == 'PRESTAMO'">Datos del acreditado</h3>
                     <h3 class="card-title" v-else>Datos del cliente</h3>
                 </div>
                 <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <label>Nombre del verificador</label>
+                            <b-form-select class="form-control" v-model="documentacion.verificador" :options="optionsVerificadores">
+                        </b-form-select>
+                        </div>
+                    </div>
+
+
                     <div class="row">
                          <div class="col-md-3 col-xs-6">
                           <label>Nombre</label>
@@ -965,7 +974,7 @@
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Clientes.js?11.5.0"></script>
+    <script src="js/Clientes.js?10.0.0"></script>
     <style>
         .zoom {
             transition: transform.3s;
