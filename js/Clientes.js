@@ -296,11 +296,9 @@ var vue2 = new Vue({
 
             this.TipoUsuario()
 
-            console.log(this.cliente)
-
-            if (this.cliente.identificacion == null && this.cliente.compDomicilio == null || this.cliente.compIngresos == null) {
+            //if (this.cliente.identificacion == null && this.cliente.compDomicilio == null || this.cliente.compIngresos == null) {
                 this.ObtieneDocumentacionCliente()
-            }
+            //}
         },
         ObtieneDocumentacionCliente() {
             var datos = {

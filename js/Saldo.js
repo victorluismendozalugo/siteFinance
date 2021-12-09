@@ -121,6 +121,33 @@ var vue2 = new Vue({
                         //esto es para el tipo usuario de préstamos
                     }
 
+
+                    //aqui tomamos la tabla
+                    var tabla = $('#wrapper tr') //+ tabla[i].cells[1].innerHTML +
+                    var doc = ""
+                    for (var i = 0; i < tabla.length; i++) {
+
+                        doc += "<div class='col-lg-3 col-6'>"
+                        doc += "<div class='small-box bg-info'>"
+                        doc += "<div class='inner'>"
+                        doc += "<h3>150</h3>"
+                        doc += "<p>New Orders</p>"
+                        doc += "</div>"
+                        doc += "<div class='icon'>"
+                        doc += "<i class='ion ion-bag'></i>"
+                        doc += "</div>"
+                        doc += "<a href='#' class='small-box-footer'>More info <i class='fas fa-arrow-circle-right'></i></a>"
+                        doc += "</div>"
+                        doc += "</div>"
+                    }
+
+                    $('#tabla').html("")
+                    $('#tabla').append("<div class='row'>")
+                    $('#tabla').append(doc)
+                    $('#tabla').append("</div>")
+
+
+
                 } else {
                     $.noticeError("ERROR " + response.data.data.mensajeBitacora);
                 }

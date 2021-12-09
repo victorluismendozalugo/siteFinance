@@ -783,8 +783,7 @@
 
                         <div class="col-sm-4 col-xs-12">
                             <label for="files1" class="custom-input btn btn-success col fileinput-button"><i
-                                    class="fas fa-upload"></i>&nbsp; Cargar
-                                identificación</label>
+                                    class="fas fa-upload"></i>&nbsp; Cargar foto de cliente con pagaré</label>
                             <input @change="handleImage1" class="custom-input btn btn-success col fileinput-button" type="file"
                                 accept="image/*,application/pdf" style="visibility:hidden;" id="files1">
                             <img class="imgCargas" :src="identificacion" alt="" style="width:100%; max-width:150px;">
@@ -795,8 +794,7 @@
 
                        <div class="col-sm-4 col-xs-12">
                             <label for="files2" class="custom-input btn btn-success col fileinput-button"><i
-                                    class="fas fa-upload"></i>&nbsp; Cargar
-                                comprobante de domicilio</label>
+                                    class="fas fa-upload"></i>&nbsp; Cargar garantia 1 </label>
                             <input @change="handleImage2" class="custom-input btn btn-success col fileinput-button" type="file"
                                 accept="image/*,application/pdf" style="visibility:hidden;" id="files2">
                             <img class="imgCargas" :src="compDomicilio" alt="" style="width:100%; max-width:150px;">
@@ -807,8 +805,7 @@
 
                         <div class="col-sm-4 col-xs-12" v-if="usuario.tipoUsuario == 'PRESTAMO'">
                             <label for="files3" class="custom-input btn btn-success col fileinput-button"><i
-                                    class="fas fa-upload"></i>&nbsp; Cargar
-                                comprobante de ingresos</label>
+                                    class="fas fa-upload"></i>&nbsp; Cargar garantia 2 </label>
                             <input @change="handleImage3" class="custom-input btn btn-success col fileinput-button" type="file"
                                 accept="image/*,application/pdf" style="visibility:hidden;" id="files3">
                             <img class="imgCargas" :src="compIngresos" alt="" style="width:100%; max-width:150px;">
@@ -974,7 +971,7 @@
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Clientes.js?10.0.0"></script>
+    <script src="js/Clientes.js?11.0.0"></script>
     <style>
         .zoom {
             transition: transform.3s;

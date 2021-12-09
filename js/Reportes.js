@@ -49,11 +49,13 @@ var UsuariosReporte = function () {
                     { data: "estatusNombre" },
                     { data: "tipoUsuario" },
                     { data: "montoSolicitado" },
+                    { data: "valorXpago" },
                     { data: "totalPagar" },
                     { data: "fechaAutorizacion" },
                     { data: "fechaDeposito" },
                     { data: "fechaUltimoAbono" },
                     { data: "ultimoAbono" },
+                    { data: "verificador" }
                 ],
                 //"columnDefs": [
                 //    {

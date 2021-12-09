@@ -234,6 +234,6 @@
     <script src="js/libs/jquery.blockUI.js?1.1.0"></script>
     <script src="js/libs/toastr.min.js?1.1.0"></script>
     <script src="js/libs/jquery.blockUI.messages.js?1.1.0"></script>
-    <script src="js/Login.js?6.5.0"></script>
+    <script src="js/Login.js?7.0.0"></script>
 </body>
 </html>

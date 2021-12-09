@@ -10,18 +10,18 @@
     <link href="js/libs/DataTables/Buttons-1.5.6/css/buttons.dataTables.min.css" rel="stylesheet" />
     <%-- para mostrar los botones--%>
     <style>
- div.dt-top-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-}
+        div.dt-top-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
 
-div.dt-center-in-div {
-  margin: 0 auto;
-}
+        div.dt-center-in-div {
+            margin: 0 auto;
+        }
 
-div.dt-filter-spacer {
-  margin: 10px 0;
-}
+        div.dt-filter-spacer {
+            margin: 10px 0;
+        }
     </style>
 
     <div class="col">
@@ -44,11 +44,13 @@ div.dt-filter-spacer {
                                         <th>Estatus</th>
                                         <th>Tipo</th>
                                         <th>Monto Solicitado</th>
+                                        <th>Pago semanal</th>
                                         <th>Total Pagar</th>
                                         <th>Fec. Autorizacion</th>
                                         <th>Fec. Deposito</th>
                                         <th>Fec. UltimoAbono</th>
                                         <th>Ultimo Abono</th>
+                                        <th>Verificador</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -60,11 +62,13 @@ div.dt-filter-spacer {
                                         <th>Estatus</th>
                                         <th>Tipo</th>
                                         <th>Monto Solicitado</th>
+                                        <th>Pago semanal</th>
                                         <th>Total Pagar</th>
                                         <th>Fec. Autorizacion</th>
                                         <th>Fec. Deposito</th>
                                         <th>Fec. UltimoAbono</th>
                                         <th>Ultimo Abono</th>
+                                        <th>Verificador</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -94,5 +98,5 @@ div.dt-filter-spacer {
     <%-- para mostrar los botones--%>
 
     <script src="js/libs/DataTables/Select-1.3.0/js/dataTables.select.min.js" defer></script>
-    <script src="js/Reportes.js?1.0.0"></script>
+    <script src="js/Reportes.js?5.0.0"></script>
 </asp:Content>
