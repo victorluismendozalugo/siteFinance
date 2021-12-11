@@ -88,6 +88,7 @@
   <ItemGroup>
     <Content Include="CargaInformacion.aspx" />
     <Content Include="Clientes.aspx" />
+    <Content Include="Cobranza.aspx" />
     <Content Include="css\imagen.css" />
     <Content Include="Documentacion.aspx" />
     <Content Include="favicon.ico" />
@@ -99,6 +100,7 @@
     <Content Include="Instrucciones1.aspx" />
     <Content Include="js\CargaInformacion.js" />
     <Content Include="js\Clientes.js" />
+    <Content Include="js\Cobranza.js" />
     <Content Include="js\Default.js" />
     <Content Include="js\Documentacion.js" />
     <Content Include="js\Instrucciones.js" />
@@ -2268,6 +2270,13 @@
     </Compile>
     <Compile Include="Clientes.aspx.designer.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cobranza.aspx.cs">
+      <DependentUpon>Cobranza.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cobranza.aspx.designer.cs">
+      <DependentUpon>Cobranza.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
