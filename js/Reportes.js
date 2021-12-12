@@ -14,8 +14,7 @@ var UsuariosReporte = function () {
         if (response.data.data.codigoError == 0) {
             var datos = response.data.data.data
 
-            console.log(datos)
-
+            $("#dataTable").dataTable().fnDestroy();
             $('#dataTable').DataTable({
                 "paging": true,
                 //dom: 'lBrtip', //si se activa esta opción se muestran los botones

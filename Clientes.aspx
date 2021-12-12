@@ -363,8 +363,9 @@
                     <div class="row">
                         <div class="col-md-6 col-xs-6">
                             <label>Nombre del verificador</label>
-                            <b-form-select class="form-control" v-model="documentacion.verificador" :options="optionsVerificadores">
-                        </b-form-select>
+                             <b-form-select class="form-control" v-model="documentacion.verificador">
+                                    <option v-for="item in optionsVerificadores" :value="item.iDVerificador">{{item.nombreCompleto}}</option>
+                             </b-form-select>
                         </div>
                     </div>
 
@@ -971,7 +972,7 @@
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Clientes.js?11.0.0"></script>
+    <script src="js/Clientes.js?12.0.0"></script>
     <style>
         .zoom {
             transition: transform.3s;

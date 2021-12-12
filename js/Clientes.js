@@ -81,7 +81,7 @@ var vue2 = new Vue({
             interesOrdinario: 0,
             totalPagar: 0,
             valorXpago: 0,
-            verificador: ''
+            verificador: 0
         },
         optionsFiltro: [
             { value: 0, text: 'Seleccione' },
@@ -125,12 +125,7 @@ var vue2 = new Vue({
         usuario: [],
         numeroPagos: 12,
         frecuenciaPagosCredito: 'SEMANAL',
-        optionsVerificadores: [
-            { value: 'SELECCIONE UN VERIFICADOR', text: 'SELECCIONE UN VERIFICADOR' },
-            { value: 'JORGE JESUS LEYVA RUELAS', text: 'JORGE JESUS LEYVA RUELAS' },
-            { value: 'ARMANDO VEGA ELIZALDE', text: 'ARMANDO VEGA ELIZALDE' },
-            { value: 'EMPRESA', text: 'EMPRESA' }
-        ],
+        optionsVerificadores: [],
         optionsGenero: [
             { value: 'H', text: 'Hombre' },
             { value: 'M', text: 'Mujer' }
@@ -213,6 +208,7 @@ var vue2 = new Vue({
     mounted() {
         this.isBusy = false;
         //this.ObtieneClientes()
+        this.ObtieneVerificadores()
 
     },
     methods: {
@@ -297,7 +293,7 @@ var vue2 = new Vue({
             this.TipoUsuario()
 
             //if (this.cliente.identificacion == null && this.cliente.compDomicilio == null || this.cliente.compIngresos == null) {
-                this.ObtieneDocumentacionCliente()
+            this.ObtieneDocumentacionCliente()
             //}
         },
         ObtieneDocumentacionCliente() {
@@ -668,11 +664,12 @@ var vue2 = new Vue({
                     //rectangulo verificador
                     //rectangulo verificador
                     doc.text(10, 41, 'Nombre del Verificador:')
-                    if (this.documentacion.verificador != 'SELECCIONE UN VERIFICADOR') {
-                        doc.text(10, 44, this.documentacion.verificador)
-                    } else {
+                    if (this.documentacion.verificador == 0) {
                         doc.text(10, 44, '')
+                    } else {
+                        doc.text(10, 44, optionVerificador.find(x => x.iDVerificador == this.documentacion.verificador).nombreCompleto)
                     }
+
                     doc.rect(10, 39, 95, 6)
                     //rectangulo ciudad y estado
                     doc.text(105, 41, 'Ciudad y Estado:')
@@ -1368,13 +1365,26 @@ var vue2 = new Vue({
                     console.log(e);
                 })
 
-        }
+        },
+        ObtieneVerificadores() {
+            var datos = {
+                "IDVerificador": 0,
+                "IDSucursal": 1
+            }
+            http.postLoader('verificadores/consulta', datos).then(response => {
+                if (response.data.data.codigoError == 0) {
+                    this.optionsVerificadores = response.data.data.data;
+                    optionVerificador = this.optionsVerificadores
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        },
     }
 });
 
-
-
-
+var optionVerificador;
 //fileChange(e) {
 //    //console.log(e.srcElement.files[0])
 

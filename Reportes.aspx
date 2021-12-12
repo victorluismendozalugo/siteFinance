@@ -98,5 +98,5 @@
     <%-- para mostrar los botones--%>
 
     <script src="js/libs/DataTables/Select-1.3.0/js/dataTables.select.min.js" defer></script>
-    <script src="js/Reportes.js?5.0.0"></script>
+    <script src="js/Reportes.js?13.0.0"></script>
 </asp:Content>
