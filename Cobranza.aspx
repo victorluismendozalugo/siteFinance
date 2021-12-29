@@ -126,8 +126,47 @@
                                                 </div>
                                             </div>
                                         </b-tab>
-                                        <b-tab title="Tab 2">
-                                            <b-card-text>Saldos vencidos</b-card-text>
+                                        <b-tab title="Saldos vencidos">
+                                             <div class="row">
+                                                <div class="card-body">
+                                                    <div class="dataTables_wrapper dt-bootstrap4">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 table-responsive">
+                                                                <table class="demo display dataTable table-striped"
+                                                                    id="dataTablePagosVencidos"
+                                                                    style="width: 100%; font-size: 85%;">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Semana</th>
+                                                                            <th>Fecha sugerida abono</th>
+                                                                            <th>Pago requerido</th>
+                                                                            <th>Saldo vencido</th>
+                                                                            <th>Saldo actual</th>
+                                                                            <th># Abono</th>
+                                                                            <th>Fecha Abono</th>
+                                                                            <th>Monto abonado</th>
+                                                                            <th>Saldo restante</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tfoot>
+                                                                        <tr>
+                                                                            <th>Semana</th>
+                                                                            <th>Fecha sugerida abono</th>
+                                                                            <th>Pago requerido</th>
+                                                                            <th>Saldo vencido</th>
+                                                                            <th>Saldo actual</th>
+                                                                            <th># Abono</th>
+                                                                            <th>Fecha Abono</th>
+                                                                            <th>Monto abonado</th>
+                                                                            <th>Saldo restante</th>
+                                                                        </tr>
+                                                                    </tfoot>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </b-tab>
                                     </b-tabs>
                                 </b-card>
@@ -163,5 +202,5 @@
 <%-- para mostrar los botones--%>
 
 <script src="js/libs/DataTables/Select-1.3.0/js/dataTables.select.min.js" defer></script>
-<script src="js/Cobranza.js?16.0.0"></script>
+<script src="js/Cobranza.js?17.0.0"></script>
 </asp:Content>
