@@ -63,6 +63,7 @@
                                                         <th>Pagos realizados</th>
                                                         <th>Total de pagos</th>
                                                         <th>Fecha inicio del credito</th>
+                                                        <th>Vencido</th>
                                                     </tr>
                                                 </thead>
                                                 <tfoot>
@@ -77,6 +78,7 @@
                                                         <th>Pagos realizados</th>
                                                         <th>Total de pagos</th>
                                                         <th>Fecha inicio del credito</th>
+                                                        <th>Vencido</th>
                                                     </tr>
                                                 </tfoot>
                                             </table>
@@ -202,5 +204,5 @@
 <%-- para mostrar los botones--%>
 
 <script src="js/libs/DataTables/Select-1.3.0/js/dataTables.select.min.js" defer></script>
-<script src="js/Cobranza.js?17.0.0"></script>
+<script src="js/Cobranza.js?20.0.0"></script>
 </asp:Content>
