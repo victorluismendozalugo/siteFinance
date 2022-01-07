@@ -79,7 +79,8 @@ var vue2 = new Vue({
                             { data: "ultimoAbono" },
                             { data: "numeroPagos" },
                             { data: "totalPagos" },
-                            { data: "fechaDeposito" }
+                            { data: "fechaDeposito" },
+                            { data: "vencido"},
                         ],
                         "columnDefs": [
                             { "width": "25%", "targets": 1 }

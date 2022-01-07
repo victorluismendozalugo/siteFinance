@@ -58,6 +58,8 @@
                             :items="clientes" :fields="fields" :filter="filter"
                             :filter-Included-Fields="filterOn" @filtered="onFiltered" @row-clicked="editarRegistro"
                             :per-page="perPage" :current-page="currentPage" :busy="isBusy">
+                            <template v-slot:cell(usuarioID)="data">
+                            </template>    
                             <template v-slot:cell(nombreCompleto)="data">
                                  <a>{{data.item.nombreCompleto}}</a>
                                         <br />
@@ -753,8 +755,10 @@
                      
                          <div class="col-sm-4 col-xs-8">
                            <label>Número de pagos</label>
-                       <input type="number" class="form-control" v-model="numeroPagos"
-                              readonly />
+                      <%-- <input type="number" class="form-control" v-model="numeroPagos"
+                              readonly />--%>
+                        <b-form-select class="form-control" v-model="documentacion.numeroPagos" :options="optionsNumeroPagos" @change="calculaPagos">
+                        </b-form-select>
                         </div>
 
                          <div class="col-sm-4 col-xs-8">
@@ -972,7 +976,7 @@
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Clientes.js?12.0.0"></script>
+    <script src="js/Clientes.js?18.0.0"></script>
     <style>
         .zoom {
             transition: transform.3s;
