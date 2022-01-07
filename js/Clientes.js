@@ -81,7 +81,8 @@ var vue2 = new Vue({
             interesOrdinario: 0,
             totalPagar: 0,
             valorXpago: 0,
-            verificador: 0
+            verificador: 0,
+            numeroPagos: 0
         },
         optionsFiltro: [
             { value: 0, text: 'Seleccione' },
@@ -93,7 +94,7 @@ var vue2 = new Vue({
         clienteBaja: [],
         creditoCte: [],
         fields: [
-            { key: 'usuarioID', label: "ID", sortable: true },
+            { key: 'usuarioID', label: "", visible: false },
             { key: 'nombreCompleto', label: "Nombre", sortable: true },
             { key: 'fechaRegistro', label: "Fecha registro", sortable: true },
             { key: 'estatusNombre', label: "Estatus", sortable: true },
@@ -123,7 +124,7 @@ var vue2 = new Vue({
         },
         opSupervizada: '',
         usuario: [],
-        numeroPagos: 12,
+        //numeroPagos: 12,
         frecuenciaPagosCredito: 'SEMANAL',
         optionsVerificadores: [],
         optionsGenero: [
@@ -140,6 +141,11 @@ var vue2 = new Vue({
             { value: 4000, text: '4000' },
             { value: 4500, text: '4500' },
             { value: 5000, text: '5000' },
+        ],
+        optionsNumeroPagos: [
+            { value: 6, text: '6' },
+            { value: 12, text: '12' },
+            { value: 18, text: '18' }
         ],
         identificacion: '',
         compDomicilio: '',
@@ -998,7 +1004,7 @@ var vue2 = new Vue({
                         doc.rect(10, 189, 190, 6)
                         doc.setFontSize(8)
                         doc.text(10, 191, 'Número de pagos')
-                        doc.text(15, 194, String(this.numeroPagos))
+                        doc.text(15, 194, String(this.documentacion.numeroPagos))
                         doc.text(75, 191, 'Frecuencia de pago')
                         doc.text(80, 194, this.frecuenciaPagosCredito)
                         doc.text(140, 191, 'Valor de cada pago')
@@ -1135,8 +1141,8 @@ var vue2 = new Vue({
             }
         },
         calculaPagos() {
-            this.documentacion.valorXpago = (parseFloat(this.documentacion.montoSolicitado) * 0.5 + parseFloat(this.documentacion.montoSolicitado)) / this.numeroPagos
-            this.documentacion.totalPagar = this.numeroPagos * this.documentacion.valorXpago
+            this.documentacion.valorXpago = (parseFloat(this.documentacion.montoSolicitado) * 0.5 + parseFloat(this.documentacion.montoSolicitado)) / this.documentacion.numeroPagos
+            this.documentacion.totalPagar = this.documentacion.numeroPagos * this.documentacion.valorXpago
             this.documentacion.interesOrdinario = this.documentacion.totalPagar - this.documentacion.montoSolicitado
         },
         GuardarDocumentacion() {
