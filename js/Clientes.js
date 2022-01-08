@@ -143,9 +143,9 @@ var vue2 = new Vue({
             { value: 5000, text: '5000' },
         ],
         optionsNumeroPagos: [
-            { value: 6, text: '6' },
+            { value: 8, text: '8' },
             { value: 12, text: '12' },
-            { value: 18, text: '18' }
+            { value: 16, text: '16' }
         ],
         identificacion: '',
         compDomicilio: '',
@@ -1141,9 +1141,12 @@ var vue2 = new Vue({
             }
         },
         calculaPagos() {
-            this.documentacion.valorXpago = (parseFloat(this.documentacion.montoSolicitado) * 0.5 + parseFloat(this.documentacion.montoSolicitado)) / this.documentacion.numeroPagos
-            this.documentacion.totalPagar = this.documentacion.numeroPagos * this.documentacion.valorXpago
+
+
+            this.documentacion.valorXpago = ((this.documentacion.numeroPagos * parseFloat(0.0375) * parseFloat(this.documentacion.montoSolicitado)) + parseFloat(this.documentacion.montoSolicitado)) / this.documentacion.numeroPagos
+            this.documentacion.totalPagar = (this.documentacion.numeroPagos * this.documentacion.valorXpago)
             this.documentacion.interesOrdinario = this.documentacion.totalPagar - this.documentacion.montoSolicitado
+            this.documentacion.valorXpago = Math.ceil(this.documentacion.valorXpago)
         },
         GuardarDocumentacion() {
             this.estaGuardando = true
