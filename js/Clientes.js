@@ -265,7 +265,6 @@ var vue2 = new Vue({
                 if (response.data.data.data.length != 0) {
                     this.documentacion = response.data.data.data[0];
 
-
                     if (this.documentacion.identificacion.split(';')[0] == "data:application/pdf") {
                         this.PDFidentificacion = this.documentacion.identificacion
                     } else {
@@ -1141,8 +1140,6 @@ var vue2 = new Vue({
             }
         },
         calculaPagos() {
-
-
             this.documentacion.valorXpago = ((this.documentacion.numeroPagos * parseFloat(0.0375) * parseFloat(this.documentacion.montoSolicitado)) + parseFloat(this.documentacion.montoSolicitado)) / this.documentacion.numeroPagos
             this.documentacion.totalPagar = (this.documentacion.numeroPagos * this.documentacion.valorXpago)
             this.documentacion.interesOrdinario = this.documentacion.totalPagar - this.documentacion.montoSolicitado

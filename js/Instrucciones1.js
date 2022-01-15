@@ -4,10 +4,11 @@
         notificacion: {
             sucursal: 1,
             remitente: localStorage.getItem('Usuario'),
-            receptor: 'vi@finance',
+            receptor: 'admin@finance',
             previa: '', //vista previa del texto
             texto: '', //texto completo
-            imagen: ''
+            imagen: '',
+            monto: 0
         }
     },
     computed: {
@@ -18,7 +19,7 @@
     methods: {
         enviarNotificacion() {
             this.notificacion.previa = 'Notif. Retiro'
-            this.notificacion.texto = "Notificación de retiro de cuenta de inversión, cliente : " + localStorage.getItem('Usuario')
+            this.notificacion.texto = "Notificación de retiro de cuenta de inversión, cliente : " + localStorage.getItem('NombreUsuario') + ", por el monto de: $" + String(this.notificacion.monto)
 
             http.postLoader('notify/enviar', this.notificacion).then(response => {
 
@@ -32,6 +33,11 @@
                 .catch(e => {
                     console.log(e);
                 })
+        },
+        notificacionRetiroModal() {
+
+            $('#modalNotificacionRetiro').modal('show')
+
         }
     }
 });

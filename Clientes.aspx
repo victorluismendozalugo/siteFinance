@@ -976,7 +976,7 @@
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Clientes.js?18.0.0"></script>
+    <script src="js/Clientes.js?19.0.0"></script>
     <style>
         .zoom {
             transition: transform.3s;

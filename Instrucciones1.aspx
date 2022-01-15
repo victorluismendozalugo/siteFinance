@@ -16,17 +16,19 @@
               <div class="card-header d-flex p-0">
                 <h3 class="card-title p-3">Si desea realizar un retiro o invertir nuevamente en su cuenta favor de notificarlo mediante el botón Enviar notificación situado en la parte de abajo de esta pantalla</h3>
                 <ul class="nav ml-auto p-2">
-                  <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Retiro</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab"></a></li>
                   <%--<li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Movimientos</a></li>--%>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
                   <div class="tab-pane active" id="tab_1">
-                      <P><b>OXXO:</b></P>
-                      <P><b>BANCO:</b></P>
-                      <P><b>SPEI:</b></P>
+                      <P><b>BANCO: BBVA</b></P>
+                      <P><b>BENEFICIARIO: PRESTA STAR-Z SAPI DE CV</b></P>
+                      <P><b>CLABE: 012 730 00117852487 2</b></P>
+                      <P><b>CUENTA: 011 785 2487</b></P>
                   </div>
+
                   <!-- /.tab-pane -->
                   <div class="tab-pane" id="tab_2">
                  <%--   The European languages are members of the same family. Their separate existence is a myth.
@@ -63,9 +65,9 @@
                  <div class="card-body">
                 <div class="tab-content">
                   <div class="tab-pane active">
-                      <P><b>Notificar al ejecutivo</b></P>
+                      <P><b>Notificación de retiro</b></P>
                   </div>
-                      <b-button variant="primary" class="" @click="enviarNotificacion()">
+                      <b-button variant="primary" class="" @click="notificacionRetiroModal()">
                         <i class="far fa-bell"></i> Enviar notificación
                     </b-button>
                 </div>
@@ -73,8 +75,40 @@
                 </div>
               </div>
                      </div>
+
+                                <!--Modal solicitud retiro-->
+                <div class="modal fade" id="modalNotificacionRetiro" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="">Solicitud de retiro de fondos</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Ingrese el monto a retirar</label>
+                                        <b-form-input type="text" class="form-control" 
+                                            placeholder="Ingrese el monto $" v-model="notificacion.monto"
+                                            ></b-form-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <b-button type="button" variant="secondary" data-dismiss="modal">Cancelar</b-button>
+                                <b-button type="button" variant="primary" @click="enviarNotificacion()">
+                                    Solicitar
+                                </b-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Modal solicitud correo-->
             </template>
         </div>
     </div>
-    <script src="js/Instrucciones1.js"></script>
+    <script src="js/Instrucciones1.js?2.0.4"></script>
 </asp:Content>

@@ -79,12 +79,12 @@
                         <p class="mb-1">
                             <!--<a class="nav-link text-center" href="#">Olvidé mi usuario</a>-->
                         </p>
-                      <%--  <p class="mb-0">
+                        <p class="mb-0">
                             <a class="nav-link text-center" data-toggle="modal" data-target="#registrationModal"
                                 href="#" role="button">
                                 Solicite su usuario
                             </a>
-                        </p>--%>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -234,6 +234,6 @@
     <script src="js/libs/jquery.blockUI.js?1.1.0"></script>
     <script src="js/libs/toastr.min.js?1.1.0"></script>
     <script src="js/libs/jquery.blockUI.messages.js?1.1.0"></script>
-    <script src="js/Login.js?18.0.0"></script>
+    <script src="js/Login.js?21.1.0"></script>
 </body>
 </html>
