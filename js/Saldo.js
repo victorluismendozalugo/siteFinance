@@ -9,7 +9,6 @@ var table3 = $('#wrapper').DataTable({
     select: true
 });
 
-
 function PrintDiv() {
     html2canvas(document.getElementById('tabla'), {
         onrendered: function (canvas) {
@@ -24,7 +23,6 @@ function PrintDiv() {
         }
     });
 }
-
 
 var vue2 = new Vue({
     el: '#vuePage',
@@ -47,6 +45,7 @@ var vue2 = new Vue({
         ConsultaSaldo() {
             http.postLoader('saldos/consulta', this.saldo).then(response => {
                 if (response.data.data.codigoError == 0) {
+
 
                     this.saldos = response.data.data.data[0];
                     var doc = this.saldos.tablaDocumento.replace('data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,', '')
@@ -121,31 +120,7 @@ var vue2 = new Vue({
                         //esto es para el tipo usuario de préstamos
                     }
 
-
-                    //aqui tomamos la tabla
-                    var tabla = $('#wrapper tr') //+ tabla[i].cells[1].innerHTML +
-                    var doc = ""
-                    for (var i = 0; i < tabla.length; i++) {
-
-                        doc += "<div class='col-lg-3 col-6'>"
-                        doc += "<div class='small-box bg-info'>"
-                        doc += "<div class='inner'>"
-                        doc += "<h3>150</h3>"
-                        doc += "<p>New Orders</p>"
-                        doc += "</div>"
-                        doc += "<div class='icon'>"
-                        doc += "<i class='ion ion-bag'></i>"
-                        doc += "</div>"
-                        doc += "<a href='#' class='small-box-footer'>More info <i class='fas fa-arrow-circle-right'></i></a>"
-                        doc += "</div>"
-                        doc += "</div>"
-                    }
-
-                    $('#tabla').html("")
-                    $('#tabla').append("<div class='row'>")
-                    $('#tabla').append(doc)
-                    $('#tabla').append("</div>")
-
+                   
 
 
                 } else {
