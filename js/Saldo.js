@@ -16,7 +16,7 @@ function PrintDiv() {
             var docDefinition = {
                 content: [{
                     image: data,
-                    width: 500
+                    width: 480
                 }]
             };
             pdfMake.createPdf(docDefinition).download("rptCta" + String(Date.now()) + ".pdf");
@@ -56,71 +56,76 @@ var vue2 = new Vue({
                     $('#wrapper')[0].innerHTML += htmlstr;
 
 
-                    if ($('#wrapper tr td')[0].innerHTML != "CAPITAL INICIAL") {
+                    var dia = $('#wrapper tr td')[3].innerHTML.substring(3, 5);
+                    var mes = $('#wrapper tr td')[3].innerHTML.substring(0, 2);
+                    var año = $('#wrapper tr td')[3].innerHTML.substring(6, 8);
+                    $('#wrapper tr td')[3].innerHTML = dia + '/' + mes + '/' + año
 
-                        //esto es para el tipo usuario de préstamos
-                        //esto es para el tipo usuario de préstamos
-                        //esto es para el tipo usuario de préstamos
+                    //if ($('#wrapper tr td')[0].innerHTML != "CAPITAL INICIAL") {
 
-                        //quita los tr y td vacios
-                        var r = $('#wrapper tr td')
-                        for (var i = 0; i < r.length; i++) {
-                            if (r[i].innerHTML == '') {
-                                r[i].remove()
-                            }
-                        }
+                    //    //esto es para el tipo usuario de préstamos
+                    //    //esto es para el tipo usuario de préstamos
+                    //    //esto es para el tipo usuario de préstamos
 
-                        //agrega un estilo mas grande al encabezado
-                        for (var i = 0; i < 6; i++) {
+                    //    //quita los tr y td vacios
+                    //    var r = $('#wrapper tr td')
+                    //    for (var i = 0; i < r.length; i++) {
+                    //        if (r[i].innerHTML == '') {
+                    //            r[i].remove()
+                    //        }
+                    //    }
+
+                    //    //agrega un estilo mas grande al encabezado
+                        for (var i = 0; i < 7; i++) {
                             $('#wrapper tr')[i].style = "font-size: x-large;";
                         }
 
-                        //quita todo lo que no sea encabezado
-                        var remove = $('#wrapper tr')
-                        for (var i = 6; i < remove.length; i++) {
+                    //    //quita todo lo que no sea encabezado
+                    //    var remove = $('#wrapper tr')
+                    //    for (var i = 6; i < remove.length; i++) {
 
-                            tabla += remove[i].innerHTML;
-                            remove[i].remove()
-                        }
-                        $('#wrapper').append("<tr style='font-size: x-large;'><td colspan='2' t='s' id='sjs-A5' v='SALDO AL DIA'>SALDO AL DIA</td>" +
-                            "<td colspan='2' t='n' id='sjs-C5' v='7050'>$</td></tr >")
-                        //esto es para el tipo usuario de préstamos
-                        //esto es para el tipo usuario de préstamos
-                        //esto es para el tipo usuario de préstamos
-                    } else {
-                        //esto es para el tipo usuario de préstamos
-                        //esto es para el tipo usuario de préstamos
-                        //esto es para el tipo usuario de préstamos
+                    //        tabla += remove[i].innerHTML;
+                    //        remove[i].remove()
+                    //    }
+                    //    $('#wrapper').append("<tr style='font-size: x-large;'><td colspan='2' t='s' id='sjs-A5' v='SALDO AL DIA'>SALDO AL DIA</td>" +
+                    //        "<td colspan='2' t='n' id='sjs-C5' v='7050'>$</td></tr >")
+                    //    //esto es para el tipo usuario de préstamos
+                    //    //esto es para el tipo usuario de préstamos
+                    //    //esto es para el tipo usuario de préstamos
+                    //} else {
+                    //    //esto es para el tipo usuario de préstamos
+                    //    //esto es para el tipo usuario de préstamos
+                    //    //esto es para el tipo usuario de préstamos
 
-                        //quita los tr y td vacios
-                        var r = $('#wrapper tr td')
-                        for (var i = 0; i < r.length; i++) {
-                            if (r[i].innerHTML == '') {
-                                r[i].remove()
-                            }
-                        }
+                    //    //quita los tr y td vacios
+                    //    var r = $('#wrapper tr td')
+                    //    for (var i = 0; i < r.length; i++) {
+                    //        if (r[i].innerHTML == '') {
+                    //            r[i].remove()
+                    //        }
+                    //    }
 
-                        //agrega un estilo mas grande al encabezado
-                        for (var i = 0; i < 4; i++) {
-                            $('#wrapper tr')[i].style = "font-size: x-large;";
-                        }
+                    //    //agrega un estilo mas grande al encabezado
+                    //    for (var i = 0; i < 4; i++) {
+                    //        $('#wrapper tr')[i].style = "font-size: x-large;";
+                    //    }
 
-                        //quita todo lo que no sea encabezado
-                        var remove = $('#wrapper tr')
-                        for (var i = 4; i < remove.length; i++) {
+                    //    //quita todo lo que no sea encabezado
+                    //    var remove = $('#wrapper tr')
+                    //    for (var i = 4; i < remove.length; i++) {
 
-                            tabla += remove[i].innerHTML;
-                            remove[i].remove()
-                        }
+                    //        tabla += remove[i].innerHTML;
+                    //        remove[i].remove()
+                    //    }
 
-                        $('#wrapper').append("<tr style='font-size: x-large;'><td colspan='2' t='s' id='sjs-A5' v='RENDIMIENTO AL DIA'>RENDIMIENTO AL DIA</td>" +
-                            "<td colspan='2' t='n' id='sjs-C5' v='7050'>$</td></tr >")
-                        //esto es para el tipo usuario de préstamos
-                        //esto es para el tipo usuario de préstamos
-                        //esto es para el tipo usuario de préstamos
-                    }
+                    //    $('#wrapper').append("<tr style='font-size: x-large;'><td colspan='2' t='s' id='sjs-A5' v='RENDIMIENTO AL DIA'>RENDIMIENTO AL DIA</td>" +
+                    //        "<td colspan='2' t='n' id='sjs-C5' v='7050'>$</td></tr >")
+                    //    //esto es para el tipo usuario de préstamos
+                    //    //esto es para el tipo usuario de préstamos
+                    //    //esto es para el tipo usuario de préstamos
+                    //}
 
-                   
+
 
 
                 } else {
