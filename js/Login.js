@@ -83,7 +83,7 @@
             axios.get('Sesion.aspx?type=0&login=' + this.usuarios.Usuario + '', {
             }).then(response => {
                 if (response.data.msg == 'OK') {
-                    localStorage.getItem('Usuario').includes('@finance') || localStorage.getItem('Usuario').includes('@FINANCE') ? $(location).attr('href', 'Default.aspx') : $(location).attr('href', 'Documentacion.aspx');
+                    localStorage.getItem('Usuario').includes('@finance') || localStorage.getItem('Usuario').includes('@FINANCE') ? $(location).attr('href', 'Clientes.aspx') : $(location).attr('href', 'Documentacion.aspx');
                 } else {
                     $(location).attr('href', 'Login.aspx');
                 }

@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Clientes.aspx.cs" Inherits="WebSystems2021.Clientes" %>
-
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inversores.aspx.cs" Inherits="WebSystems2021.Inversores" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -362,7 +361,7 @@
                 </div>
                 <div class="card-body">
 
-                    <div class="row">
+                    <div class="row" hidden="hidden">
                         <div class="col-md-6 col-xs-6">
                             <label>Nombre del verificador</label>
                              <b-form-select class="form-control" v-model="documentacion.verificador">
@@ -493,7 +492,7 @@
                    </div>
             </div>
 
-            <div class="card card-info">
+            <div class="card card-info" hidden="hidden">
                   <div class="card-header">
                     <h3 class="card-title">Empleo</h3>
                 </div>
@@ -1037,7 +1036,7 @@
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Clientes.js?19.0.0"></script>
+    <script src="js/Inversores.js?1.0.0"></script>
     <style>
         .zoom {
             transition: transform.3s;
@@ -1051,3 +1050,4 @@
             }
     </style>
 </asp:Content>
+

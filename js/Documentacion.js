@@ -172,6 +172,7 @@ var vue2 = new Vue({
 
                 if (response.data.data.codigoError == 0) {
                     this.usuario = response.data.data.data[0]
+                    console.log(this.usuario)
 
                 } else {
                     $.noticeError("ERROR " + response.data.data.mensajeBitacora)

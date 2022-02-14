@@ -85,7 +85,7 @@ var vue2 = new Vue({
             numeroPagos: 0
         },
         optionsFiltro: [
-            { value: 3, text: 'PRESTAMOS' }
+            { value: 2, text: 'INVERSIONES' }
         ],
         tipoCliente: 0,
         motivoBaja: '',
@@ -174,7 +174,7 @@ var vue2 = new Vue({
             curp: ''
         },
         optiosRolUsuario: [
-            { value: 3, text: 'Solicitar un préstamo' }
+            { value: 2, text: 'Invertir' }
         ],
 
         //para la carga de solicitudes
@@ -1411,43 +1411,3 @@ var vue2 = new Vue({
 });
 
 var optionVerificador;
-//fileChange(e) {
-//    //console.log(e.srcElement.files[0])
-
-//    var reader = new FileReader();
-//    //reader.readAsDataURL(e.srcElement.files[0])
-//    reader.readAsArrayBuffer(e.srcElement.files[0])
-
-//    reader.onload = function () {
-//        var data = new Uint8Array(reader.result);
-//        console.log(reader.result)
-//        var wb = XLSX.read(data, { type: 'array' });
-//        var htmlstr = XLSX.write(wb, { sheet: "Hoja1", type: 'binary', bookType: 'html' });
-//        $('#wrapper')[0].innerHTML += htmlstr;
-//    }
-
-//    //reader.onload = function () {
-//    //    console.log(reader.result);
-
-//    //    this.excel = reader.result;
-
-//    //};
-
-//    //reader.onerror = function (error) {
-//    //    console.log('Error: ', error);
-//    //};
-
-
-//    //if (this._spread) {
-//    //    const fileDom = e.target || e.srcElement;
-//    //    const excelIO = new Excel.IO();
-//    //    console.log(excelIO)
-//    //    const spread = this._spread;
-//    //    const store = this.$store;
-
-//    //    excelIO.open(fileDom.files[0], (_data_) => {
-//    //        const newSalesData = extractSheetData(data);
-//    //        console.log(newSalesData)
-//    //    });
-//    //}
-//}

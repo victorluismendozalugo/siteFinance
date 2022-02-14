@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
 
-                     <div class="row">
+                     <div class="row" v-if="usuario.tipoUsuario == 'PRESTAMO'">
                         <div class="col-md-6 col-xs-6">
                             <label>Nombre del verificador</label>
                             <b-form-select class="form-control" v-model="documentacion.verificador" :options="optionsVerificadores">
@@ -144,7 +144,7 @@
                    </div>
             </div>
 
-            <div class="card card-info">
+            <div class="card card-info" v-if="usuario.tipoUsuario == 'PRESTAMO'">
                   <div class="card-header">
                     <h3 class="card-title">Empleo</h3>
                 </div>
