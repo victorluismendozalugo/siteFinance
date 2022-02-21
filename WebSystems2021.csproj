@@ -2294,6 +2294,9 @@
     <Compile Include="Documentacion.aspx.designer.cs">
       <DependentUpon>Documentacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="File.ashx.cs">
+      <DependentUpon>File.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2391,6 +2394,7 @@
     <Content Include="js\libs\DataTables\Bootstrap-4-4.1.1\css\bootstrap.min.css.map" />
     <Content Include="js\libs\DataTables\Buttons-1.5.6\css\common.scss" />
     <Content Include="js\libs\DataTables\Buttons-1.5.6\css\mixins.scss" />
+    <Content Include="File.ashx" />
     <None Include="packages.config" />
     <Content Include="Theme\dist\css\adminlte.css.map" />
     <Content Include="Theme\dist\css\adminlte.min.css.map" />

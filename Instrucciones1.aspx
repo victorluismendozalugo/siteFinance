@@ -59,8 +59,7 @@
           <!-- /.col -->
         </div>
                  <div class="row">
-          <div class="col-12">
-            <!-- Custom Tabs -->
+          <div class="col-6">
             <div class="card">
                  <div class="card-body">
                 <div class="tab-content">
@@ -68,6 +67,20 @@
                       <P><b>Notificación de retiro</b></P>
                   </div>
                       <b-button variant="primary" class="" @click="notificacionRetiroModal()">
+                        <i class="far fa-bell"></i> Enviar notificación
+                    </b-button>
+                </div>
+                     </div>
+                </div>
+              </div> 
+                     <div class="col-6">
+            <div class="card">
+                 <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane active">
+                      <P><b>Notificación de depósito a mi cuenta</b></P>
+                  </div>
+                      <b-button variant="warning" class="" @click="notificacionDepositoModal()">
                         <i class="far fa-bell"></i> Enviar notificación
                     </b-button>
                 </div>
@@ -95,6 +108,58 @@
                                             placeholder="Ingrese el monto $" v-model="notificacion.monto"
                                             ></b-form-input>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <b-button type="button" variant="secondary" data-dismiss="modal">Cancelar</b-button>
+                                <b-button type="button" variant="primary" @click="enviarNotificacion()">
+                                    Solicitar
+                                </b-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                                <div class="modal fade" id="modalNotificacionDeposito" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="">Notificación de depósito a cuenta</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body">
+                                    <div class="row">
+                                    <div class="form-group">
+                                        <label>Ingrese el monto depositado</label>
+                                        <b-form-input type="text" class="form-control" 
+                                            placeholder="Ingrese el monto $" v-model="notificacion.monto"
+                                            ></b-form-input>
+                                    </div>
+                                        </div>   
+                                    <div class="row">
+                                    <div class="form-group">
+                                        <label>Imágen del depósito/transferencia</label>
+                                       <b-button type="button" variant="primary">
+                                        Cargar
+                                    </b-button>
+                                        <div class="col-md-4">
+                                        <br />
+                                        <img id="imagen" src="#" alt="Seleciona una imagen" height="300" width="300" />
+
+                                        <input type="file" name="file" id="btnFileUpload" accept="image/png, image/jpeg" style="color: transparent" />
+                                        <br />
+
+                                        <button id="btnCargar" type="button" class="btn btn-info">
+                                            <i class="fa fa-upload"></i>Cargar
+                                        </button>
+
+                                    </div>
+                                    </div>
+                                        </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
