@@ -1,9 +1,30 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Instrucciones1.aspx.cs" Inherits="WebSystems2021.Instrucciones1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="css/jquery.bootstrapTypeahead.css" rel="stylesheet" />
+        <link href="js/libs/jQuery-File-Upload-master/css/jquery.fileupload-noscript.css" rel="stylesheet" />
+    <link href="js/libs/jQuery-File-Upload-master/css/jquery.fileupload-ui-noscript.css" rel="stylesheet" />
+    <link href="js/libs/jQuery-File-Upload-master/css/jquery.fileupload-ui.css" rel="stylesheet" />
+    <link href="js/libs/jQuery-File-Upload-master/css/jquery.fileupload.css" rel="stylesheet" />
+        <style>
+        #progressbar {
+            background-color: black;
+            background-repeat: repeat-x;
+            border-radius: 13px;
+            padding: 3px;
+        }
+
+            #progressbar > div {
+                background-color: orange;
+                width: 0%;
+                height: 20px;
+                border-radius: 10px;
+            }
+    </style>
     <div id="vuePage">
         <div class="container">
             <template>
@@ -143,19 +164,19 @@
                                     <div class="row">
                                     <div class="form-group">
                                         <label>Imágen del depósito/transferencia</label>
-                                       <b-button type="button" variant="primary">
+                                     <%--  <b-button type="button" variant="primary">
                                         Cargar
-                                    </b-button>
+                                    </b-button>--%>
                                         <div class="col-md-4">
                                         <br />
                                         <img id="imagen" src="#" alt="Seleciona una imagen" height="300" width="300" />
 
                                         <input type="file" name="file" id="btnFileUpload" accept="image/png, image/jpeg" style="color: transparent" />
                                         <br />
-
-                                        <button id="btnCargar" type="button" class="btn btn-info">
-                                            <i class="fa fa-upload"></i>Cargar
-                                        </button>
+                                        <br />
+                                       <%-- <b-button id="btnCargar" type="button" class="btn btn-info" variant="primary">
+                                            <i class="fa fa-upload"></i>Guardar
+                                        </b-button>--%>
 
                                     </div>
                                     </div>
@@ -164,7 +185,7 @@
                             </div>
                             <div class="modal-footer">
                                 <b-button type="button" variant="secondary" data-dismiss="modal">Cancelar</b-button>
-                                <b-button type="button" variant="primary" @click="enviarNotificacion()">
+                                <b-button type="button" variant="primary" @click="enviarNotificacionDeposito()">
                                     Solicitar
                                 </b-button>
                             </div>
@@ -175,5 +196,13 @@
             </template>
         </div>
     </div>
+    <script src="Theme/plugins/jquery/jquery.min.js"></script>
+    <script src="js/libs/jQuery-File-Upload-master/js/vendor/jquery.ui.widget.js"></script>
+    <script src="js/libs/jQuery-File-Upload-master/js/jquery.iframe-transport.js"></script>
+    <script src="js/libs/jQuery-File-Upload-master/js/jquery.fileupload.js"></script>
+    <script src="js/libs/jQuery-File-Upload-master/js/jquery.fileupload-process.js"></script>
+    <script src="js/libs/jQuery-File-Upload-master/js/jquery.fileupload-image.js"></script>
+    <script src="js/libs/jQuery-File-Upload-master/js/jquery.fileupload-validate.js"></script>
+    <script src="js/libs/jQuery-File-Upload-master/js/jquery.fileupload-ui.js"></script>
     <script src="js/Instrucciones1.js?2.0.4"></script>
 </asp:Content>

@@ -9,7 +9,7 @@ namespace WebSystems2021
     /// <summary>
     /// Descripción breve de FileUploadHandler
     /// </summary>
-    public class FileUploadHandler : IHttpHandler
+    public class FileUps : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)

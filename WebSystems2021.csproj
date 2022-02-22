@@ -325,6 +325,25 @@
     <Content Include="js\libs\DataTables\Select-1.3.0\js\select.semanticui.js" />
     <Content Include="js\libs\DataTables\Select-1.3.0\js\select.semanticui.min.js" />
     <Content Include="js\libs\FuncionesGenericas.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\css\jquery.fileupload-noscript.css" />
+    <Content Include="js\libs\jQuery-File-Upload-master\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="js\libs\jQuery-File-Upload-master\css\jquery.fileupload-ui.css" />
+    <Content Include="js\libs\jQuery-File-Upload-master\css\jquery.fileupload.css" />
+    <Content Include="js\libs\jQuery-File-Upload-master\img\loading.gif" />
+    <Content Include="js\libs\jQuery-File-Upload-master\img\progressbar.gif" />
+    <Content Include="js\libs\jQuery-File-Upload-master\index.html" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\cors\jquery.xdr-transport.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\demo.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\jquery.fileupload-audio.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\jquery.fileupload-image.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\jquery.fileupload-process.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\jquery.fileupload-ui.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\jquery.fileupload-validate.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\jquery.fileupload-video.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\jquery.fileupload.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\jquery.iframe-transport.js" />
+    <Content Include="js\libs\jQuery-File-Upload-master\js\vendor\jquery.ui.widget.js" />
     <Content Include="js\libs\moment.min.js" />
     <Content Include="js\libs\PDF\jspdf.min.js" />
     <Content Include="js\libs\PDF\jspdf.plugin.autotable.min.js" />
@@ -2294,8 +2313,8 @@
     <Compile Include="Documentacion.aspx.designer.cs">
       <DependentUpon>Documentacion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="File.ashx.cs">
-      <DependentUpon>File.ashx</DependentUpon>
+    <Compile Include="FileUps.ashx.cs">
+      <DependentUpon>FileUps.ashx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2394,7 +2413,7 @@
     <Content Include="js\libs\DataTables\Bootstrap-4-4.1.1\css\bootstrap.min.css.map" />
     <Content Include="js\libs\DataTables\Buttons-1.5.6\css\common.scss" />
     <Content Include="js\libs\DataTables\Buttons-1.5.6\css\mixins.scss" />
-    <Content Include="File.ashx" />
+    <Content Include="FileUps.ashx" />
     <None Include="packages.config" />
     <Content Include="Theme\dist\css\adminlte.css.map" />
     <Content Include="Theme\dist\css\adminlte.min.css.map" />
