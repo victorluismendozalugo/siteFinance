@@ -112,6 +112,9 @@ var vue2 = new Vue({
         this.TipoUsuario()
         this.sucursalusuario()
         this.ObtieneDocumentacion()
+
+        this.init_lineCanvas();
+
     },
     methods: {
         ObtieneDocumentacion() {
@@ -307,7 +310,7 @@ var vue2 = new Vue({
             } else {
                 doc.text(10, 44, '')
             }
-        
+
             doc.rect(10, 39, 95, 6)
             //rectangulo ciudad y estado
             doc.text(105, 41, 'Ciudad y Estado:')
@@ -648,6 +651,99 @@ var vue2 = new Vue({
             this.documentacion.valorXpago = (parseFloat(this.documentacion.montoSolicitado) * 0.5 + parseFloat(this.documentacion.montoSolicitado)) / this.numeroPagos
             this.documentacion.totalPagar = this.numeroPagos * this.documentacion.valorXpago
             this.documentacion.interesOrdinario = this.documentacion.totalPagar - this.documentacion.montoSolicitado
+        },
+
+        //Guardar la firma
+        saveSign() {
+            setTimeout(() => {
+                this.imgBase64 = localStorage.getItem("imgBase64");
+                / * Signature electronic Signature Base64 Carga de carga * /
+                // Carga de la interfaz
+            }, 500);
+        },
+        init_lineCanvas() {
+            document.addEventListener(
+                "touchmove",
+                function (event) {
+                    event.preventDefault();
+                },
+                { passive: false }
+            );
+            new this.lineCanvas({
+                EL: DOCUMENTO.GTELENTOBYID("LONA"), // Dibujar lienzo padre div
+                Clearl: Document.GetLementByID("Clearcanvas"), // Botón Borrar
+                SAVEEL: DOCUMENT.GETELEMENTBYID("SAVECANVAS"), // Botón GUARDAR
+                Línea: 3, // Línea gruesa, seleccione
+                Color: "Negro", // color de línea, opcional
+                Fondo: "#ffffffff" // Fondo de línea, opcional
+            });
+        },
+        /*  / * Desktop de la firma electrónica * /*/
+        lineCanvas(obj) {
+            this.linewidth = 1;
+            this.color = "#000000";
+            this.background = "#ffffff";
+            for (var i in obj) {
+                this[i] = obj[i];
+            }
+            this.canvas = document.createElement("canvas");
+            this.el.appendChild(this.canvas);
+            this.cxt = this.canvas.getContext("2d");
+            this.canvas.width = 333;
+            this.canvas.height = 207;
+            this.cxt.fillStyle = this.background;
+            this.cxt.fillRect(0, 0, this.canvas.width, this.canvas.width);
+            this.cxt.strokeStyle = this.color;
+            this.cxt.lineWidth = this.linewidth;
+            this.cxt.lineCap = "round";
+            // Empieza a dibujar
+            this.canvas.addEventListener(
+                "touchstart",
+                function (e) {
+                    Console.log("Start Draw")
+                    this.cxt.beginPath();
+                    this.cxt.moveTo(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
+                }.bind(this),
+                false
+            );
+            // Dibujar
+            this.canvas.addEventListener(
+                "touchmove",
+                function (e) {
+                    this.cxt.lineTo(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
+                    this.cxt.stroke();
+                }.bind(this),
+                false
+            );
+            // terminar el dibujo
+            this.canvas.addEventListener(
+                "touchend",
+                function () {
+                    Console.log("Fin Drawn")
+                    this.cxt.closePath();
+                }.bind(this),
+                false
+            );
+            //Borrar el lienzo
+            this.clearEl.addEventListener(
+                "click",
+                function () {
+                    Console.log('lienzo claro')
+                    this.cxt.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                }.bind(this),
+                false
+            );
+            document.getElementById("clearCanvas").click();
+            //Guardar la imagen directamente a BASE64
+            this.saveEl.addEventListener(
+                "click",
+                function () {
+                    var imgBase64 = this.canvas.toDataURL();
+                    Console.log("Guardar éxito de la firma" + imgbase64);
+                    // sessionStorage.setItem("imgBase64", imgBase64);
+                }.bind(this),
+                false
+            );
         }
     }
 });

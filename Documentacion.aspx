@@ -474,7 +474,24 @@
                     </div>
                 </div>
             </div>
-              <div class="form-group row">
+
+                            <!-- /.card -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Firma documentación</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="signature">
+                                <div id="canvas"></div>
+                            </div>
+                            <button id="CLEARCANVAS">Re-firmar</button>
+                            <button id="Savecanvas">OK GUARDAR</button>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="form-group row">
                     <div class="col">
                      <b-button variant="primary" class="float-right" @click="GuardarDocumentacion()">
                          <template  v-if="estaGuardando">
@@ -494,6 +511,10 @@
         </template>
         </div>
     </div>
+    <script src="js/libs/jq-signature/js/jquery-1.11.0.min.js"></script>
+
+    <script src="js/libs/jq-signature/js/jq-signature.js"></script>
+    <script src="js/libs/jq-signature/js/jq-signature.min.js"></script>
     <script src="js/Documentacion.js?10.0.0"></script>
     <style type="text/css">
         * {
@@ -565,6 +586,35 @@
         tbody {
             vertical-align: top;
             overflow: visible;
+        }
+
+        .signature {
+            width: 100%;
+            height: 240px;
+            background: #fff;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            position: relative;
+            padding-top: 10px;
+        }
+
+        #canvas canvas {
+            display: block;
+            background: #f3f3f3;
+            border-radius: 8px;
+            margin: 0 auto;
+        }
+
+        #clearCanvas {
+            font-size: 17px;
+            color: #d3b88a;
+            background-image: linear-gradient(-180deg, #6e6e6e 0%, #484848 100%);
+        }
+
+        #saveCanvas {
+            font-size: 17px;
+            color: #ffffff;
+            background-image: linear-gradient(-180deg, #d9c197 0%, #ceb181 100%);
         }
     </style>
 </asp:Content>

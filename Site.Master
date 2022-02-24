@@ -142,6 +142,9 @@
                                 <p>{{viewNotificacion.texto}}</p>
                                 <p>Fecha movimiento: {{viewNotificacion.fecha}}</p>
                             </div>
+                             <div class="callout callout-info">
+                                <img :src=viewNotificacion.imagen>
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -257,7 +260,7 @@
 
 
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy; 2014-2022 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
             All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
         <b>Version</b> 3.1.0
@@ -336,7 +339,7 @@
     <script src="js/libs/toastr.min.js"></script>
     <script src="js/libs/jquery.blockUI.messages.js"></script>
     <script src="js/libs/moment.min.js"></script>
-    <script src="js/Menu.js"></script>
+    <script src="js/Menu.js?1.0.0"></script>
 
 </body>
 </html>
