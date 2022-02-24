@@ -329,6 +329,7 @@
     <Content Include="js\libs\jq-signature\css\normalize.css" />
     <Content Include="js\libs\jq-signature\fonts\icomoon.svg" />
     <Content Include="js\libs\jq-signature\index.html" />
+    <Content Include="js\libs\jq-signature\jq-signature.js" />
     <Content Include="js\libs\jq-signature\js\jq-signature.js" />
     <Content Include="js\libs\jq-signature\js\jq-signature.min.js" />
     <Content Include="js\libs\jq-signature\js\jquery-1.11.0.min.js" />

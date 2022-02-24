@@ -1,9 +1,86 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Documentacion.aspx.cs" Inherits="WebSystems2021.Documentacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+      
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+      <%--PARA LAS FIRMAS--%>
+    <link href="js/libs/jq-signature/css/default.css" rel="stylesheet" />
+    <%--PARA LAS FIRMAS--%>
+  
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+                text-indent: 0;
+            }
+
+            .s1 {
+                color: black;
+                font-family: Calibri, sans-serif;
+                font-style: italic;
+                font-weight: normal;
+                text-decoration: none;
+                font-size: 9pt;
+                margin: 0pt;
+            }
+
+            .s2 {
+                color: black;
+                font-family: Calibri, sans-serif;
+                font-style: italic;
+                font-weight: normal;
+                text-decoration: none;
+                font-size: 8pt;
+                margin: 0pt;
+            }
+
+            .s3 {
+                color: black;
+                font-family: Calibri, sans-serif;
+                font-style: normal;
+                font-weight: bold;
+                text-decoration: none;
+                font-size: 10pt;
+                margin: 0pt;
+            }
+
+            .s4 {
+                color: black;
+                font-family: Calibri, sans-serif;
+                font-style: normal;
+                font-weight: bold;
+                text-decoration: none;
+                font-size: 9pt;
+                margin: 0pt;
+            }
+
+            /*        p {
+            color: black;
+            font-family: Calibri, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 11pt;
+            margin: 0pt;
+        }*/
+            .llenarTabla {
+                color: black;
+                font-family: Calibri, sans-serif;
+                font-style: normal;
+                font-weight: bold;
+                text-decoration: none;
+                font-size: 11pt;
+                margin: 0pt;
+            }
+
+            table,
+            tbody {
+                vertical-align: top;
+                overflow: visible;
+            }
+        </style>
     <div id="vuePage">
         <div class="container">
             <template>
@@ -481,140 +558,50 @@
                         <h3 class="card-title">Firma documentación</h3>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="signature">
-                                <div id="canvas"></div>
+                        <div class="container">
+                        	<div class="row">
+				<div class="col-xs-12">
+					<p>Su firma:</p>
+					<div class="js-signature" data-width="300" data-height="200" data-border="1px solid black" data-line-color="#bc0000" data-auto-fit="true"></div>
+					<p>
+
+                              <b-button variant="default"  @click="clearCanvas()">
+                                    <i class="fas fa-erase">
+                                    </i> Limpiar
+                            </b-button>
+
+                                       <b-button variant="default"  @click="saveSignature()">
+                                    <i class="fas fa-save">
+                                    </i> Generar
+                            </b-button>
+                                </p>
+                              <div id="signature">
+						<p><em>Su firma aparecerá aquí cuando haga clic en "Guardar firma"</em></p>
+					</div>
                             </div>
-                            <button id="CLEARCANVAS">Re-firmar</button>
-                            <button id="Savecanvas">OK GUARDAR</button>
                         </div>
+                            </div>
                     </div>
                 </div>
-
-        <div class="form-group row">
-                    <div class="col">
-                     <b-button variant="primary" class="float-right" @click="GuardarDocumentacion()">
-                         <template  v-if="estaGuardando">
+                <div class="form-group row">
+                        <div class="col">
+                            <b-button variant="primary" class="float-right" @click="GuardarDocumentacion()">
+                                <template  v-if="estaGuardando">
                                     <div class="text-center text-default my-2">
                                         <b-spinner small class="align-middle"></b-spinner>
                                         Guardando
                                     </div>
-                                </template>
-                            <template v-else>
-                        <i class="fas fa-save">
-                            
-                        </i> Guardar
-                                      </template>
-                    </b-button>
+                                 </template>
+                                 <template v-else>
+                                    <i class="fas fa-save">
+                                    </i> Guardar
+                                 </template>
+                            </b-button>
+                        </div>
                     </div>
-              </div>
         </template>
         </div>
     </div>
     <script src="js/libs/jq-signature/js/jquery-1.11.0.min.js"></script>
-
-    <script src="js/libs/jq-signature/js/jq-signature.js"></script>
-    <script src="js/libs/jq-signature/js/jq-signature.min.js"></script>
-    <script src="js/Documentacion.js?10.0.0"></script>
-    <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-            text-indent: 0;
-        }
-
-        .s1 {
-            color: black;
-            font-family: Calibri, sans-serif;
-            font-style: italic;
-            font-weight: normal;
-            text-decoration: none;
-            font-size: 9pt;
-            margin: 0pt;
-        }
-
-        .s2 {
-            color: black;
-            font-family: Calibri, sans-serif;
-            font-style: italic;
-            font-weight: normal;
-            text-decoration: none;
-            font-size: 8pt;
-            margin: 0pt;
-        }
-
-        .s3 {
-            color: black;
-            font-family: Calibri, sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 10pt;
-            margin: 0pt;
-        }
-
-        .s4 {
-            color: black;
-            font-family: Calibri, sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 9pt;
-            margin: 0pt;
-        }
-
-        /*        p {
-            color: black;
-            font-family: Calibri, sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 11pt;
-            margin: 0pt;
-        }*/
-        .llenarTabla {
-            color: black;
-            font-family: Calibri, sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 11pt;
-            margin: 0pt;
-        }
-
-        table,
-        tbody {
-            vertical-align: top;
-            overflow: visible;
-        }
-
-        .signature {
-            width: 100%;
-            height: 240px;
-            background: #fff;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            position: relative;
-            padding-top: 10px;
-        }
-
-        #canvas canvas {
-            display: block;
-            background: #f3f3f3;
-            border-radius: 8px;
-            margin: 0 auto;
-        }
-
-        #clearCanvas {
-            font-size: 17px;
-            color: #d3b88a;
-            background-image: linear-gradient(-180deg, #6e6e6e 0%, #484848 100%);
-        }
-
-        #saveCanvas {
-            font-size: 17px;
-            color: #ffffff;
-            background-image: linear-gradient(-180deg, #d9c197 0%, #ceb181 100%);
-        }
-    </style>
+    <script src="js/Documentacion.js?20.1.0"></script>
 </asp:Content>

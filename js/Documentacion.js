@@ -74,7 +74,8 @@ var vue2 = new Vue({
             interesOrdinario: 0,
             totalPagar: 0,
             valorXpago: 0,
-            verificador: 0
+            verificador: 0,
+            imagenFirma: ''
         },
         numeroPagos: 12,
         frecuenciaPagosCredito: 'SEMANAL',
@@ -112,9 +113,6 @@ var vue2 = new Vue({
         this.TipoUsuario()
         this.sucursalusuario()
         this.ObtieneDocumentacion()
-
-        this.init_lineCanvas();
-
     },
     methods: {
         ObtieneDocumentacion() {
@@ -139,6 +137,14 @@ var vue2 = new Vue({
                     } else {
                         this.compIngresos = this.documentacion.compIngresos
                     }
+
+                    if (this.documentacion.imagenFirma != "") {
+                        $('#signature').empty();
+                        var dataUrl = this.documentacion.imagenFirma
+                        var img = $('<img id="imagen">').attr('src', dataUrl);
+                        $('#signature').append($('<p>').text("Aqui aparece su firma para adjuntar al contrato"));
+                        $('#signature').append(img);
+                    }
                 }
             })
                 .catch(e => {
@@ -148,6 +154,7 @@ var vue2 = new Vue({
         GuardarDocumentacion() {
             this.estaGuardando = true
             this.documentacion.usuario = localStorage.getItem('Usuario')
+            this.documentacion.imagenFirma = $('#imagen')[0].src
             console.log(this.documentacion)
             http.postLoader('doc/guardar', this.documentacion).then(response => {
 
@@ -652,98 +659,26 @@ var vue2 = new Vue({
             this.documentacion.totalPagar = this.numeroPagos * this.documentacion.valorXpago
             this.documentacion.interesOrdinario = this.documentacion.totalPagar - this.documentacion.montoSolicitado
         },
-
-        //Guardar la firma
-        saveSign() {
-            setTimeout(() => {
-                this.imgBase64 = localStorage.getItem("imgBase64");
-                / * Signature electronic Signature Base64 Carga de carga * /
-                // Carga de la interfaz
-            }, 500);
+        clearCanvas() {
+            $('#signature').html('<p><em>Su firma aparecerá aquí cuando haga clic en "Guardar firma"</em></p>');
+            $('.js-signature').eq(0).jqSignature('clearCanvas');
         },
-        init_lineCanvas() {
-            document.addEventListener(
-                "touchmove",
-                function (event) {
-                    event.preventDefault();
-                },
-                { passive: false }
-            );
-            new this.lineCanvas({
-                EL: DOCUMENTO.GTELENTOBYID("LONA"), // Dibujar lienzo padre div
-                Clearl: Document.GetLementByID("Clearcanvas"), // Botón Borrar
-                SAVEEL: DOCUMENT.GETELEMENTBYID("SAVECANVAS"), // Botón GUARDAR
-                Línea: 3, // Línea gruesa, seleccione
-                Color: "Negro", // color de línea, opcional
-                Fondo: "#ffffffff" // Fondo de línea, opcional
-            });
-        },
-        /*  / * Desktop de la firma electrónica * /*/
-        lineCanvas(obj) {
-            this.linewidth = 1;
-            this.color = "#000000";
-            this.background = "#ffffff";
-            for (var i in obj) {
-                this[i] = obj[i];
-            }
-            this.canvas = document.createElement("canvas");
-            this.el.appendChild(this.canvas);
-            this.cxt = this.canvas.getContext("2d");
-            this.canvas.width = 333;
-            this.canvas.height = 207;
-            this.cxt.fillStyle = this.background;
-            this.cxt.fillRect(0, 0, this.canvas.width, this.canvas.width);
-            this.cxt.strokeStyle = this.color;
-            this.cxt.lineWidth = this.linewidth;
-            this.cxt.lineCap = "round";
-            // Empieza a dibujar
-            this.canvas.addEventListener(
-                "touchstart",
-                function (e) {
-                    Console.log("Start Draw")
-                    this.cxt.beginPath();
-                    this.cxt.moveTo(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
-                }.bind(this),
-                false
-            );
-            // Dibujar
-            this.canvas.addEventListener(
-                "touchmove",
-                function (e) {
-                    this.cxt.lineTo(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
-                    this.cxt.stroke();
-                }.bind(this),
-                false
-            );
-            // terminar el dibujo
-            this.canvas.addEventListener(
-                "touchend",
-                function () {
-                    Console.log("Fin Drawn")
-                    this.cxt.closePath();
-                }.bind(this),
-                false
-            );
-            //Borrar el lienzo
-            this.clearEl.addEventListener(
-                "click",
-                function () {
-                    Console.log('lienzo claro')
-                    this.cxt.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                }.bind(this),
-                false
-            );
-            document.getElementById("clearCanvas").click();
-            //Guardar la imagen directamente a BASE64
-            this.saveEl.addEventListener(
-                "click",
-                function () {
-                    var imgBase64 = this.canvas.toDataURL();
-                    Console.log("Guardar éxito de la firma" + imgbase64);
-                    // sessionStorage.setItem("imgBase64", imgBase64);
-                }.bind(this),
-                false
-            );
+        saveSignature() {
+            $('#signature').empty();
+            var dataUrl = $('.js-signature').eq(0).jqSignature('getDataURL');
+            var img = $('<img id="imagen">').attr('src', dataUrl);
+            $('#signature').append($('<p>').text("Aqui aparece su firma para adjuntar al contrato"));
+            $('#signature').append(img);
         }
     }
+});
+
+$(document).ready(function () {
+    if ($('.js-signature').length) {
+        $('.js-signature').jqSignature();
+    }
+});
+
+$('.js-signature').eq(0).on('jq.signature.changed', function () {
+    $('#saveBtn').attr('disabled', false);
 });
