@@ -98,9 +98,10 @@
                 background: rgb(255, 255, 255);
                 cursor: crosshair;
             }
-            .texto-justificado{
+
+            .texto-justificado {
                 text-align: justify;
-                }
+            }
         </style>
     <div id="vuePage">
         <div class="container">
@@ -525,8 +526,7 @@
           
 
 
-            <!-- /.card -->
-            <div class="card card-info">
+          <div class="card card-info">
                 <div class="card-header">
                     <h3 class="card-title">Documentación</h3>
                 </div>
@@ -572,75 +572,7 @@
                     </div>
                 </div>
             </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-primary shadow-none">
-                            <div class="card-header">
-                                <h3 class="card-title">Contrato</h3>
-
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-body" style="display: block;">
-                                <p><image src="images/logoContrato.png" style="align-items:center;"></image></p>
-                                <p class="texto-justificado">
-                                    Contrato de Mutuo de Inversión que celebran por una parte PRESTA STAR-Z, S.A.P.I. ,de C.V. , SOFOM, E.N.R que en lo sucesivo se le denomina 
-                                    “MUTUARIO/EMISOR”, y la persona cuyo nombre y firma se señalan abajo en los apartados de datos del contrato y en la carátula, 
-                                    actuando en lo sucesivo como el “MUTUANTE/INVERSOR”.
-                                </p>
-                                <p>
-                                <b>
-                                    VI.- DECLARACIONES
-                                </b>
-                                    </p>
-                                <p class="texto-justificado">
-                                   A)	Declara el “INVERSOR” que : (I) Es una persona física o moral y que cuenta con la capacidad legal para la celebración de este acto; (II) Señala como domicilio los datos citados anteriormente; (III) Desea otorgar mediante un contrato de inversión y en beneficio del “EMISOR” la cantidad de dinero M.N./M.E. que le ha solicitado para que este lo utilice en la ejecución del negocio de PRESTA STAR-Z , S.A.P.I. de C.V., SOFOM, E.N.R., y para el seguimiento de consultas, solicitudes, aclaraciones, reclamaciones o quejas, el “INVERSOR” deberá de comunicarse a la unidad especializada del “EMISOR” de atención a usuarios ubicada en el estado de contratación de la inversión, cuyo domicilio, correo electrónico y teléfono son los siguientes: Correo electrónico: director@prestastar-z.com.mx; Domicilio: Calle Francisco Villa 202-3 Col. Centro, Culiacán, Sinaloa ,México C.P. 80000; Teléfono: 6672758518. El inversor a su vez, podrá acudir a la CONDUSEF en caso de cualquier queja o reclamación, los datos de contacto de la CONDUSEF son los siguientes: Teléfono: 01 800 999 8080 / 534 00 999; Página de internet: www.condusef.gob.mx o al correo electrónico: opinion@condusef.gob.mx
-                                </p>
-                                 <p class="texto-justificado">
-                                   B)  Declara el “EMISOR”, por medio de su apoderado legal, bajo protesta de decir verdad que: (I) Es una Sociedad Anónima Promotora de Inversión de Capital Variable Sociedad Financiera de Objeto Múltiple, y para su constitución y operación no requiere autorización por parte de la SHCP, para la realización de sus operaciones de crédito, incluyendo la celebración del presente contrato. El domicilio principal del negocio del “EMISOR” se encuentra ubicado en Calle Francisco Villa 202-3 Col. Centro, Culiacán, Sinaloa, México C.P. 80000; (II) Su representante legal cuenta con los poderes y facultades suficientes para celebrar este contrato; (III) Libremente desea celebrar este contrato, previo a la firma del presente contrato; El “EMISOR” le informó al “INVERSOR” sobre la tasa de rendimiento, el monto total a pagar y el plazo, según se acordó en este instrumento; (IV) El “EMISOR” acepta tener pleno conocimiento de la inversión y los  cargos  correspondientes;  habiéndole  proporcionado  los  conceptos  debidamente  desglosados;  Está  consciente  y  conoce  todas  las obligaciones asumidas por virtud de la celebración de este contrato, no habiendo error, gozando plenamente de sus facultades mentales y contando con capacidad económica e ingresos suficientes para hacer frente a las obligaciones antes mencionadas y que no existe lesión, conducta inapropiada, dolo, mala fe, abuso o cargos ocultos; Y asume las obligaciones de pago derivadas de este contrato sin que exista alguna ventaja de posible apuro económico, necesidad urgente, extrema miseria, suma ignorancia o notoria inexperiencia del “EMISOR”.
-                                 </p>
-                                 <p>
-                                <b>
-                                    VII.- CLAUSULAS
-                                </b>
-                                    </p>
-                                <p class="texto-justificado">
-                                    1)	SERVICIOS  Y  ATENCIÓN  AL  CLIENTE,  RECIBOS,  ESTADOS  DE  CUENTA  Y  SERVICIOS  ADICIONALES.  Las  partes  acuerdan  que  el  “EMISOR”  no  está  obligado  a  enviar  al domicilio del “INVERSOR” estados de cuenta relacionados con la inversión. Los estados de cuenta estarán disponibles en todo momento para el “INVERSOR” en la pagina web www.prestastar-z.com.mx durante la vigencia de su inversión. Dichos estados de cuenta se generarán por periodos mensuales  con fecha de corte al último día calendario del mes que se trate. En caso de que el “INVERSOR” lo solicite al “EMISOR”, le expedirá el recibo correspondiente. En caso de que el “INVERSOR” desee presentar una consulta, aclaración, inconformidad o queja con el presente contrato, lo deberá presentar por medio de correo electrónico a director@prestastar-z.com.mx Dicha aclaración deberá ser acompañada con copia del presentes contrato, copia de su identificación vigente y el escrito de la queja
-                                    <br />
-                                    <br />
-2)	OBJETO DEL PRESENTE CONTRATO DE INVERSIÓN Y MEDIOS DE PAGO PERMITIDOS. El “EMISOR” se obliga incondicionalmente a pagar en su totalidad al “INVERSOR” el monto total señalado en la sección III (DATOS DE LA INVERSIÓN) que es el monto de los intereses generados en el mes corriente y señalados en la sección III. El “INVERSOR” otorga en beneficio del “EMISOR” en calidad de mutuo por inversión con interés, la cantidad señalada en la sección III, conviniendo las partes en el interés señalado en la sección III, IVA INCLUIDO; la inversión se otorga por el período señalado en la sección III contado a partir de la suscripción del contrato, quedando de mutuo acuerdo el pago mensual del interés. El pago del rendimiento de la inversión será exigible de forma mensual durante la vigencia de la inversión conforme acordado por las partes, después de la fecha de firma del presente contrato y a partir de que haya sido aprobada la inversión por parte del “EMISOR” y hasta que sea retornado el monto total de la inversión, el presente contrato estará vigente, hasta en tanto sea retornado el monto total de la inversión al inversor y no sea prorrogable con la finalidad de garantizar y dar cumplimiento a las obligaciones que asume el “EMISOR” por virtud del presente contrato.
-
- Con 30 días de anticipación al término de la vigencia del contrato, el cliente deberá solicitar por medio su cuenta de inversionista en la pagina de www.prestastar-z.com.mx en la sección de RETIROS la inversión inicial que se establece en la sección III (DATOS DE LA INVERSION).
-
-Se obliga al “EMISOR” a realizar cualquier pago pendiente que sea exigible conforme al presente contrato directamente al “INVERSOR” en las fechas estipuladas para ello en este contrato. Los pagos realizados por el “EMISOR”, podrán llevarse a cabo mediante pago en efectivo realizado en la sucursal del mismo o depósito en la cuenta bancaria que para el efecto este señale.
-En caso de fallecimiento del inversor, el monto será entregado al beneficiario al término del presente contrato; en caso de que dicho beneficiario no presente solicitud de reclamación formal en un periodo de 60 días naturales, PRESTA STAR-Z , S.A.P.I. de C.V., SOFOM, E.N.R. se reserva el derecho sobre el monto recibido por parte del inversor.
-<br />
- <br />
-3)	 CANCELACIÓN ANTICIPADA. El “INVERSOR” o EL “BENEFICIARIO”  podrá cancelar y/o terminar el presente contrato de manera anticipada sin penalización alguna después de los 6 meses de la firma del contrato , si realiza la cancelación antes de los 6 meses será penalizado con el 30% del monto de inversión, el “EMISOR” cuenta con 30 días hábiles para reponer el 70% del monto de inversión estipulado en el presente contrato. El “EMISOR” podrá cancelar y/o terminar el presente contrato sin ninguna responsabilidad durante la vigencia del presente contrato posteriormente a la fecha que haya realizado la devolución del monto de la inversión. En caso de ejercer cancelación anticipada esta se deberá solicitar por escrito con 30 días de anticipación.
-<br />
-<br />
-4)	MODIFICACIONES. El presente contrato podrá ser modificado únicamente para ampliar el plazo de inversión, para ello deberá firmarse un convenio entre ambas partes. En caso de requerir ampliación de capital de inversión deberá firmarse un contrato nuevo con su respectivo plazo forzoso.
-<br />
-<br />
-5)	NOTIFICACIONES. Cualquier notificación al “EMISOR” deberá ser efectuada en el domicilio de dicho “EMISOR” conforme a derecho. Cualquier notificación al “INVERSOR” será efectuada en el domicilio proporcionado por el mismo en este contrato. El “INVERSOR” está obligado a notificar al “EMISOR” de cualquier cambio de domicilio dentro de los 10 días hábiles en que se hubiere efectuado, proporcionando a este último un comprobante de domicilio o alguna prueba del nuevo domicilio declarado.
-<br />
-<br />
-6)	JURISDICCIÓN Y LEGISLACIÓN APLICABLE. Este contrato está sujeto a las leyes aplicables y jurisdicción de los tribunales del municipio de Culiacan , Sinaloa, renunciando las partes a la aplicación de cualquier otra ley o jurisdicción que pudiese corresponderles por virtud de sus domicilios presentes o futuros.
-<br />
-<br />
-7)	CONSENTIMIENTO Y FIRMA. El “INVERSOR” reconoce y acepta con su firma que leyó, o le fue leído y explicado el presente contrato, previo a su firma, habiendo entendido la naturaleza y alcance de todas y cada una de las obligaciones estipuladas en este instrumento y obligándose en los términos que a continuación se establecen en el mismo. Leído el contrato y enteradas las partes de su alcance y contenido lo firman para obligarse en todos sus términos por triplicado, en la fecha indicada en sección III (DATOS DE LA INVERSIÓN) de datos de la inversión, quedando un ejemplar en poder del “INVERSOR” y dos ejemplares en poder del “EMISOR”.
-<br />
-<br />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card card-info">
+                <div class="card card-info" v-if="usuario.tipoUsuario == 'INVERSION'">
                     <div class="card-header">
                         <h3 class="card-title">Firma Contrato</h3>
                     </div>
@@ -650,7 +582,7 @@ En caso de fallecimiento del inversor, el monto será entregado al beneficiario 
 				<div class="col-xs-12">
 					<p>Su firma:</p>
 					<div class="js-signature" data-width="300" data-height="200" data-border="1px solid black" 
-                        data-line-color="#bc0000" data-auto-fit="true" ontouchmove="event.preventDefault();"></div>
+                        data-line-color="#000000" data-auto-fit="true" ontouchmove="event.preventDefault();"></div>
 					<p>
 
                               <b-button variant="default"  @click="clearCanvas()">
@@ -684,6 +616,12 @@ En caso de fallecimiento del inversor, el monto será entregado al beneficiario 
                                     <i class="fas fa-save">
                                     </i> Guardar
                                  </template>
+                            </b-button>
+                        </div>
+                    <div class="col" v-if="usuario.tipoUsuario == 'INVERSION'">
+                            <b-button variant="warning" class="" @click="generarSolicitudInversionista()">
+                                    <i class="fas fa-download">
+                                    </i> Descargar contrato
                             </b-button>
                         </div>
                     </div>
