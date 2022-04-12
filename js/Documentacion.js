@@ -108,11 +108,20 @@ var vue2 = new Vue({
             { value: 'ARMANDO VEGA ELIZALDE', text: 'ARMANDO VEGA ELIZALDE' },
             { value: 'EMPRESA', text: 'EMPRESA' }
         ],
+        plazo: 12,
+        rendimiento: '2.50%',
+        rendimientAnual: '34%',
+        pagoRendimientos: 'MENSUAL'
     },
     mounted() {
         this.TipoUsuario()
         this.sucursalusuario()
         this.ObtieneDocumentacion()
+
+        if (this.usuario.tipoUsuario == 'INVERSION') {
+            console.log("INVERSION")
+            this.documentacion.totalPagar = 12
+        }
     },
     methods: {
         ObtieneDocumentacion() {
@@ -182,7 +191,6 @@ var vue2 = new Vue({
 
                 if (response.data.data.codigoError == 0) {
                     this.usuario = response.data.data.data[0]
-                    console.log(this.usuario)
 
                 } else {
                     $.noticeError("ERROR " + response.data.data.mensajeBitacora)
@@ -728,13 +736,13 @@ var vue2 = new Vue({
             //texto
             doc.setFontSize(8)
             doc.text(10, 59, 'Nombre(s):')
-            doc.text(25, 59, 'td.nombre~')
+            doc.text(25, 59, this.documentacion.nombre)
             doc.text(65, 59, 'A. Paterno:')
-            doc.text(80, 59, 'td.apaterno~')
+            doc.text(80, 59, this.documentacion.apaterno)
             doc.text(118, 59, 'A. Materno:')
-            doc.text(133, 59, 'td.amaterno~')
-            doc.text(173, 59, 'Genero')
-            doc.text(185, 59, 'td.genero~')
+            doc.text(133, 59, this.documentacion.amaterno)
+            doc.text(173, 59, 'Genero:')
+            doc.text(185, 59, String(this.documentacion.genero))
 
             doc.setFontSize(13)
             //rectangulo blanco 2 
@@ -746,13 +754,13 @@ var vue2 = new Vue({
             //rectangulo blanco 2
             doc.setFontSize(8)
             doc.text(10, 64, 'F. de nacimiento:')
-            doc.text(25, 67, 'td.fechaNacimiento~')
+            doc.text(25, 67, this.documentacion.fechaNacimiento)
             doc.text(65, 64, 'Edad:')
-            doc.text(66, 67, 'td.edad~')
+            doc.text(66, 67, String(this.documentacion.edad))
             doc.text(84, 64, 'País nacimiento:')
-            doc.text(88, 67, 'td.paisNacimiento~')
+            doc.text(88, 67, this.documentacion.paisNacimiento)
             doc.text(140, 64, 'Nacionalidad')
-            doc.text(148, 67, 'td.nacionalidad~')
+            doc.text(148, 67, this.documentacion.nacionalidad)
 
             //rectangulo blanco 3
             doc.rect(10, 68, 190, 6)
@@ -763,11 +771,11 @@ var vue2 = new Vue({
             //rectangulo blanco 3
 
             doc.text(10, 71, 'CURP:')
-            doc.text(25, 73, 'td.curp~')
+            doc.text(25, 73, this.documentacion.curp)
             doc.text(84, 71, 'RFC:')
-            doc.text(88, 73, 'td.rfc~')
+            doc.text(88, 73, this.documentacion.rfc)
             doc.text(140, 71, 'Nivel estudios')
-            doc.text(148, 73, 'td.nivelEstudios~')
+            doc.text(148, 73, this.documentacion.nivelEstudios)
 
             //rectangulo blanco 4
             doc.rect(10, 74, 190, 6)
@@ -778,13 +786,11 @@ var vue2 = new Vue({
             //rectangulo blanco 4
 
             doc.text(10, 77, 'Edo. Civil:')
-            doc.text(25, 78, 'td.edoCivil~')
+            doc.text(25, 78, this.documentacion.edoCivil)
             doc.text(70, 77, 'Ocupación:')
-            doc.text(88, 78, 'td.ocupacion~')
+            doc.text(88, 78, this.documentacion.ocupacion)
             doc.text(130, 77, 'Email')
-            doc.text(138, 78, 'td.correo~')
-
-
+            doc.text(138, 78, this.documentacion.correo)
             //rectangulo blanco 5
             doc.rect(10, 80, 190, 6)
             //lineas
@@ -794,11 +800,11 @@ var vue2 = new Vue({
             //rectangulo blanco 5
 
             doc.text(10, 82, 'Domicilio(Calle, Numero exterior e interior):')
-            doc.text(25, 85, 'td.calleNumero~')
+            doc.text(25, 85, this.documentacion.calleNumero)
             doc.text(101, 82, 'Colonia:')
-            doc.text(106, 85, 'td.coloina~')
+            doc.text(106, 85, this.documentacion.colonia)
             doc.text(170, 82, 'CP')
-            doc.text(175, 85, 'td.codigoPostal~')
+            doc.text(175, 85, this.documentacion.codigoPostal)
 
             //rectangulo blanco 6
             doc.rect(10, 86, 190, 6)
@@ -810,13 +816,13 @@ var vue2 = new Vue({
             //rectangulo blanco 6
 
             doc.text(10, 88, 'Municipio')
-            doc.text(25, 90, 'td.municipio~')
+            doc.text(25, 90, this.documentacion.municipio)
             doc.text(50, 88, 'Estado:')
-            doc.text(60, 90, 'td.estado~')
+            doc.text(60, 90, this.documentacion.estado)
             doc.text(100, 88, 'País')
-            doc.text(120, 90, 'td.pais~')
+            doc.text(120, 90, this.documentacion.pais)
             doc.text(160, 88, 'Tiempo de vivir ahí:')
-            doc.text(160, 90, 'td.tiempoVivir~')
+            doc.text(160, 90, String(this.documentacion.tiempoVivir))
 
             //rectangulo blanco 7
             doc.rect(10, 92, 190, 6)
@@ -828,13 +834,13 @@ var vue2 = new Vue({
             //rectangulo blanco 7
 
             doc.text(10, 94, 'Tipo de vivienda')
-            doc.text(15, 97, 'td.tipoVivienda~')
+            doc.text(15, 97, this.documentacion.tipoVivienda)
             doc.text(40, 94, 'Tel. Casa:')
-            doc.text(50, 97, 'td.telefonoCasa~')
+            doc.text(50, 97, this.documentacion.telefonoCasa)
             doc.text(90, 94, 'Celular')
-            doc.text(100, 97, 'td.celular~')
+            doc.text(100, 97, this.documentacion.celular)
             doc.text(140, 94, 'Entidad Federativa de Nacimiento:')
-            doc.text(160, 97, 'td.entidadFederativa~')
+            doc.text(160, 97, this.documentacion.entidadFederativa)
 
             //Segundo rectangulo azul
             doc.setFillColor(0, 0, 255)
@@ -854,20 +860,20 @@ var vue2 = new Vue({
 
             doc.setFontSize(8)
             doc.text(10, 106, 'Nombre(s)     A. Paterno       A. Materno')
-            doc.text(15, 109, 'td.nombre~')
+            doc.text(15, 109, this.documentacion.referenciaNombre1)
             doc.text(100, 106, 'Parentesco:')
-            doc.text(105, 109, 'td.parentesco~')
+            doc.text(105, 109, this.documentacion.parentesco1)
             doc.text(130, 106, 'Celular')
-            doc.text(140, 109, 'td.celular~')
+            doc.text(140, 109, this.documentacion.referenciaTelefono1)
             doc.text(160, 106, 'Porcentaje %')
-            doc.text(170, 109, 'td.porcentaje~')
+            doc.text(170, 109, this.documentacion.referenciaNombre2)
 
 
             //Segundo rectangulo azul
-            doc.setFillColor(0, 0, 255)
-            doc.rect(10, 98, 190, 6, 'B')
-            doc.setFontSize(13)
-            doc.text(75, 103, 'DATOS DEL BENEFICIARIO')
+            //doc.setFillColor(0, 0, 255)
+            //doc.rect(10, 98, 190, 6, 'B')
+            //doc.setFontSize(13)
+            //doc.text(75, 103, 'DATOS DEL BENEFICIARIO')
             //Segundo rectangulo azul
 
             //rectangulo blanco 9
@@ -881,13 +887,13 @@ var vue2 = new Vue({
 
             doc.setFontSize(8)
             doc.text(10, 112, 'Nombre(s)     A. Paterno       A. Materno')
-            doc.text(15, 115, 'td.nombre~')
+            doc.text(15, 115, this.documentacion.referenciaNombre3)
             doc.text(100, 112, 'Parentesco:')
-            doc.text(105, 115, 'td.parentesco~')
+            doc.text(105, 115, this.documentacion.parentesco3)
             doc.text(130, 112, 'Celular')
-            doc.text(140, 115, 'td.celular~')
+            doc.text(140, 115, this.documentacion.referenciaTelefono3)
             doc.text(160, 112, 'Porcentaje %')
-            doc.text(170, 115, 'td.porcentaje~')
+            doc.text(170, 115, this.documentacion.referenciaNombre4)
 
             //Tercer rectangulo azul
             doc.setFillColor(0, 0, 255)
@@ -907,11 +913,11 @@ var vue2 = new Vue({
 
             doc.setFontSize(8)
             doc.text(10, 124, 'Monto de la inversión')
-            doc.text(15, 127, 'td.montoInversion~')
+            doc.text(15, 127, String(this.documentacion.montoSolicitado))
             doc.text(70, 124, 'Fecha')
-            doc.text(90, 127, 'td.fecha~')
+            doc.text(90, 127, this.documentacion.parentesco2)
             doc.text(130, 124, 'Plazo en meses')
-            doc.text(150, 127, 'td.meses~')
+            doc.text(150, 127, String(this.plazo))
 
 
             //rectangulo blanco 10
@@ -923,12 +929,12 @@ var vue2 = new Vue({
             //rectangulo blanco 10
 
             doc.setFontSize(8)
-            doc.text(10, 130, 'Monto de la inversión')
-            doc.text(15, 133, 'td.montoInversion~')
-            doc.text(70, 130, 'Fecha')
-            doc.text(90, 133, 'td.fecha~')
-            doc.text(130, 130, 'Plazo en meses')
-            doc.text(150, 133, 'td.meses~')
+            doc.text(10, 130, 'Rendimiento Mensual')
+            doc.text(15, 133, this.rendimiento)
+            doc.text(70, 130, 'Rendimiento anual')
+            doc.text(90, 133, this.rendimientAnual)
+            doc.text(130, 130, 'Pago de renidmientos')
+            doc.text(150, 133, this.pagoRendimientos)
 
             //Cuarto rectangulo azul
             doc.setFillColor(0, 0, 255)
@@ -944,7 +950,7 @@ var vue2 = new Vue({
 
             doc.setFontSize(8)
             doc.text(10, 142, 'Institución de crédito')
-            doc.text(15, 145, 'td.institucion~')
+            doc.text(15, 145, this.documentacion.bancoCredito)
 
 
             //rectangulo blanco 12
@@ -953,7 +959,7 @@ var vue2 = new Vue({
 
             doc.setFontSize(8)
             doc.text(10, 148, 'Clabe interbancaria')
-            doc.text(15, 151, 'td.clabe~')
+            doc.text(15, 151, this.documentacion.ctaClabeTarjeta)
 
 
             //Quinto rectangulo azul
@@ -978,10 +984,10 @@ var vue2 = new Vue({
             doc.text(115, 162, 'Clabe interbancaria')
             doc.text(170, 162, 'Banco')
             doc.setFontSize(7)
-            doc.text(10, 169, 'PRESTA STAR-Z , S.A.P.I. de C.V., SOFOM, E.N.R')
-            doc.text(80, 169, 'td.cuenta~')
-            doc.text(125, 169, 'td.clabe~')
-            doc.text(170, 169, 'td.banco~')
+            doc.text(10, 169, 'PRESTRA STAR-Z , S.A.P.I. de C.V., SOFOM, E.N.R')
+            doc.text(80, 169, '00117852487')
+            doc.text(125, 169, '012-730-00117852487-2')
+            doc.text(170, 169, 'BBVA')
 
 
 
@@ -1186,7 +1192,7 @@ var vue2 = new Vue({
                 actual += 1;
             }
 
-            var texto8 ="Modificaciones. El presente contrato podrá ser modificado únicamente para ampliar el plazo de inversión, para ello deberá firmarse un convenio entre ambas partes. En caso de requerir ampliación de capital de inversión deberá firmarse un contrato nuevo con su respectivo plazo forzoso."
+            var texto8 = "Modificaciones. El presente contrato podrá ser modificado únicamente para ampliar el plazo de inversión, para ello deberá firmarse un convenio entre ambas partes. En caso de requerir ampliación de capital de inversión deberá firmarse un contrato nuevo con su respectivo plazo forzoso."
 
 
             doc.setFontSize(12)
