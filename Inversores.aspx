@@ -1036,7 +1036,7 @@
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Inversores.js?1.0.0"></script>
+    <script src="js/Inversores.js?111.0.1"></script>
     <style>
         .zoom {
             transition: transform.3s;

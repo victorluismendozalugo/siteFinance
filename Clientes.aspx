@@ -726,59 +726,92 @@
                 <!-- /.card-body -->
             </div>
 
-             <div class="card card-info" v-if="usuario.tipoUsuario=='PRESTAMO'">
-                <div class="card-header">
-                    <h3 class="card-title">Datos del préstamo</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                          <div class="col-sm-4 col-xs-8">
-                           <label>Monto solicitado</label>
-                          <b-form-select class="form-control" v-model="documentacion.montoSolicitado" :options="optionsMontoSolicitado" @change="calculaPagos">
-                        </b-form-select>
+                                             <%--datos del prestamo - inversion--%>
+
+                    <div class="card card-info">
+                        <div class="card-header" v-if="usuario.tipoUsuario=='PRESTAMO'">
+                            <h3 class="card-title">Datos del préstamo</h3>
+                        </div>
+                        <div class="card-header" v-else>
+                            <h3 class="card-title">Datos de la inveersión</h3>
+                        </div>
+                        <div class="card-body" v-if="usuario.tipoUsuario=='PRESTAMO'">
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Monto solicitado</label>
+                                    <b-form-select class="form-control" v-model="documentacion.montoSolicitado"
+                                        :options="optionsMontoSolicitado" @change="calculaPagos">
+                                    </b-form-select>
+                                </div>
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Interés ordinario</label>
+                                    <input type="number" class="form-control" v-model="documentacion.interesOrdinario"
+                                        name="Interés ordinario" readonly />
+                                </div>
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Total a pagar</label>
+                                    <input type="number" class="form-control" v-model="documentacion.totalPagar"
+                                        name="Total a pagar" readonly />
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Número de pagos</label>
+                                    <input type="number" class="form-control" v-model="numeroPagos" readonly />
+                                </div>
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Frecuencia de pagos</label>
+                                    <b-form-input type="text" class="form-control w-100"
+                                        v-model="frecuenciaPagosCredito" disabled>
+                                    </b-form-input>
+                                </div>
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Valor de cada pago</label>
+                                    <input type="number" class="form-control" v-model="documentacion.valorXpago"
+                                        name="Valor de cada pago" readonly />
+                                </div>
+                            </div>
                         </div>
 
-                         <div class="col-sm-4 col-xs-8">
-                           <label>Interés ordinario</label>
-                       <input type="number" class="form-control" v-model="documentacion.interesOrdinario" name="Interés ordinario"
-                              readonly />
+                        <div class="card-body" v-else>
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Monto de la inversión</label>
+                                    <input type="number" class="form-control" v-model="documentacion.montoSolicitado" />
+                                </div>
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Fecha</label>
+                                    <input type="date" class="form-control" v-model="documentacion.referenciaTelefono2"
+                                        name="" />
+                                </div>
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Plazo en meses</label>
+                                    <b-form-input type="number" class="form-control" v-model="plazo"
+                                        name="Plazo en meses" readonly>
+                                    </b-form-input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Rendimiento mensual</label>
+                                    <input type="text" class="form-control" v-model="rendimiento" readonly />
+                                </div>
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Rendimiento anual</label>
+                                    <b-form-input type="text" class="form-control w-100" v-model="rendimientAnual"
+                                        disabled>
+                                    </b-form-input>
+                                </div>
+                                <div class="col-sm-4 col-xs-8">
+                                    <label>Pago de rendimientos</label>
+                                    <input type="text" class="form-control" v-model="pagoRendimientos"
+                                        name="Valor de cada pago" readonly />
+                                </div>
+                            </div>
                         </div>
-
-                          <div class="col-sm-4 col-xs-8">
-                           <label>Total a pagar</label>
-                       <input type="number" class="form-control" v-model="documentacion.totalPagar" name="Total a pagar"
-                              readonly />
-                        </div>
-
                     </div>
-                     <div class="row">
-                     
-                         <div class="col-sm-4 col-xs-8">
-                           <label>Número de pagos</label>
-                      <%-- <input type="number" class="form-control" v-model="numeroPagos"
-                              readonly />--%>
-                        <b-form-select class="form-control" v-model="documentacion.numeroPagos" :options="optionsNumeroPagos" @change="calculaPagos">
-                        </b-form-select>
-                        </div>
 
-                         <div class="col-sm-4 col-xs-8">
-                           <label>Frecuencia de pagos</label>
-                                <b-form-input type="text" class="form-control w-100" v-model="frecuenciaPagosCredito" disabled></b-form-input>
-                        </div>
-
-                          <div class="col-sm-4 col-xs-8">
-                           <label>Valor de cada pago</label>
-                       <input type="number" class="form-control" v-model="documentacion.valorXpago" name="Valor de cada pago"
-                              readonly />
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-          
-
-
-            <!-- /.card -->
             <div class="card card-info">
                 <div class="card-header">
                     <h3 class="card-title">Documentación</h3>
@@ -974,7 +1007,7 @@
                 <%--modal para generar un nuevo crédito para el cliente--%>
                 
                  <b-modal id="modal-nuevo-credito" title="Nuevo préstamo" size="lg" hide-footer>
-                     <%--<pre>{{credito}}</pre>--%>
+       
                 <p>Cliente: {{credito.nombreCompleto}}</p>
                 <div>
                <div class="card card-info">
@@ -1006,7 +1039,7 @@
                      
                          <div class="col-sm-4 col-xs-8">
                            <label>Número de pagos</label>
-                        <b-form-select class="form-control" v-model="credito.numeroPagos" :options="optionsNumeroPagos" @change="calculaPagosNuevo">
+                        <b-form-select class="form-control" v-model="credito.numeroPagos"  @change="calculaPagosNuevo">
                         </b-form-select>
                         </div>
 
@@ -1037,7 +1070,7 @@
         </div>
     </div>
     <script src="js/libs/xlsx.full.min.js"></script>
-    <script src="js/Clientes.js?19.0.0"></script>
+    <script src="js/Clientes.js?v1.0.0"></script>
     <style>
         .zoom {
             transition: transform.3s;
