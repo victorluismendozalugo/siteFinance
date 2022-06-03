@@ -104,7 +104,7 @@ a:hover,a:focus{color:#74777b;}
 .htmleaf-demo a.current{background:#1d7db1;color: #fff; }
 /* Top Navigation Style */
 .htmleaf-links {
-	position: relative;
+	/*position: relative;*/
 	display: inline-block;
 	white-space: nowrap;
 	font-size: 1.5em;

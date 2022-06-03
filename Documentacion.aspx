@@ -768,5 +768,5 @@
         </div>
     </div>
     <script src="js/libs/jq-signature/js/jquery-1.11.0.min.js"></script>
-    <script src="js/Documentacion.js?v1.0.0"></script>
+    <script src="js/Documentacion.js?v2.0.0"></script>
 </asp:Content>

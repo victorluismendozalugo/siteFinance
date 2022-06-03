@@ -1,4 +1,31 @@
-﻿
+﻿$(document).ready(function () {
+    // Store the window width
+    var windowWidth = $(window).width();
+
+    // Resize Event
+    $(window).resize(function () {
+
+        // Check window width has actually changed and it's not just iOS triggering a resize event on scroll
+        if ($(window).width() != windowWidth) {
+
+            // Update the window width for next time
+            windowWidth = $(window).width();
+
+            // Do stuff here
+
+        }
+
+        // Otherwise do nothing
+
+    });
+    if ($('.js-signature').length) {
+        $('.js-signature').jqSignature();
+    }
+});
+
+$('.js-signature').eq(0).on('jq.signature.changed', function () {
+    $('#saveBtn').attr('disabled', false);
+});
 
 
 var vue2 = new Vue({
@@ -692,28 +719,7 @@ var vue2 = new Vue({
             doc.text(60, 25, 'CONTRATO DE MUTUO DE INVERSION')
 
 
-            var miString = texto1
-            var result = ""
-            var restantes = texto1.length;
-            var ejeY = 33;
-            var actual = 0;
-
-            for (i = 0; i < miString.length - 1; i++) {
-                result += miString.charAt(i)
-
-                if (result.length == 120) {
-                    doc.text(10, ejeY, result)
-                    ejeY = ejeY + 5;
-                    result = ""
-
-                    if (restantes < 120) {
-                        doc.text(10, ejeY, miString.substring(actual, miString.length))
-                        break;
-                    }
-                }
-                restantes--;
-                actual += 1;
-            }
+            doc.text(texto1, 10, 33, { maxWidth: 190, align: "justify" });
 
             doc.setFontSize(12)
             //doc.text(10, 33, 'Contrato de Mutuo de Inversión que celebran por una parte PRESTA STAR-Z, S.A.P.I. ,de C.V. ,')
@@ -997,352 +1003,78 @@ var vue2 = new Vue({
 
             doc.setFontSize(15)
             doc.text(10, 176, 'VI.-DECLARACIONES')
-            doc.setFontSize(12)
-            doc.text(10, 181, 'A)')
 
-            var texto2 = "Declara el Inversor que: (i) Es una persona física o moral y que cuenta con la capacidad legal para la celebración de este acto; (iii) Señala como domicilio los datos citados anteriormente; (iii) Desea otorgar mediante un contrato de inversión y en beneficio del Emisor la cantidad de dinero m.n./m.e. que le ha solicitado para que este lo utilice en la ejecución del negocio de Presta Star-Z , S.A.P.I. de C.V. SOFOM, E.N.R., y para el seguimiento de consultas, solicitudes, aclaraciones, reclamaciones o quejas, el Inversor deberá de comunicarse a la unidad especializada del Emisor de atención a usuarios ubicada en el estado de contratación de la inversión, cuyo domicilio, correo electrónico y teléfono son los siguientes: Correo electrónico: director@prestastar-z.com.mx; Domicilio: Calle Francisco Villa 202-3 Col. Centro, Culiacán, Sinaloa ,México C.P. 80000; Teléfono: 6672758518. El Inversor a su vez, podrá acudir a la Condusef en caso de cualquier queja o reclamación, los datos de contacto de la Condusef son los siguientes: Teléfono: 01 800 9998080/53 40 0999; Página de internet: www.condusef.gob.mx o al correo electrónico: opinion@condusef.gob.mx"
+            var texto2 = "A) Declara el Inversor que: (i) Es una persona física o moral y que cuenta con la capacidad legal para la celebración de este acto; (iii) Señala como domicilio los datos citados anteriormente; (iii) Desea otorgar mediante un contrato de inversión y en beneficio del Emisor la cantidad de dinero m.n./m.e. que le ha solicitado para que este lo utilice en la ejecución del negocio de Presta Star-Z , S.A.P.I. de C.V. SOFOM, E.N.R., y para el seguimiento de consultas, solicitudes, aclaraciones, reclamaciones o quejas, el Inversor deberá de comunicarse a la unidad especializada del Emisor de atención a usuarios ubicada en el estado de contratación de la inversión, cuyo domicilio, correo electrónico y teléfono son los siguientes: Correo electrónico: director@prestastar-z.com.mx; Domicilio: Calle Francisco Villa 202-3 Col. Centro, Culiacán, Sinaloa ,México C.P. 80000; Teléfono: 6672758518. El Inversor a su vez, podrá acudir a la Condusef en caso de cualquier queja o reclamación, los datos de contacto de la Condusef son los siguientes: Teléfono: 01 800 9998080/53 40 0999; Página de internet: www.condusef.gob.mx o al correo electrónico: opinion@condusef.gob.mx"
 
             doc.setFontSize(10)
 
-
-            var miString = texto2
-            var result = ""
-            var restantes = texto2.length;
-            var ejeY = 187;
-            var actual = 0;
-
-            for (i = 0; i < miString.length - 1; i++) {
-                result += miString.charAt(i)
-
-                if (result.length == 120) {
-                    doc.text(10, ejeY, result)
-                    ejeY = ejeY + 5;
-                    result = ""
-
-                    if (restantes < 120) {
-                        doc.text(10, ejeY, miString.substring(actual, miString.length))
-                        break;
-                    }
-                }
-                restantes--;
-                actual += 1;
-            }
+            doc.text(texto2, 10, 182, { maxWidth: 190, align: "justify" });
 
 
-            var texto3 = "Declara el Emisor, por medio de su apoderado legal, bajo protesta de decir verdad que: (i) Es una Sociedad Anónima Promotora de Inversión de Capital Variable Sociedad Financiera de Objeto Múltiple, y para su constitución y operación no requiere autorización por parte de la SHCP, para la realización de sus operaciones de crédito, incluyendo la celebración del presente contrato. El domicilio principal del negocio del EMISOR se encuentra ubicado en Calle Francisco Villa 202-3 Col. Centro, Culiacán, Sinaloa, México C.P. 80000; (ii) Su representante legal cuenta con los poderes y facultades suficientes para celebrar este contrato; (iii) Libremente desea celebrar este contrato, previo a la firma del presente contrato; El Emisor le informó al Inversor sobre la tasa de rendimiento, el monto total a pagar y el plazo, según se acordó en este instrumento; (iv) El Emisor acepta tener pleno conocimiento de la inversión y los  cargos  correspondientes;  habiéndole  proporcionado  los  conceptos  debidamente  desglosados;  Está  consciente  y  conoce  todas  las obligaciones asumidas por virtud de la celebración de este contrato, no habiendo error, gozando plenamente de sus facultades mentales y contando con capacidad económica e ingresos suficientes para hacer frente a las obligaciones antes mencionadas y que no existe lesión, conducta inapropiada, dolo, mala fe, abuso o cargos ocultos; Y asume las obligaciones de pago derivadas de este contrato sin que exista alguna ventaja de posible apuro económico, necesidad urgente, extrema miseria, suma ignorancia o notoria inexperiencia del Emisor."
+
+            var texto3 = "B) Declara el Emisor, por medio de su apoderado legal, bajo protesta de decir verdad que: (i) Es una Sociedad Anónima Promotora de Inversión de Capital Variable Sociedad Financiera de Objeto Múltiple, y para su constitución y operación no requiere autorización por parte de la SHCP, para la realización de sus operaciones de crédito, incluyendo la celebración del presente contrato. El domicilio principal del negocio del EMISOR se encuentra ubicado en Calle Francisco Villa 202-3 Col. Centro, Culiacán, Sinaloa, México C.P. 80000; (ii) Su representante legal cuenta con los poderes y facultades suficientes para celebrar este contrato; (iii) Libremente desea celebrar este contrato, previo a la firma del presente contrato; El Emisor le informó al Inversor sobre la tasa de rendimiento, el monto total a pagar y el plazo, según se acordó en este instrumento; (iv) El Emisor acepta tener pleno conocimiento de la inversión y los  cargos  correspondientes;  habiéndole  proporcionado  los  conceptos  debidamente  desglosados;  Está  consciente  y  conoce  todas  las obligaciones asumidas por virtud de la celebración de este contrato, no habiendo error, gozando plenamente de sus facultades mentales y contando con capacidad económica e ingresos suficientes para hacer frente a las obligaciones antes mencionadas y que no existe lesión, conducta inapropiada, dolo, mala fe, abuso o cargos ocultos; Y asume las obligaciones de pago derivadas de este contrato sin que exista alguna ventaja de posible apuro económico, necesidad urgente, extrema miseria, suma ignorancia o notoria inexperiencia del Emisor."
+
+            doc.text(texto3, 10, 230, { maxWidth: 190, align: "justify" });
+
 
             doc.addPage()
 
-            doc.setFontSize(12)
-            doc.text(10, 20, 'B)')
-
-
-            doc.setFontSize(10)
-
-
-            var miString = texto3
-            var result = ""
-            var restantes = texto3.length;
-            var ejeY = 25;
-            var actual = 0;
-
-            for (i = 0; i < miString.length - 1; i++) {
-                result += miString.charAt(i)
-
-                if (result.length == 120) {
-                    doc.text(10, ejeY, result)
-                    ejeY = ejeY + 5;
-                    result = ""
-
-                    if (restantes < 120) {
-                        doc.text(10, ejeY, miString.substring(actual, miString.length))
-                        break;
-                    }
-                }
-                restantes--;
-                actual += 1;
-            }
-
             doc.setFontSize(15)
-            doc.text(10, 110, 'VII.- CLAUSULAS')
-
-            doc.setFontSize(12)
-            doc.text(10, 115, '1)')
-
-            var texto4 = "Servicios y atención al cliente, recibos, estados de cuenta y servicios adicionales. Las partes acuerdan que el Emisor no está obligado a enviar al domicilio del INVERSOR estados de cuenta relacionados con la inversión. Los estados de cuenta estarán disponibles en todo momento para el Inversor en la página web www.prestastar-z.com.mx durante la vigencia de su inversión. Dichos estados de cuenta se generarán por periodos mensuales con fecha de corte al último día calendario del mes que se trate. En caso de que el Inversor lo solicite al Emisor, le expedirá el recibo correspondiente. En caso de que el Inversor desee presentar una consulta, aclaración, inconformidad o queja con el presente contrato, lo deberá presentar por medio de correo electrónico a director@prestastar-z.com.mx Dicha aclaración deberá ser acompañada con copia del presentes contrato, copia de su identificación vigente y el escrito de la queja."
-
+            doc.text(10, 10, 'VII.- CLAUSULAS')
 
             doc.setFontSize(10)
 
+            var texto4 = "1) Servicios y atención al cliente, recibos, estados de cuenta y servicios adicionales. Las partes acuerdan que el Emisor no está obligado a enviar al domicilio del INVERSOR estados de cuenta relacionados con la inversión. Los estados de cuenta estarán disponibles en todo momento para el Inversor en la página web www.prestastar-z.com.mx durante la vigencia de su inversión. Dichos estados de cuenta se generarán por periodos mensuales con fecha de corte al último día calendario del mes que se trate. En caso de que el Inversor lo solicite al Emisor, le expedirá el recibo correspondiente. En caso de que el Inversor desee presentar una consulta, aclaración, inconformidad o queja con el presente contrato, lo deberá presentar por medio de correo electrónico a director@prestastar-z.com.mx Dicha aclaración deberá ser acompañada con copia del presentes contrato, copia de su identificación vigente y el escrito de la queja."
 
-            var miString = texto4
-            var result = ""
-            var restantes = texto4.length;
-            var ejeY = 120;
-            var actual = 0;
+            doc.text(texto4, 10, 15, { maxWidth: 190, align: "justify" });
+    
 
-            for (i = 0; i < miString.length - 1; i++) {
-                result += miString.charAt(i)
+            var texto5 = "2) Objeto del presente contrato de inversión y medios de pago permitidos. El Emisor se obliga incondicionalmente a pagar en su totalidad al Inversor el monto total señalado en la sección iii (Datos de la inversión) que es el monto de los intereses generados en el mes corriente y señalados en la sección iii. El Inversor otorga en beneficio del Emisor en calidad de mutuo por inversión con interés, la cantidad señalada en la sección iii, conviniendo las partes en el interés señalado en la sección iii, IVA incluido; la inversión se otorga por el período señalado en la sección III contado a partir de la suscripción del contrato, quedando de mutuo acuerdo el pago mensual del interés. El pago del rendimiento de la inversión será exigible de forma mensual durante la vigencia de la inversión conforme acordado por las partes, después de la fecha de firma del presente contrato y a partir de que haya sido aprobada la inversión por parte del Emisor y hasta que sea retornado el monto total de la inversión, el presente contrato estará vigente, hasta en tanto sea retornado el monto total de la inversión al Inversor y no sea prorrogable con la finalidad de garantizar y dar cumplimiento a las obligaciones que asume el Emisor por virtud del presente contrato."
 
-                if (result.length == 120) {
-                    doc.text(10, ejeY, result)
-                    ejeY = ejeY + 5;
-                    result = ""
+            doc.text(texto5, 10, 50, { maxWidth: 190, align: "justify" });
 
-                    if (restantes < 120) {
-                        doc.text(10, ejeY, miString.substring(actual, miString.length))
-                        break;
-                    }
-                }
-                restantes--;
-                actual += 1;
-            }
-
-
-
-            doc.setFontSize(12)
-            doc.text(10, 170, '2)')
-            var texto5 = "Objeto del presente contrato de inversión y medios de pago permitidos. El Emisor se obliga incondicionalmente a pagar en su totalidad al Inversor el monto total señalado en la sección iii (Datos de la inversión) que es el monto de los intereses generados en el mes corriente y señalados en la sección iii. El Inversor otorga en beneficio del Emisor en calidad de mutuo por inversión con interés, la cantidad señalada en la sección iii, conviniendo las partes en el interés señalado en la sección iii, IVA incluido; la inversión se otorga por el período señalado en la sección III contado a partir de la suscripción del contrato, quedando de mutuo acuerdo el pago mensual del interés. El pago del rendimiento de la inversión será exigible de forma mensual durante la vigencia de la inversión conforme acordado por las partes, después de la fecha de firma del presente contrato y a partir de que haya sido aprobada la inversión por parte del Emisor y hasta que sea retornado el monto total de la inversión, el presente contrato estará vigente, hasta en tanto sea retornado el monto total de la inversión al Inversor y no sea prorrogable con la finalidad de garantizar y dar cumplimiento a las obligaciones que asume el Emisor por virtud del presente contrato."
-
-            doc.setFontSize(10)
-
-
-            var miString = texto5
-            var result = ""
-            var restantes = texto5.length;
-            var ejeY = 175;
-            var actual = 0;
-
-            for (i = 0; i < miString.length - 1; i++) {
-                result += miString.charAt(i)
-
-                if (result.length == 120) {
-                    doc.text(10, ejeY, result)
-                    ejeY = ejeY + 5;
-                    result = ""
-
-                    if (restantes < 120) {
-                        doc.text(10, ejeY, miString.substring(actual, miString.length))
-                        break;
-                    }
-                }
-                restantes--;
-                actual += 1;
-            }
 
             var texto6 = "Con 30 días de anticipación al término de la vigencia del contrato, el cliente deberá solicitar por medio su cuenta de inversionista en la pagina de www.prestastar-z.com.mx en la sección de Retiros la inversión inicial que se establece en la sección iii (Datos de la inversión). Se obliga al Emisor a realizar cualquier pago pendiente que sea exigible conforme al presente contrato directamente al Inversor en las fechas estipuladas para ello en este contrato.Los pagos realizados por el Emisor, podrán llevarse a cabo mediante pago en efectivo realizado en la sucursal del mismo o depósito en la cuenta bancaria que para el efecto este señale. En caso de fallecimiento del Inversor, el monto será entregado al beneficiario al término del presente contrato; en caso de que dicho beneficiario no presente solicitud de reclamación formal en un periodo de 60 días naturales, Presta Star - Z, S.A.P.I.de C.V.SOFOM, E.N.R.se reserva el derecho sobre el monto recibido por parte del Inversor."
 
-            doc.setFontSize(10)
+            doc.text(texto6, 10, 95, { maxWidth: 190, align: "justify" });
+
+         
+            var texto7 = "3) Cancelación anticipada. el inversor o el beneficiario podrá cancelar y/o terminar el presente contrato de manera anticipada sin penalización alguna después de los 6 meses de la firma del contrato, si realiza la cancelación antes de los 6 meses será penalizado con el 30% del monto de inversión, el Emisor cuenta con 30 días hábiles para reponer el 70% del monto de inversión estipulado en el presente contrato. El Emisor podrá cancelar y/o terminar el presente contrato sin ninguna responsabilidad durante la vigencia del presente contrato posteriormente a la fecha que haya realizado la devolución del monto de la inversión. En caso de ejercer cancelación anticipada esta se deberá solicitar por escrito con 30 días de anticipación."
+
+            doc.text(texto7, 10, 133, { maxWidth: 190, align: "justify" });
 
 
-            var miString = texto6
-            var result = ""
-            var restantes = texto6.length;
-            var ejeY = 230;
-            var actual = 0;
+            var texto8 = "4) Modificaciones. El presente contrato podrá ser modificado únicamente para ampliar el plazo de inversión, para ello deberá firmarse un convenio entre ambas partes. En caso de requerir ampliación de capital de inversión deberá firmarse un contrato nuevo con su respectivo plazo forzoso."
 
-            for (i = 0; i < miString.length - 1; i++) {
-                result += miString.charAt(i)
+            doc.text(texto8, 10, 163, { maxWidth: 190, align: "justify" });
+           
 
-                if (result.length == 120) {
-                    doc.text(10, ejeY, result)
-                    ejeY = ejeY + 5;
-                    result = ""
+            var texto88 = "5) Notificaciones. Cualquier notificación al Emisor deberá ser efectuada en el domicilio de dicho Emisor conforme a derecho. Cualquier notificación al Inversor será efectuada en el domicilio proporcionado por el mismo en este contrato. El Inversor está obligado a notificar al Emisor de cualquier cambio de domicilio dentro de los 10 días hábiles en que se hubiere efectuado, proporcionando a este último un comprobante de domicilio o alguna prueba del nuevo domicilio declarado."
 
-                    if (restantes < 120) {
-                        doc.text(10, ejeY, miString.substring(actual, miString.length))
-                        break;
-                    }
-                }
-                restantes--;
-                actual += 1;
-            }
+            doc.text(texto88, 10, 178, { maxWidth: 190, align: "justify" });
 
 
-            doc.addPage()
+            var texto9 = "6) Jurisdicción y legislación aplicable. Este contrato está sujeto a las leyes aplicables y jurisdicción de los tribunales del municipio de Culiacán, Sinaloa, renunciando las partes a la aplicación de cualquier otra ley o jurisdicción que pudiese corresponderles por virtud de sus domicilios presentes o futuros."
 
-            doc.setFontSize(12)
-            doc.text(10, 15, '3)')
-
-            var texto7 = "Cancelación anticipada. el inversor o el beneficiario podrá cancelar y/o terminar el presente contrato de manera anticipada sin penalización alguna después de los 6 meses de la firma del contrato, si realiza la cancelación antes de los 6 meses será penalizado con el 30% del monto de inversión, el Emisor cuenta con 30 días hábiles para reponer el 70% del monto de inversión estipulado en el presente contrato. El Emisor podrá cancelar y/o terminar el presente contrato sin ninguna responsabilidad durante la vigencia del presente contrato posteriormente a la fecha que haya realizado la devolución del monto de la inversión. En caso de ejercer cancelación anticipada esta se deberá solicitar por escrito con 30 días de anticipación."
-
-            doc.setFontSize(10)
+            doc.text(texto9, 10, 200, { maxWidth: 190, align: "justify" });
 
 
-            var miString = texto7
-            var result = ""
-            var restantes = texto7.length;
-            var ejeY = 20;
-            var actual = 0;
+            var texto10 = "7) Consentimiento y firma. el inversor reconoce y acepta con su firma que leyó, o le fue leído y explicado el presente contrato, previo a su firma, habiendo entendido la naturaleza y alcance de todas y cada una de las obligaciones estipuladas en este instrumento y obligándose en los términos que a continuación se establecen en el mismo. Leído el contrato y enteradas las partes de su alcance y contenido lo firman para obligarse en todos sus términos por triplicado, en la fecha indicada en sección iii (Datos de la inversión) de datos de la inversión, quedando un ejemplar en poder del Inversor y dos ejemplares en poder del Emisor."
 
-            for (i = 0; i < miString.length - 1; i++) {
-                result += miString.charAt(i)
+            doc.text(texto10, 10, 215, { maxWidth: 190, align: "justify" });
 
-                if (result.length == 120) {
-                    doc.text(10, ejeY, result)
-                    ejeY = ejeY + 5;
-                    result = ""
-
-                    if (restantes < 120) {
-                        doc.text(10, ejeY, miString.substring(actual, miString.length))
-                        break;
-                    }
-                }
-                restantes--;
-                actual += 1;
-            }
-
-            var texto8 = "Modificaciones. El presente contrato podrá ser modificado únicamente para ampliar el plazo de inversión, para ello deberá firmarse un convenio entre ambas partes. En caso de requerir ampliación de capital de inversión deberá firmarse un contrato nuevo con su respectivo plazo forzoso."
+      
+            doc.addImage(this.documentacion.imagenFirma, 'JPEG', 80, 240, 70, 30)
 
 
-            doc.setFontSize(12)
-            doc.text(10, 55, '4)')
-
-            doc.setFontSize(10)
-
-
-            var miString = texto8
-            var result = ""
-            var restantes = texto8.length;
-            var ejeY = 60;
-            var actual = 0;
-
-            for (i = 0; i < miString.length - 1; i++) {
-                result += miString.charAt(i)
-
-                if (result.length == 120) {
-                    doc.text(10, ejeY, result)
-                    ejeY = ejeY + 5;
-                    result = ""
-
-                    if (restantes < 120) {
-                        doc.text(10, ejeY, miString.substring(actual, miString.length))
-                        break;
-                    }
-                }
-                restantes--;
-                actual += 1;
-            }
-
-            doc.setFontSize(12)
-            doc.text(10, 75, '5)')
-
-
-
-
-            var texto8 = "Notificaciones. Cualquier notificación al Emisor deberá ser efectuada en el domicilio de dicho Emisor conforme a derecho. Cualquier notificación al Inversor será efectuada en el domicilio proporcionado por el mismo en este contrato. El Inversor está obligado a notificar al Emisor de cualquier cambio de domicilio dentro de los 10 días hábiles en que se hubiere efectuado, proporcionando a este último un comprobante de domicilio o alguna prueba del nuevo domicilio declarado."
-
-            doc.setFontSize(10)
-
-
-            var miString = texto8
-            var result = ""
-            var restantes = texto8.length;
-            var ejeY = 80;
-            var actual = 0;
-
-            for (i = 0; i < miString.length - 1; i++) {
-                result += miString.charAt(i)
-
-                if (result.length == 120) {
-                    doc.text(10, ejeY, result)
-                    ejeY = ejeY + 5;
-                    result = ""
-
-                    if (restantes < 120) {
-                        doc.text(10, ejeY, miString.substring(actual, miString.length))
-                        break;
-                    }
-                }
-                restantes--;
-                actual += 1;
-            }
-
-            doc.setFontSize(12)
-            doc.text(10, 100, '6)')
-
-
-
-            var texto9 = "Jurisdicción y legislación aplicable. Este contrato está sujeto a las leyes aplicables y jurisdicción de los tribunales del municipio de Culiacán, Sinaloa, renunciando las partes a la aplicación de cualquier otra ley o jurisdicción que pudiese corresponderles por virtud de sus domicilios presentes o futuros."
-
-            doc.setFontSize(10)
-
-
-            var miString = texto9
-            var result = ""
-            var restantes = texto9.length;
-            var ejeY = 105;
-            var actual = 0;
-
-            for (i = 0; i < miString.length - 1; i++) {
-                result += miString.charAt(i)
-
-                if (result.length == 120) {
-                    doc.text(10, ejeY, result)
-                    ejeY = ejeY + 5;
-                    result = ""
-
-                    if (restantes < 120) {
-                        doc.text(10, ejeY, miString.substring(actual, miString.length))
-                        break;
-                    }
-                }
-                restantes--;
-                actual += 1;
-            }
-
-            doc.setFontSize(12)
-            doc.text(10, 120, '7)')
-
-            var texto10 = "Consentimiento y firma. el inversor reconoce y acepta con su firma que leyó, o le fue leído y explicado el presente contrato, previo a su firma, habiendo entendido la naturaleza y alcance de todas y cada una de las obligaciones estipuladas en este instrumento y obligándose en los términos que a continuación se establecen en el mismo. Leído el contrato y enteradas las partes de su alcance y contenido lo firman para obligarse en todos sus términos por triplicado, en la fecha indicada en sección iii (Datos de la inversión) de datos de la inversión, quedando un ejemplar en poder del Inversor y dos ejemplares en poder del Emisor."
-
-            doc.setFontSize(10)
-
-
-            var miString = texto10
-            var result = ""
-            var restantes = texto10.length;
-            var ejeY = 125;
-            var actual = 0;
-
-            for (i = 0; i < miString.length - 1; i++) {
-                result += miString.charAt(i)
-
-                if (result.length == 120) {
-                    doc.text(10, ejeY, result)
-                    ejeY = ejeY + 5;
-                    result = ""
-
-                    if (restantes < 120) {
-                        doc.text(10, ejeY, miString.substring(actual, miString.length))
-                        break;
-                    }
-                }
-                restantes--;
-                actual += 1;
-            }
-
-
-            doc.addImage(this.documentacion.imagenFirma, 'JPEG', 80, 220, 70, 30)
-
-
-            doc.text(80, 264, this.documentacion.nombre + ' ' + this.documentacion.apaterno + ' ' + this.documentacion.amaterno)
+            doc.text(80, 274, this.documentacion.nombre + ' ' + this.documentacion.apaterno + ' ' + this.documentacion.amaterno)
 
             //firma
-            doc.line(50, 265, 160, 265)
-            doc.text(75, 270, 'NOMBRE Y FIRMA DEL INVERSOR')
+            doc.line(50, 275, 160, 275)
+            doc.text(75, 280, 'NOMBRE Y FIRMA DEL INVERSOR')
 
             doc.save("ContratoInversionista.pdf")
         }
     }
 });
 
-$(document).ready(function () {
-    if ($('.js-signature').length) {
-        $('.js-signature').jqSignature();
-    }
-});
-
-$('.js-signature').eq(0).on('jq.signature.changed', function () {
-    $('#saveBtn').attr('disabled', false);
-});
